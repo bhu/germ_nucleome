@@ -1,0 +1,8 @@
+bioframe
+cooler
+cooltools
+fanc
+matplotlib
+numpy
+pandas
+pymol

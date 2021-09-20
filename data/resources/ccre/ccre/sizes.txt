@@ -1,0 +1,10 @@
+filename	size
+CTCF-only_CTCF-bound.bed	23836
+DNase-H3K4me3.bed	6982
+DNase-H3K4me3_CTCF-bound.bed	3401
+PLS.bed	13855
+PLS_CTCF-bound.bed	9907
+dELS.bed	181173
+dELS_CTCF-bound.bed	27867
+pELS.bed	56411
+pELS_CTCF-bound.bed	16383

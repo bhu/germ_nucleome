@@ -1,0 +1,716 @@
+﻿GENE PRODUCT DB	GENE PRODUCT ID	SYMBOL	QUALIFIER	GO TERM	GO NAME	ECO ID	GO EVIDENCE CODE	REFERENCE	WITH/FROM	TAXON ID	ASSIGNED BY	ANNOTATION EXTENSION	GO ASPECT
+UniProtKB	A0A087WNW4	Gm29554	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WNW5	Gm29276	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WP28	Gm28510	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WP35	Gm28919	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WP44	Gm28897	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WPA5	Gm28961	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WPJ9	Gm21117	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WPP3	Gm20820	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WQ24	Gm21858	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WQA3	Gm20888	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WQC7	Gm21258	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WQL3	Gm28102	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WR14	Gm21095	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WR44	Btbd35f15	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A087WR99	Gm21488	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WRF5	Gm21861	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WRK3	Gm21497	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WRL2	Gm21865	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WRP6	Gm28576	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WRT9	Gm28490	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WS79	Gm21294	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WS97	Gm20824	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WSN2	Btbd35f16	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A087WSS0	Gm20911	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A087WSS9	Gm21996	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A0A0MQP3	Btbd35f12	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A0A6YW38	Gm28870	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A0A6YX04	Gm29866	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A0A0G2JEK6	Piwil1	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR031326	10090	InterPro		P
+UniProtKB	A0A0R4J2B9	Btbd35f23	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A140LIP1	Aurkc	involved_in	GO:0048599	oocyte development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030613	10090	InterPro		P
+UniProtKB	A0A140LJ30	Aurkc	involved_in	GO:0048599	oocyte development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030613	10090	InterPro		P
+UniProtKB	A0A140T8Q5	Btbd35f21	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A3B2W7R5	Slc26a8	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030303	10090	InterPro		P
+UniProtKB	A0A3B2WCZ8	Slc26a8	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030303	10090	InterPro		P
+UniProtKB	A0A3B2WD00	Slc26a8	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030303	10090	InterPro		P
+UniProtKB	A0A3B2WD26	Dazl	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR034779	10090	InterPro		P
+UniProtKB	A0A3Q4EGN8	Cabyr	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR038848	10090	InterPro		P
+UniProtKB	A0A494BAH2	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR039019	10090	InterPro		P
+UniProtKB	A0A494BBE0	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR039019	10090	InterPro		P
+UniProtKB	A0A571BD55	Btbd35f26	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A571BEF3	Btbd35f1	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A571BG45	Btbd35f25	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A571BG86	Btbd35f8	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A0A5K7RLP0	Meiosin	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:32032549		10090	UniProt		P
+UniProtKB	A2A5N3	Pabpc1l	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000314	IDA	PMID:26134869		10090	MGI		P
+UniProtKB	A2A5N3	Pabpc1l	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:22621333	MGI:MGI:5437740	10090	MGI		P
+UniProtKB	A2A8L1	Chd5	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:24252660		10090	UniProt		P
+UniProtKB	A2AG06	Meioc	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:26742488		10090	UniProt		P
+UniProtKB	A2AG06	Meioc	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:28380054		10090	UniProt		P
+UniProtKB	A2AG06	Meioc	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:28380054		10090	UniProt		P
+UniProtKB	A2AI93	Dmrtc1b	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	A2AL36	Cntrl	acts_upstream_of_or_within	GO:0048132	female germ-line stem cell asymmetric division	ECO:0006051	IMP	PMID:28075662		10090	MGI	occurs_in(CL:0000654)	P
+UniProtKB	A2ARP9	Catsper2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2387404|PANTHER:PTN002467465	10090	GO_Central		P
+UniProtKB	A2ARP9	Catsper2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:14657366	MGI:MGI:2683843	10090	MGI		P
+UniProtKB	A2ARZ3	Fsip2	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q5CZC0	10090	MGI		P
+UniProtKB	A2ARZ3	Fsip2	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q5CZC0|ensembl:ENSP00000401306	10090	Ensembl		P
+UniProtKB	A2BFZ7	Btbd35f11	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2BH01	Gm14692	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BHG6	Btbd35f7	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2BI40	Xlr4a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI41	Xlr4a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI42	Xlr4a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI45	Xlr5a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI46	Xlr5a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI49	Xlr5b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2BI50	Xlr5b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A2CFD5	Btbd35f28	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2CG71	Btbd35f20	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2CG92	Btbd35f10	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2CGC2	Btbd35f4	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	A2RTF1	Catsperb	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000304	TAS	PMID:18689890		10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	A3KGV1	Odf2	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q6AYX5|ensembl:ENSRNOP00000041336	10090	Ensembl		P
+UniProtKB	A3KMN0	Zbtb16	acts_upstream_of_or_within	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:15156143	MGI:MGI:2182708	10090	MGI		P
+UniProtKB	A3KMN0	Zbtb16	acts_upstream_of_or_within	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:15156142	MGI:MGI:1856943	10090	MGI		P
+UniProtKB	A6X8I0	Gm1993	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	A6X8J1	Gm16405	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	B1AX27	Dmrtc1c1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	B1AZA0	Gm14525	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	B1B0R1	Gm2012	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	B1B0R4	Xlr4b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	B1B0R5	Xlr4b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	B1B0V2	Ezhip	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:31451685	MGI:MGI:6404408	10090	MGI		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:29360036		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:29087293		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:29033321		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:29360036		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:29087293		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:29033321		10090	UniProt		P
+UniProtKB	B2RR83	Ythdc2	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	B2RR84	Pde3a	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q62865|ensembl:ENSRNOP00000032282	10090	Ensembl		P
+UniProtKB	B2RUF0	Ybx2	involved_in	GO:0048599	oocyte development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:D4A3P0|ensembl:ENSRNOP00000023003	10090	Ensembl		P
+UniProtKB	B2RX14	Tut4	involved_in	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:28792939		10090	UniProt		P
+UniProtKB	B2RXY9	Pabpc1l	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000314	IDA	PMID:26134869		10090	MGI		P
+UniProtKB	B2RXY9	Pabpc1l	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:22621333	MGI:MGI:5437740	10090	MGI		P
+UniProtKB	B8JKF6	Btbd35f13	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	B9EHQ4	Angpt2	involved_in	GO:0007281	germ cell development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:O35462|ensembl:ENSRNOP00000022774	10090	Ensembl		P
+UniProtKB	B9EKI3	Tmf1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:23000399	MGI:MGI:4867392	10090	MGI		P
+UniProtKB	B9EKI3	Tmf1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:20691678	MGI:MGI:4867389|MGI:MGI:4867392	10090	MGI		P
+UniProtKB	B9EKI3	Tmf1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:20691678	MGI:MGI:4867389|MGI:MGI:4867392	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	B9EKI3	Tmf1	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:20691678	MGI:MGI:4867389|MGI:MGI:4867392	10090	MGI		P
+UniProtKB	C3U1R6	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	39442	InterPro		P
+UniProtKB	C3U1R7	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	35531	InterPro		P
+UniProtKB	C3U1R8	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	10091	InterPro		P
+UniProtKB	C3U1S0	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	10092	InterPro		P
+UniProtKB	D3YWB7	Gm4297	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	D3Z347	Slx	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	D3Z3K2	Ccnb1ip1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17784788	MGI:MGI:3050548	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	D3Z4R1	Hfm1	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	D3Z4U6	Gm5934	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	D3Z7C4	Gm2030	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	E5FYH1	Topaz1	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:3779933|PANTHER:PTN002860937	10090	GO_Central		P
+UniProtKB	E5FYH1	Topaz1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26358182	MGI:MGI:5700076	10090	MGI		P
+UniProtKB	E9Q3T6	Prdm14	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:27281218		10090	UniProt		P
+UniProtKB	E9Q3T6	Prdm14	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:26523391		10090	UniProt		P
+UniProtKB	E9Q3T6	Prdm14	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:18622394	MGI:MGI:3805889	10090	MGI	occurs_in(EMAPA:17962)|occurs_in(EMAPA:17972)	P
+UniProtKB	E9Q5G7	Oog1	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0006052	IMP	PMID:29731491		10090	MGI	occurs_in(EMAPA:17962),occurs_in(GO:0005575)	P
+UniProtKB	E9Q5K9	Ythdc1	acts_upstream_of_or_within	GO:0048160	primary follicle stage	ECO:0000315	IMP	PMID:29799838	MGI:MGI:3757577,MGI:MGI:6194732	10090	MGI	occurs_in(EMAPA:31025)	P
+UniProtKB	E9Q5K9	Ythdc1	acts_upstream_of_or_within	GO:0048160	primary follicle stage	ECO:0000315	IMP	PMID:29799838	MGI:MGI:2176187,MGI:MGI:6194732	10090	MGI	occurs_in(EMAPA:31025)	P
+UniProtKB	E9Q5M6	Cfap44	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1277238|PANTHER:PTN001010599|UniProtKB:Q96MT7	10090	GO_Central		P
+UniProtKB	E9Q5M6	Cfap44	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:28552195		10090	UniProt		P
+UniProtKB	E9Q5M6	Cfap44	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:29449551		10090	UniProt		P
+UniProtKB	E9Q5M6	Cfap44	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:29522859	MGI:MGI:6140014	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	E9Q5M6	Cfap44	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q96MT7	10090	MGI		P
+UniProtKB	E9Q5M6	Cfap44	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q96MT7|ensembl:ENSP00000377428	10090	Ensembl		P
+UniProtKB	E9Q7R9	Cfap43	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN002686399|UniProtKB:Q8NDM7	10090	GO_Central		P
+UniProtKB	E9Q7R9	Cfap43	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:29449551		10090	UniProt		P
+UniProtKB	E9Q7R9	Cfap43	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:28552195		10090	UniProt		P
+UniProtKB	E9Q7R9	Cfap43	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:31884020	MGI:MGI:6431400	10090	MGI	occurs_in(CL:0011016)	P
+UniProtKB	E9Q7R9	Cfap43	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:29522859	MGI:MGI:6140013	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	E9Q7R9	Cfap43	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q8NDM7	10090	MGI		P
+UniProtKB	E9Q7R9	Cfap43	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q8NDM7|ensembl:ENSP00000349568	10090	Ensembl		P
+UniProtKB	E9Q8T7	Dnah1	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q9P2D7	10090	MGI		P
+UniProtKB	E9Q8T7	Dnah1	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9P2D7|ensembl:ENSP00000401514	10090	Ensembl		P
+UniProtKB	E9Q956	Mcmdc2	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:27760146	MGI:MGI:2178050,MGI:MGI:5511194	10090	MGI		P
+UniProtKB	E9Q9F6	Catsperd	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:21224844		10090	UniProt		P
+UniProtKB	E9QL04	Aurkc	involved_in	GO:0048599	oocyte development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030613	10090	InterPro		P
+UniProtKB	F2Z472	Svs3a	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	F2Z4A9	Smarca2	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:E9PTG1|ensembl:ENSRNOP00000016740	10090	Ensembl		P
+UniProtKB	F6VD35	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10090	InterPro		P
+UniProtKB	F6VV40	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	F7A4R2	Nectin3	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033319	10090	InterPro		P
+UniProtKB	G3X8T0	Mov10l1	involved_in	GO:0007281	germ cell development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9BXT6|ensembl:ENSP00000262794	10090	Ensembl		P
+UniProtKB	G5E8Z2	Taf4b	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	J3KMR5	Gm21858	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3KMU1	Gm28490	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QJX2	Gm21477	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QML3	Btbd35f29	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	J3QMS5	Btbd35f2	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	J3QMW9	Btbd35f6	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	J3QN64	Btbd35f22	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	J3QNE0	Gm21117	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QNI1	Gm21209	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QNQ5	Btbd35f24	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	J3QNV4	Gm20736	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QNY0	Gm21760	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	J3QPW0	Gm21865	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	K7QD41	Ptk2b	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P70600|ensembl:ENSRNOP00000031615	10090	Ensembl		P
+UniProtKB	L7MU81	Btbd35f17	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	L7MU83	Btbd35f18	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	L7MUB7	Xlr4c	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	L7MUF1	Gm6121	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	O08550	Kmt2b	acts_upstream_of_or_within	GO:0009994	oocyte differentiation	ECO:0000315	IMP	PMID:20808952	MGI:MGI:3056522,MGI:MGI:3623309	10090	MGI	results_in_acquisition_of_features_of(CL:0000023)	P
+UniProtKB	O08550	Kmt2b	acts_upstream_of_or_within	GO:0009994	oocyte differentiation	ECO:0000315	IMP	PMID:20808952	MGI:MGI:2176052,MGI:MGI:3623309	10090	MGI	results_in_acquisition_of_features_of(CL:0000023)	P
+UniProtKB	O08749	Dld	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:15888450		10090	MGI		P
+UniProtKB	O09107	Insl3	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000266	ISO	GO_REF:0000096	RGD:620117	10090	MGI		P
+UniProtKB	O35608	Angpt2	involved_in	GO:0007281	germ cell development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:O35462|ensembl:ENSRNOP00000022774	10090	Ensembl		P
+UniProtKB	O54689	Ccr6	involved_in	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000314	IDA	PMID:23765988		10090	UniProt		P
+UniProtKB	O54689	Ccr6	acts_upstream_of_or_within	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:P51684	10090	MGI		P
+UniProtKB	O54689	Ccr6	involved_in	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P51684|ensembl:ENSP00000343952	10090	Ensembl		P
+UniProtKB	O54863	Tssk2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:18533145		10090	UniProt		P
+UniProtKB	O54967	Tnk2	involved_in	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:23562806	UniProtKB:Q8MRP0	10090	UniProt		P
+UniProtKB	O55208	Figla	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	O70566	Diaph2	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	O88445	Aurkc	involved_in	GO:0048599	oocyte development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030613	10090	InterPro		P
+UniProtKB	O88735	Map7	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:10837026	MGI:MGI:2148221	10090	MGI	results_in_development_of(CL:0000586)	P
+UniProtKB	P02319	Prm1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:11326282	MGI:MGI:3039794	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	P05132	Prkaca	involved_in	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:19560455		10090	UniProt		P
+UniProtKB	P05480	Src	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:16007215	MGI:MGI:1857247	10090	MGI		P
+UniProtKB	P05531	Xlr	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	P05532	Kit	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:18308723	MGI:MGI:1856232	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	P05532	Kit	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000304	TAS	PMID:12140361		10090	MGI		P
+UniProtKB	P07903	Ercc1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:12466203	MGI:MGI:2158940	10090	MGI		P
+UniProtKB	P07903	Ercc1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:17912366	MGI:MGI:2158940|MGI:MGI:3617449	10090	MGI	occurs_in(EMAPA:17972),results_in_development_of(CL:0000015)	P
+UniProtKB	P07978	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:97766|PANTHER:PTN000482059	10090	GO_Central		P
+UniProtKB	P07978	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	10090	InterPro		P
+UniProtKB	P07978	Prm2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:11326282	MGI:MGI:3039800	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	P09036	Spink1	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:22228629		10090	MGI		P
+UniProtKB	P0CW70	Dpy19l2	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2444662|PANTHER:PTN001266831|UniProtKB:Q6NUT2	10090	GO_Central		P
+UniProtKB	P0CW70	Dpy19l2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030042	10090	InterPro		P
+UniProtKB	P0CW70	Dpy19l2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:22764053	MGI:MGI:5007114	10090	MGI	results_in_development_of(CL:0000019)	P
+UniProtKB	P0CW70	Dpy19l2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q6NUT2	10090	MGI		P
+UniProtKB	P0CW70	Dpy19l2	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q6NUT2|ensembl:ENSP00000315988	10090	Ensembl		P
+UniProtKB	P10417	Bcl2	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:7628407	MGI:MGI:1857134	10090	MGI	occurs_in(EMAPA:30755),results_in_development_of(CL:0000023)	P
+UniProtKB	P10761	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:99215|PANTHER:PTN000171662	10090	GO_Central		P
+UniProtKB	P10761	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10090	InterPro		P
+UniProtKB	P10761	Zp3	involved_in	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:18420282		10090	UniProt		P
+UniProtKB	P10761	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000315	IMP	PMID:14645511		10090	UniProt		P
+UniProtKB	P10761	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000315	IMP	PMID:18420282		10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0007290	spermatid nucleus elongation	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000426028|UniProtKB:P09430	10090	GO_Central		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15163613		10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15189834		10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15083521		10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:28366643		10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P09430|ensembl:ENSP00000236979	10090	Ensembl		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0007290	spermatid nucleus elongation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P09430|ensembl:ENSP00000236979	10090	Ensembl		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0007290	spermatid nucleus elongation	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:P09430	10090	UniProt		P
+UniProtKB	P10856	Tnp1	involved_in	GO:0007286	spermatid development	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:P09430	10090	UniProt		P
+UniProtKB	P11378	Tnp2	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:28366643		10090	UniProt		P
+UniProtKB	P11378	Tnp2	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15163613		10090	UniProt		P
+UniProtKB	P11378	Tnp2	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15083521		10090	UniProt		P
+UniProtKB	P11378	Tnp2	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:15189834		10090	UniProt		P
+UniProtKB	P11416	Rara	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:15901285		10090	UniProt		P
+UniProtKB	P12025	Mdk	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:17121547		10090	UniProt		P
+UniProtKB	P17012	Zfx	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:9187153	MGI:MGI:2450147	10090	MGI	results_in_development_of(CL:0000586)	P
+UniProtKB	P17012	Zfx	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:9187153	MGI:MGI:2450147	10090	MGI	results_in_development_of(CL:0000023)	P
+UniProtKB	P17141	Zfp37	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000304	TAS	PMID:8660973		10090	MGI		P
+UniProtKB	P17156	Hspa2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:8622925	MGI:MGI:2447605	10090	MGI		P
+UniProtKB	P20060	Hexb	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:9223328	MGI:MGI:2429701	10090	MGI		P
+UniProtKB	P20662	Zfy2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000314	IDA	PMID:26719889		10090	MGI		P
+UniProtKB	P20826	Kitlg	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000304	TAS	PMID:12140361		10090	MGI		P
+UniProtKB	P21275	Bmp4	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:15289457	MGI:MGI:1857137	10090	MGI	occurs_in(EMAPA:16039),results_in_development_of(CL:0000586)|occurs_in(EMAPA:16039),results_in_development_of(CL:0000586)	P
+UniProtKB	P22227	Zfp42	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21641340	MGI:MGI:5289943	10090	MGI	occurs_in(EMAPA:31476)	P
+UniProtKB	P22561	Wt1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:15063178	MGI:MGI:1857268	10090	MGI	occurs_in(EMAPA:18686),results_in_development_of(CL:0000015)	P
+UniProtKB	P22724	Wnt4	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000316	IGI	PMID:20454446	MGI:MGI:88276|MGI:MGI:96571	10090	MGI	occurs_in(EMAPA:17962),results_in_development_of(CL:0000654)	P
+UniProtKB	P22724	Wnt4	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:9989404	MGI:MGI:1857453	10090	MGI	occurs_in(EMAPA:17962),results_in_development_of(CL:0000023)	P
+UniProtKB	P24860	Ccnb1	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000266	ISO	GO_REF:0000096	RGD:2291	10090	MGI		P
+UniProtKB	P24860	Ccnb1	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P30277|ensembl:ENSRNOP00000075114	10090	Ensembl		P
+UniProtKB	P26361	Cftr	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:21976599		10090	UniProt		P
+UniProtKB	P27106	Amh	acts_upstream_of_or_within	GO:0001546	preantral ovarian follicle growth	ECO:0000266	ISO	GO_REF:0000096	RGD:2108	10090	MGI		P
+UniProtKB	P28659	Celf1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17130239	MGI:MGI:3700209	10090	MGI	occurs_in(EMAPA:19290),occurs_in(CL:0000019)	P
+UniProtKB	P28661	Septin4	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15737931	MGI:MGI:3574368	10090	MGI		P
+UniProtKB	P28661	Septin4	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:15737931	MGI:MGI:3574368	10090	MGI		P
+UniProtKB	P29121	Pcsk4	involved_in	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:21302280		10090	UniProt		P
+UniProtKB	P29121	Pcsk4	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:19342015		10090	UniProt		P
+UniProtKB	P29121	Pcsk4	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:16371590	MGI:MGI:2665512	10090	MGI		P
+UniProtKB	P30306	Cdc25b	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:11912493	MGI:MGI:2682953	10090	MGI	occurs_in(EMAPA:17965),results_in_maturation_of(CL:0000023)	P
+UniProtKB	P30681	Hmgb2	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:16765935	MGI:MGI:2387671	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	P31750	Akt1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:12140361		10090	MGI		P
+UniProtKB	P32507	Nectin2	involved_in	GO:0001675	acrosome assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:97822|PANTHER:PTN000589191	10090	GO_Central		P
+UniProtKB	P32507	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033318	10090	InterPro		P
+UniProtKB	P32507	Nectin2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:10733589	MGI:MGI:2183405	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	P32507	Nectin2	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:10733589	MGI:MGI:2183405	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	P32507	Nectin2	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:10733589	MGI:MGI:2183405	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	P32507	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:10733589		10090	BHF-UCL		P
+UniProtKB	P34821	Bmp8a	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:10894154	MGI:MGI:1857954	10090	MGI		P
+UniProtKB	P35378	Fshr	acts_upstream_of_or_within	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:14680821	MGI:MGI:2384087	10090	MGI		P
+UniProtKB	P35378	Fshr	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15973687	MGI:MGI:2384087	10090	MGI		P
+UniProtKB	P35378	Fshr	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:11466221	MGI:MGI:2384087	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	P35378	Fshr	acts_upstream_of_or_within	GO:0035092	sperm chromatin condensation	ECO:0000315	IMP	PMID:10775161	MGI:MGI:2384087	10090	MGI		P
+UniProtKB	P36898	Bmpr1b	involved_in	GO:0001550	ovarian cumulus expansion	ECO:0000315	IMP	PMID:11416163		10090	UniProt		P
+UniProtKB	P37172	Acvr1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:15289457	MGI:MGI:1857711	10090	MGI	occurs_in(EMAPA:16116)	P
+UniProtKB	P40224	Cxcl12	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:12900445		10090	MGI		P
+UniProtKB	P43247	Msh2	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:17912366	MGI:MGI:1858055	10090	MGI	occurs_in(EMAPA:17972),results_in_development_of(CL:0000015)	P
+UniProtKB	P48379	Rfx2	involved_in	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:26162102		10090	UniProt		P
+UniProtKB	P48379	Rfx2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26853561		10090	UniProt		P
+UniProtKB	P48379	Rfx2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26248850		10090	UniProt		P
+UniProtKB	P48379	Rfx2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26162102		10090	UniProt		P
+UniProtKB	P48759	Ptx3	acts_upstream_of_or_within	GO:0001550	ovarian cumulus expansion	ECO:0000314	IDA	PMID:17675295		10090	MGI	occurs_in(EMAPA:35267)	P
+UniProtKB	P48759	Ptx3	acts_upstream_of_or_within	GO:0001550	ovarian cumulus expansion	ECO:0000315	IMP	PMID:17675295		10090	MGI		P
+UniProtKB	P50652	Fancc	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:8704201	MGI:MGI:1858041	10090	MGI		P
+UniProtKB	P55105	Bmp8b	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:10894154		10090	UniProt		P
+UniProtKB	P56386	Defb1	involved_in	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:P60022	10090	UniProt		P
+UniProtKB	P60154	Rnase9	acts_upstream_of_or_within	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000315	IMP	PMID:24719258	MGI:MGI:5637811	10090	MGI		P
+UniProtKB	P60322	Nanos2	involved_in	GO:0048477	oogenesis	ECO:0000318	IBA	PMID:21873635	FB:FBgn0002962|MGI:MGI:2675387|PANTHER:PTN000984469|WB:WBGene00003784|ZFIN:ZDB-GENE-011221-1	10090	GO_Central		P
+UniProtKB	P60324	Nanos3	involved_in	GO:0048477	oogenesis	ECO:0000318	IBA	PMID:21873635	FB:FBgn0002962|MGI:MGI:2675387|PANTHER:PTN000984469|WB:WBGene00003784|ZFIN:ZDB-GENE-011221-1	10090	GO_Central		P
+UniProtKB	P60324	Nanos3	involved_in	GO:0007281	germ cell development	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:P60323	10090	UniProt		P
+UniProtKB	P60324	Nanos3	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	P60324	Nanos3	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:12947200	MGI:MGI:2682607	10090	MGI		P
+UniProtKB	P60324	Nanos3	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:P60323	10090	MGI		P
+UniProtKB	P60324	Nanos3	involved_in	GO:0007281	germ cell development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P60323|ensembl:ENSP00000341992	10090	Ensembl		P
+UniProtKB	P61407	Tdrd6	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	P61407	Tdrd6	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:17141210		10090	MGI	results_in_development_of(CL:0000017)	P
+UniProtKB	P62340	Tbpl1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:11861477	MGI:MGI:2182539	10090	MGI		P
+UniProtKB	P62340	Tbpl1	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:16765935	MGI:MGI:2181639	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	P62754	Rps6	acts_upstream_of_or_within	GO:0022605	mammalian oogenesis stage	ECO:0000315	IMP	PMID:17000767	MGI:MGI:2387471	10090	MGI		P
+UniProtKB	P62827	Ran	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P62828|ensembl:ENSRNOP00000001247	10090	Ensembl		P
+UniProtKB	P63005	Pafah1b1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	FB:FBgn0015754|PANTHER:PTN000522053	10090	GO_Central		P
+UniProtKB	P63005	Pafah1b1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:13129914	MGI:MGI:2683481	10090	MGI		P
+UniProtKB	P63089	Ptn	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:17121547		10090	UniProt		P
+UniProtKB	P63147	Ube2b	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:12672659	MGI:MGI:2183933	10090	MGI		P
+UniProtKB	P70160	Calca	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000247	ISA	PMID:12704735	UniProtKB:P01263	10090	MGI		P
+UniProtKB	P70178	Six5	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15163633	MGI:MGI:2148689	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	P70187	Mfsd14a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:27107036	MGI:MGI:5763015	10090	MGI		P
+UniProtKB	P70187	Mfsd14a	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:27107036	MGI:MGI:5763015	10090	MGI		P
+UniProtKB	P70187	Mfsd14a	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:27107036	MGI:MGI:5763015	10090	MGI		P
+UniProtKB	P70190	Capza3	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:19341723	MGI:MGI:3590195	10090	MGI	occurs_in(EMAPA:18686),occurs_in(CL:0000018)	P
+UniProtKB	P70278	Stra8	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:32032549		10090	UniProt		P
+UniProtKB	P70278	Stra8	involved_in	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:25902548		10090	UniProt		P
+UniProtKB	P70278	Stra8	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	P70281	Sycp3	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	P70281	Sycp3	acts_upstream_of_or_within	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q8IZU3	10090	MGI		P
+UniProtKB	P70281	Sycp3	acts_upstream_of_or_within	GO:0035092	sperm chromatin condensation	ECO:0000316	IGI	PMID:22164254	MGI:MGI:105931	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	P70296	Pebp1	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:16183867		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	P70296	Pebp1	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P31044|ensembl:ENSRNOP00000001500	10090	Ensembl		P
+UniProtKB	P70318	Tial1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:9482885	MGI:MGI:2660803	10090	MGI		P
+UniProtKB	P70368	Sebox	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:22805237		10090	MGI	occurs_in(EMAPA:17962)	P
+UniProtKB	P70658	Cxcr4	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:12900445	MGI:MGI:1934407	10090	MGI		P
+UniProtKB	P70696	H2bc1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:23884607		10090	UniProt		P
+UniProtKB	P84244	H3-3a	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000316	IGI	PMID:25675407	MGI:MGI:1101768	10090	MGI		P
+UniProtKB	P84244	H3-3a	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000316	IGI	PMID:25675407	MGI:MGI:1097686	10090	MGI		P
+UniProtKB	P84244	H3-3a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:25675407	MGI:MGI:5474378	10090	MGI		P
+UniProtKB	P97454	Smad5	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:11404080		10090	MGI	occurs_in(EMAPA:16190),results_in_development_of(CL:0000670)	P
+UniProtKB	P97473	Tarbp2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:10369260	MGI:MGI:2445673	10090	MGI		P
+UniProtKB	P97812	Ihh	acts_upstream_of_or_within	GO:0030704	vitelline membrane formation	ECO:0000315	IMP	PMID:17881493	MGI:MGI:1934258	10090	MGI		P
+UniProtKB	P97929	Brca2	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:14660434	MGI:MGI:2177233	10090	MGI		P
+UniProtKB	Q02248	Ctnnb1	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000316	IGI	PMID:20454446	MGI:MGI:98957	10090	MGI	occurs_in(EMAPA:17962),results_in_development_of(CL:0000654)	P
+UniProtKB	Q04999	Inhbb	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000316	IGI	PMID:20454446	MGI:MGI:98957	10090	MGI	occurs_in(EMAPA:17962),results_in_development_of(CL:0000654)	P
+UniProtKB	Q07105	Gdf9	acts_upstream_of_or_within	GO:0001555	oocyte growth	ECO:0000315	IMP	PMID:17641088	MGI:MGI:1930111	10090	MGI	occurs_in(EMAPA:35628),occurs_in(CL:0000023)	P
+UniProtKB	Q07231	Zscan21	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q07813	Bax	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000316	IGI	PMID:10894153	MGI:MGI:2176699	10090	MGI	results_in_development_of(CL:0000020)	P
+UniProtKB	Q0VFX2	Cfap157	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2447809|PANTHER:PTN002841493	10090	GO_Central		P
+UniProtKB	Q0VFX2	Cfap157	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:27965440		10090	UniProt		P
+UniProtKB	Q1HFZ0	Nsun2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:23401851		10090	CACAO		P
+UniProtKB	Q1LZI5	Btbd35f14	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q1LZK1	Gm5925	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q1WG82	Zglp1	involved_in	GO:0048599	oocyte development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:3696042|PANTHER:PTN005341566	10090	GO_Central		P
+UniProtKB	Q1WG82	Zglp1	involved_in	GO:0048599	oocyte development	ECO:0000314	IDA	PMID:32054698		10090	UniProt		P
+UniProtKB	Q1WG82	Zglp1	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q1WG82	Zglp1	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:16982049	MGI:MGI:2176180,MGI:MGI:3696745	10090	MGI		P
+UniProtKB	Q2PMX6	Dmrtc1b	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q2PMX7	Dmrtc1b	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q2PMX8	Dmrtc1b	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q2TVT7	Foxl2	involved_in	GO:0001555	oocyte growth	ECO:0000315	IMP	PMID:15056605		10090	CACAO		P
+UniProtKB	Q3B802	Svs2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q3B802	Svs2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:17123940		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q3KNH8	Cabyr	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR038848	10090	InterPro		P
+UniProtKB	Q3TIG7	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	Q3TKR2	Xlr4c	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q3TML4	Gm773	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q3TQW9	Ccnb1	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P30277|ensembl:ENSRNOP00000075114	10090	Ensembl		P
+UniProtKB	Q3TUC3	Dazl	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR034779	10090	InterPro		P
+UniProtKB	Q3TVA9	Ccdc136	involved_in	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:27076447		10090	UniProt		P
+UniProtKB	Q3TY65	Ica1l	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26306493	MGI:MGI:5806150	10090	MGI		P
+UniProtKB	Q3TZU9	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033318	10090	InterPro		P
+UniProtKB	Q3U2J9	Gmcl1	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q3U4S0	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	Q3UA06	Trip13	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:20711356		10090	UniProt		P
+UniProtKB	Q3UA06	Trip13	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q3UA06	Trip13	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17696610	MGI:MGI:3719273	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000017)	P
+UniProtKB	Q3UA06	Trip13	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000316	IGI	PMID:17696610	MGI:MGI:1929645	10090	MGI	occurs_in(CL:0000023)	P
+UniProtKB	Q3UA06	Trip13	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:17696610	MGI:MGI:3719273	10090	MGI	occurs_in(EMAPA:17962)	P
+UniProtKB	Q3UID6	Gmcl1	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q3UN62	Svs2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q3UN62	Svs2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:17123940		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q3UQ17	Zbtb16	acts_upstream_of_or_within	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:15156143	MGI:MGI:2182708	10090	MGI		P
+UniProtKB	Q3UQ17	Zbtb16	acts_upstream_of_or_within	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:15156142	MGI:MGI:1856943	10090	MGI		P
+UniProtKB	Q3URY6	Armc2	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916449|PANTHER:PTN002724716|UniProtKB:Q8NEN0	10090	GO_Central		P
+UniProtKB	Q3URY6	Armc2	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:30686508		10090	UniProt		P
+UniProtKB	Q3URY6	Armc2	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q8NEN0	10090	MGI		P
+UniProtKB	Q3UVY1	Gpr149	acts_upstream_of_or_within	GO:0001546	preantral ovarian follicle growth	ECO:0000315	IMP	PMID:19887567	MGI:MGI:4442841	10090	MGI		P
+UniProtKB	Q3UW26	Bsph1	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2685613|PANTHER:PTN001116157	10090	GO_Central		P
+UniProtKB	Q3UW26	Bsph1	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR016356	10090	InterPro		P
+UniProtKB	Q3UW26	Bsph1	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:22539676		10090	MGI		P
+UniProtKB	Q3V0B4	Cfap65	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:31571197		10090	UniProt		P
+UniProtKB	Q3V0F0	Rimbp3	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:19091768		10090	ParkinsonsUK-UCL		P
+UniProtKB	Q3V0F0	Rimbp3	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2685449|PANTHER:PTN000369471	10090	GO_Central		P
+UniProtKB	Q3V0Z2	Gmcl1	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q3V113	Pygo2	involved_in	GO:0007289	spermatid nucleus differentiation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916161|PANTHER:PTN001505928	10090	GO_Central		P
+UniProtKB	Q3V113	Pygo2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q3V113	Pygo2	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q3V140	Acrbp	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:27303034		10090	UniProt		P
+UniProtKB	Q3V140	Acrbp	involved_in	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:27303034		10090	UniProt		P
+UniProtKB	Q3V140	Acrbp	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000247	ISA	PMID:8144514	EMBL:D16200|EMBL:D16203	10090	MGI		P
+UniProtKB	Q3V140-2	Acrbp	involved_in	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:27303034		10090	UniProt		P
+UniProtKB	Q3V2B5	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10090	InterPro		P
+UniProtKB	Q3V2B5	Zp3	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000104	UniRule:UR001376751	10090	UniProt		P
+UniProtKB	Q3V4A4	Pygo2	involved_in	GO:0007289	spermatid nucleus differentiation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916161|PANTHER:PTN001505928	10090	GO_Central		P
+UniProtKB	Q3V4A4	Pygo2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q3V4A4	Pygo2	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q402U7	Prss44	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2684822|PANTHER:PTN001207730	10090	GO_Central		P
+UniProtKB	Q497S0	Gm5935	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q497X5	Aurkc	involved_in	GO:0048599	oocyte development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030613	10090	InterPro		P
+UniProtKB	Q499F1	Dazl	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR034779	10090	InterPro		P
+UniProtKB	Q4KL04	Gm5168	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q4KL05	Gm10488	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q4QQJ8	Xlr4a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q542B6	Ccr6	involved_in	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P51684|ensembl:ENSP00000343952	10090	Ensembl		P
+UniProtKB	Q545L6	Tnp1	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P09430|ensembl:ENSP00000236979	10090	Ensembl		P
+UniProtKB	Q545L6	Tnp1	involved_in	GO:0007290	spermatid nucleus elongation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P09430|ensembl:ENSP00000236979	10090	Ensembl		P
+UniProtKB	Q545M0	Prm2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR000492	10090	InterPro		P
+UniProtKB	Q5BLK4	Tut7	involved_in	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:28792939		10090	UniProt		P
+UniProtKB	Q5EBQ2	Pebp1	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P31044|ensembl:ENSRNOP00000001500	10090	Ensembl		P
+UniProtKB	Q5EC55	Amh	involved_in	GO:0001546	preantral ovarian follicle growth	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P49000|ensembl:ENSRNOP00000026220	10090	Ensembl		P
+UniProtKB	Q5F289	Spem1	involved_in	GO:0007291	sperm individualization	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1921538|PANTHER:PTN002166131	10090	GO_Central		P
+UniProtKB	Q5F289	Spem1	acts_upstream_of_or_within	GO:0007291	sperm individualization	ECO:0000315	IMP	PMID:17426145	MGI:MGI:3716924	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q5FWA1	Btbd35f27	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q5M8P2	Gm5169	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q5QNQ6	Osbp2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:24245814	MGI:MGI:5613891	10090	MGI		P
+UniProtKB	Q5RL10	Insl3	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9WUK0|ensembl:ENSRNOP00000025349	10090	Ensembl		P
+UniProtKB	Q5SRY7	Fbxw11	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	FB:FBgn0015754|PANTHER:PTN000522053	10090	GO_Central		P
+UniProtKB	Q5SSW2	Psme4	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2143994|PANTHER:PTN001282312	10090	GO_Central		P
+UniProtKB	Q5SSW2	Psme4	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:23706739		10090	UniProt		P
+UniProtKB	Q5SUE7	Adad1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15649457	MGI:MGI:3574372	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q5SV66	Ccdc42	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26945718		10090	UniProt		P
+UniProtKB	Q5SWZ9	Pld6	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21397848		10090	UniProt		P
+UniProtKB	Q5SWZ9	Pld6	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21397847		10090	UniProt		P
+UniProtKB	Q5SWZ9	Pld6	involved_in	GO:0030719	P granule organization	ECO:0000315	IMP	PMID:21397848		10090	UniProt		P
+UniProtKB	Q5SXJ3	Brip1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26490168	MGI:MGI:4129733	10090	MGI		P
+UniProtKB	Q5VCS6	Tdrd5	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21383078		10090	UniProt		P
+UniProtKB	Q5VCS6	Tdrd5	involved_in	GO:0030719	P granule organization	ECO:0000315	IMP	PMID:21383078		10090	UniProt		P
+UniProtKB	Q5VCS6	Tdrd5	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR037982	10090	InterPro		P
+UniProtKB	Q60595	Xlr3a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q60636	Prdm1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000316	IGI	PMID:19578360	MGI:MGI:1890546	10090	MGI		P
+UniProtKB	Q61241	Tssk1b	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:18533145		10090	UniProt		P
+UniProtKB	Q61371	Ift88	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:21337470	MGI:MGI:2157527	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q61371	Ift88	acts_upstream_of_or_within	GO:0007290	spermatid nucleus elongation	ECO:0000315	IMP	PMID:21337470	MGI:MGI:2157527	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q61488	Dhh	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17495005	MGI:MGI:1934259	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q61521	Ereg	acts_upstream_of_or_within	GO:0048160	primary follicle stage	ECO:0000266	ISO	GO_REF:0000096	RGD:620299	10090	MGI		P
+UniProtKB	Q61521	Ereg	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000266	ISO	GO_REF:0000096	RGD:620299	10090	MGI		P
+UniProtKB	Q61521	Ereg	acts_upstream_of_or_within	GO:0001550	ovarian cumulus expansion	ECO:0000266	ISO	GO_REF:0000096	RGD:620299	10090	MGI		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0001550	ovarian cumulus expansion	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9Z0L5|ensembl:ENSRNOP00000003716	10090	Ensembl		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9Z0L5|ensembl:ENSRNOP00000003716	10090	Ensembl		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0048160	primary follicle stage	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9Z0L5|ensembl:ENSRNOP00000003716	10090	Ensembl		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0048160	primary follicle stage	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q9Z0L5	10090	UniProt		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0001556	oocyte maturation	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q9Z0L5	10090	UniProt		P
+UniProtKB	Q61521	Ereg	involved_in	GO:0001550	ovarian cumulus expansion	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q9Z0L5	10090	UniProt		P
+UniProtKB	Q61806	Xlr3c	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q61880	Dmc1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000316	IGI	PMID:15928951	MGI:MGI:3028590	10090	MGI		P
+UniProtKB	Q61880	Dmc1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:15928951	MGI:MGI:2176331	10090	MGI		P
+UniProtKB	Q61880	Dmc1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17696610	MGI:MGI:2176331	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	Q61880	Dmc1	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:17696610	MGI:MGI:2176331	10090	MGI	results_in_maturation_of(CL:0000023)	P
+UniProtKB	Q62036	Cep131	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:24415959	MGI:MGI:3870375	10090	MGI	occurs_in(EMAPA:17972)|occurs_in(EMAPA:19292)	P
+UniProtKB	Q62036	Cep131	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:24415959	MGI:MGI:3870375	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	Q62036	Cep131	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000270	IEP	PMID:8529672		10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q62036	Cep131	acts_upstream_of_or_within	GO:1905198	manchette assembly	ECO:0000315	IMP	PMID:24415959	MGI:MGI:3870375	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q62036	Cep131	acts_upstream_of_or_within	GO:1990953	intramanchette transport	ECO:0000315	IMP	PMID:24415959	MGI:MGI:3870375	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q62052	Oca2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:7317942	MGI:MGI:1856122	10090	MGI		P
+UniProtKB	Q62209	Sycp1	acts_upstream_of_or_within	GO:0035092	sperm chromatin condensation	ECO:0000316	IGI	PMID:22164254	MGI:MGI:109542	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	Q62388	Atm	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:11536012	MGI:MGI:1926875	10090	MGI		P
+UniProtKB	Q62478	Gm14632	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q62522	Zpbp	involved_in	GO:0001675	acrosome assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1855701|MGI:MGI:1916626|PANTHER:PTN000396754	10090	GO_Central		P
+UniProtKB	Q62522	Zpbp	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:17664285	MGI:MGI:3762589	10090	MGI		P
+UniProtKB	Q64368	Dazl	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR034779	10090	InterPro		P
+UniProtKB	Q64368	Dazl	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q64368	Dazl	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:21460039		10090	MGI	results_in_maturation_of(CL:0000655)	P
+UniProtKB	Q64368	Dazl	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:9288969	MGI:MGI:2181904	10090	MGI		P
+UniProtKB	Q64368	Dazl	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:16310179	MGI:MGI:2181904	10090	MGI	occurs_in(EMAPA:17975),results_in_development_of(CL:0000015)	P
+UniProtKB	Q64368	Dazl	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:14611631	MGI:MGI:2181904	10090	MGI		P
+UniProtKB	Q64373	Bcl2l1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000316	IGI	PMID:10894153	MGI:MGI:99702	10090	MGI	results_in_development_of(CL:0000020)	P
+UniProtKB	Q64373	Bcl2l1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:10894153	MGI:MGI:2176699	10090	MGI	results_in_development_of(CL:0000670)	P
+UniProtKB	Q6IUP1	Sohlh1	involved_in	GO:0009994	oocyte differentiation	ECO:0000314	IDA	PMID:28504655		10090	UniProt		P
+UniProtKB	Q6IUP1	Sohlh1	involved_in	GO:0048477	oogenesis	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR032668	10090	InterPro		P
+UniProtKB	Q6IUP1	Sohlh1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:16690745	MGI:MGI:3629211	10090	MGI	occurs_in(EMAPA:17962)	P
+UniProtKB	Q6NZC7	Sec23ip	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21640725	MGI:MGI:5085903	10090	MGI		P
+UniProtKB	Q6NZC7	Sec23ip	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:21640725	MGI:MGI:5085903	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q6NZG4	Ddias	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17515607		10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q6P205	Xlr3b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q6PCM1	Kdm3a	acts_upstream_of_or_within	GO:0007290	spermatid nucleus elongation	ECO:0000315	IMP	PMID:17943087	MGI:MGI:3764891	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q6PDK2	Kmt2d	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:20808952		10090	UniProt		P
+UniProtKB	Q6PDK2	Kmt2d	involved_in	GO:0001555	oocyte growth	ECO:0000315	IMP	PMID:20808952		10090	UniProt		P
+UniProtKB	Q6PDM4	Iho1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:27723721		10090	UniProt		P
+UniProtKB	Q6PDM4	Iho1	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q6PE87	Cfap206	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:32376681		10090	UniProt		P
+UniProtKB	Q6VY05	Dnd1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:15902260	MGI:MGI:2158668	10090	MGI	occurs_in(EMAPA:17381),results_in_development_of(CL:0000586)	P
+UniProtKB	Q6X786	Zpbp2	involved_in	GO:0001675	acrosome assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1855701|MGI:MGI:1916626|PANTHER:PTN000396754	10090	GO_Central		P
+UniProtKB	Q6X786	Zpbp2	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:17664285	MGI:MGI:3762590	10090	MGI		P
+UniProtKB	Q76HL1	Prss43	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2684822|PANTHER:PTN001207730	10090	GO_Central		P
+UniProtKB	Q76HL1	Prss43	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:23536369		10090	MGI		P
+UniProtKB	Q7M753	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	Q7TSG3	Fbxo5	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000314	IDA	PMID:15526037		10090	MGI		P
+UniProtKB	Q7TSG3	Fbxo5	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:15526037		10090	MGI		P
+UniProtKB	Q80UK6	Xlr5a	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q80V76	Pygo2	involved_in	GO:0007289	spermatid nucleus differentiation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916161|PANTHER:PTN001505928	10090	GO_Central		P
+UniProtKB	Q80V76	Pygo2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q80V76	Pygo2	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1919385	10090	MGI		P
+UniProtKB	Q80VJ8	Kash5	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:24062341		10090	MGI		P
+UniProtKB	Q80W32	Iqcg	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916957|PANTHER:PTN000382203	10090	GO_Central		P
+UniProtKB	Q80W32	Iqcg	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:24849454		10090	UniProt		P
+UniProtKB	Q80W32	Iqcg	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:24849454		10090	UniProt		P
+UniProtKB	Q80W32	Iqcg	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:24362311	MGI:MGI:3050608	10090	MGI		P
+UniProtKB	Q80W85	Npm2	involved_in	GO:0009994	oocyte differentiation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q86SE8|ensembl:ENSP00000381032	10090	Ensembl		P
+UniProtKB	Q80W85	Npm2	involved_in	GO:0009994	oocyte differentiation	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q86SE8	10090	UniProt		P
+UniProtKB	Q80W99	Catsper3	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1924106|PANTHER:PTN005334265	10090	GO_Central		P
+UniProtKB	Q80W99	Catsper3	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:17227845	MGI:MGI:3694352	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q80WY3	Nanos1	involved_in	GO:0048477	oogenesis	ECO:0000318	IBA	PMID:21873635	FB:FBgn0002962|MGI:MGI:2675387|PANTHER:PTN000984469|WB:WBGene00003784|ZFIN:ZDB-GENE-011221-1	10090	GO_Central		P
+UniProtKB	Q80XJ5	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033318	10090	InterPro		P
+UniProtKB	Q80ZE4	Paqr7	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q80ZE5	Paqr8	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q810R0	Gm21627	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q8BH53	Cfap69	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:30415212	MGI:MGI:6431857	10090	MGI		P
+UniProtKB	Q8BH53	Cfap69	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000008	UniProtKB:A5D8W1	10090	MGI		P
+UniProtKB	Q8BH53	Cfap69	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:A5D8W1|ensembl:ENSP00000373948	10090	Ensembl		P
+UniProtKB	Q8BH60	Gopc	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:16765935	MGI:MGI:2386794	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8BIL5	Hook1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:12075009	MGI:MGI:1856652	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000019)	P
+UniProtKB	Q8BIL5	Hook1	acts_upstream_of_or_within	GO:1905198	manchette assembly	ECO:0000315	IMP	PMID:9674995	MGI:MGI:1856652	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8BIL5	Hook1	acts_upstream_of_or_within	GO:1905198	manchette assembly	ECO:0000315	IMP	PMID:16540102	MGI:MGI:1856652	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8BJ34	Marf1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:22442484		10090	UniProt		P
+UniProtKB	Q8BJ34	Marf1	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q8BMD2	Dzip1	involved_in	GO:0007281	germ cell development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q86YF9|ensembl:ENSP00000366025	10090	Ensembl		P
+UniProtKB	Q8BMY7	Spink2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:28554943		10090	UniProt		P
+UniProtKB	Q8BMY7	Spink2	involved_in	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:28554943		10090	UniProt		P
+UniProtKB	Q8BMY7	Spink2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR042167	10090	InterPro		P
+UniProtKB	Q8BMY7	Spink2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21705336	MGI:MGI:4966113	10090	MGI		P
+UniProtKB	Q8BRM6	Mei4	involved_in	GO:0048477	oogenesis	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922283|PANTHER:PTN002408307	10090	GO_Central		P
+UniProtKB	Q8BRM6	Mei4	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:20551173	MGI:MGI:4818799	10090	MGI		P
+UniProtKB	Q8BS30	Svs2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q8BS30	Svs2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:17123940		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q8BS45	Ttc26	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:7317942	MGI:MGI:1856055	10090	MGI		P
+UniProtKB	Q8BS45	Ttc26	acts_upstream_of_or_within	GO:1905198	manchette assembly	ECO:0000315	IMP	PMID:9674995	MGI:MGI:1856054	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8BSK8	Rps6kb1	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:12140361		10090	MGI		P
+UniProtKB	Q8BVN3	Catsper4	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:3043288|PANTHER:PTN002467459	10090	GO_Central		P
+UniProtKB	Q8BVN3	Catsper4	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:17227845	MGI:MGI:3694354	10090	MGI		P
+UniProtKB	Q8BW49	Ttc12	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q9H892	10090	UniProt		P
+UniProtKB	Q8BW49	Ttc12	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9H892|ensembl:ENSP00000315160	10090	Ensembl		P
+UniProtKB	Q8BWR2	Pithd1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:31915251	MGI:MGI:6416147	10090	MGI		P
+UniProtKB	Q8BX90	Fndc3a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:2164218	MGI:MGI:1857062	10090	MGI	occurs_in(EMAPA:31476),occurs_in(CL:0000019)	P
+UniProtKB	Q8BX90	Fndc3a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:1759682	MGI:MGI:1857062	10090	MGI	occurs_in(EMAPA:31476),occurs_in(CL:0000019)	P
+UniProtKB	Q8BX90	Fndc3a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:16904100	MGI:MGI:1857062|MGI:MGI:3713800	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q8BZH8	Svs3b	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q8BZT7	Pla2g3	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:20424323	MGI:MGI:4461174	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8BZT7	Pla2g3	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:20424323	MGI:MGI:4461174	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8C0R7	Zmynd15	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:3603821|PANTHER:PTN001385564	10090	GO_Central		P
+UniProtKB	Q8C0R7	Zmynd15	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:20675388	MGI:MGI:3720171	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8C0S4	Ttc21a	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:30929735		10090	UniProt		P
+UniProtKB	Q8C0S4	Ttc21a	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q8NDW8	10090	MGI		P
+UniProtKB	Q8C0S4	Ttc21a	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q8NDW8|ensembl:ENSP00000398211	10090	Ensembl		P
+UniProtKB	Q8C1K9	Xlr4c	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q8C1W4	Svs2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q8C1W4	Svs2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:17123940		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q8C1Z7	Bbs4	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15173597	MGI:MGI:3045473	10090	MGI	occurs_in(EMAPA:31476),occurs_in(CL:0000019)	P
+UniProtKB	Q8C2E7	Washc5	involved_in	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:24998208		10090	UniProt		P
+UniProtKB	Q8C5S7	Rec8	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17696610	MGI:MGI:3512754	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	Q8C5S7	Rec8	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000316	IGI	PMID:17696610	MGI:MGI:1916966	10090	MGI	results_in_maturation_of(CL:0000023),occurs_in(EMAPA:17962)	P
+UniProtKB	Q8C5S7	Rec8	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:17696610	MGI:MGI:3512754	10090	MGI	results_in_maturation_of(CL:0000023),occurs_in(EMAPA:17962)	P
+UniProtKB	Q8C6F2	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033318	10090	InterPro		P
+UniProtKB	Q8C9J3	Spef2	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:2443727|PANTHER:PTN002686642	10090	GO_Central		P
+UniProtKB	Q8C9J3	Spef2	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q9C093	10090	UniProt		P
+UniProtKB	Q8C9J3	Spef2	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:21715716	MGI:MGI:5295267	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8C9J3	Spef2	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q9C093	10090	MGI		P
+UniProtKB	Q8CBV5	Svs2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1858275|PANTHER:PTN000057643	10090	GO_Central		P
+UniProtKB	Q8CBV5	Svs2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:17123940		10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q8CDG1	Piwil2	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q8CDG1	Piwil2	involved_in	GO:0048477	oogenesis	ECO:0000270	IEP	PMID:18404146		10090	UniProt		P
+UniProtKB	Q8CDR2	Rsph6a	involved_in	GO:1905199	manchette disassembly	ECO:0000315	IMP	PMID:30185526		10090	UniProt		P
+UniProtKB	Q8CDV6	Ccdc63	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:26501274		10090	UniProt		P
+UniProtKB	Q8CEE0	Cep57	involved_in	GO:0007286	spermatid development	ECO:0000270	IEP	PMID:12954732		10090	HGNC-UCL		P
+UniProtKB	Q8CFG4	Dmrta1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q8CGW4	Sox30	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:29848638		10090	UniProt		P
+UniProtKB	Q8CGW4	Sox30	involved_in	GO:0120211	proacrosomal vesicle fusion	ECO:0000315	IMP	PMID:29866902		10090	UniProt		P
+UniProtKB	Q8CGW9	Dmrtc2	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q8CGW9	Dmrtc2	acts_upstream_of_or_within	GO:0007290	spermatid nucleus elongation	ECO:0000315	IMP	PMID:17098235	MGI:MGI:3697743	10090	MGI		P
+UniProtKB	Q8CHB8	Ttll5	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:23558686		10090	MGI		P
+UniProtKB	Q8CIW6	Slc26a6	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:21976599		10090	UniProt		P
+UniProtKB	Q8CJ27	Aspm	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:20823249	MGI:MGI:4345319	10090	MGI		P
+UniProtKB	Q8CJI4	H1-7	involved_in	GO:0007290	spermatid nucleus elongation	ECO:0000315	IMP	PMID:15710904		10090	UniProt		P
+UniProtKB	Q8CJI4	H1-7	involved_in	GO:0035092	sperm chromatin condensation	ECO:0000315	IMP	PMID:15710904		10090	UniProt		P
+UniProtKB	Q8K135	Kiaa0319l	acts_upstream_of_or_within	GO:0120211	proacrosomal vesicle fusion	ECO:0000315	IMP	PMID:29991750	MGI:MGI:6111779	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8K135	Kiaa0319l	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:29991750	MGI:MGI:6111779	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8K1H1	Tdrd7	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:17141210		10090	MGI	results_in_development_of(CL:0000017)	P
+UniProtKB	Q8K2K6	Agfg1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:14724135	MGI:MGI:2182772	10090	MGI		P
+UniProtKB	Q8K2K6	Agfg1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:11711676	MGI:MGI:2182772	10090	MGI		P
+UniProtKB	Q8K2K6	Agfg1	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000315	IMP	PMID:16765935	MGI:MGI:2182772	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q8K3Y3	Lin28a	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000316	IGI	PMID:19578360	MGI:MGI:99655	10090	MGI		P
+UniProtKB	Q8K3Y3	Lin28a	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:19578360		10090	MGI		P
+UniProtKB	Q8K450	Spag16	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:15328412	MGI:MGI:3606977	10090	MGI		P
+UniProtKB	Q8K4E0	Alms1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17206865	MGI:MGI:3699224	10090	MGI	occurs_in(EMAPA:31476)	P
+UniProtKB	Q8K4E0	Alms1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:16513793	MGI:MGI:3621984	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q8R0C3	Slc26a8	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030303	10090	InterPro		P
+UniProtKB	Q8R1N0	Znf830	involved_in	GO:0001546	preantral ovarian follicle growth	ECO:0000315	IMP	PMID:25168238		10090	UniProt		P
+UniProtKB	Q8VC56	Rnf8	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:20153262		10090	UniProt		P
+UniProtKB	Q8VC56	Rnf8	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:28552346		10090	UniProt		P
+UniProtKB	Q8VD46	Asz1	involved_in	GO:0007281	germ cell development	ECO:0000303	NAS	PMID:12040005		10090	UniProt		P
+UniProtKB	Q8VDD8	Washc1	involved_in	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:24998208		10090	UniProt		P
+UniProtKB	Q8VH86	Q8VH86	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10092	InterPro		P
+UniProtKB	Q8VH87	Q8VH87	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	57486	InterPro		P
+UniProtKB	Q8VH88	Q8VH88	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10091	InterPro		P
+UniProtKB	Q8VH89	Q8VH89	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	39442	InterPro		P
+UniProtKB	Q8VHA1	Q8VHA1	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10092	InterPro		P
+UniProtKB	Q8VHA2	Q8VHA2	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	57486	InterPro		P
+UniProtKB	Q8VHA3	Q8VHA3	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	10091	InterPro		P
+UniProtKB	Q8VHA4	Q8VHA4	involved_in	GO:0035803	egg coat formation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR040196	39442	InterPro		P
+UniProtKB	Q8VIF2	Prss42	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:23536369		10090	MGI		P
+UniProtKB	Q8VIG3	Rsph1	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1194909|PANTHER:PTN005152116	10090	GO_Central		P
+UniProtKB	Q8VIG3	Rsph1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:18453535	MGI:MGI:3807704	10090	MGI	occurs_in(EMAPA:19290)	P
+UniProtKB	Q8VIH1	Nobox	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q91V51	Ttll1	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:20498047	MGI:MGI:4461777	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q91V51	Ttll1	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:20442420	MGI:MGI:4297933	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q91VT9	Nectin2	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033318	10090	InterPro		P
+UniProtKB	Q91WM1	Strbp	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:11336498	MGI:MGI:3033751	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q91YT7	Ythdf2	involved_in	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:28867294		10090	UniProt		P
+UniProtKB	Q91YT7	Ythdf2	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q91ZZ5	Rxfp2	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000266	ISO	GO_REF:0000096	RGD:1309449	10090	MGI		P
+UniProtKB	Q91ZZ5	Rxfp2	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q5ECL0|ensembl:ENSRNOP00000001197	10090	Ensembl		P
+UniProtKB	Q920G9	Gmcl1	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q923S6	Neurl1	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:11585928	MGI:MGI:2153143	10090	MGI		P
+UniProtKB	Q925K9	Tssk6	involved_in	GO:0035092	sperm chromatin condensation	ECO:0000315	IMP	PMID:15870294		10090	UniProt		P
+UniProtKB	Q99J09	Wdr77	involved_in	GO:0007315	pole plasm assembly	ECO:0000318	IBA	PMID:21873635	FB:FBgn0003978|PANTHER:PTN005323416	10090	GO_Central		P
+UniProtKB	Q99JA0	Calca	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000247	ISA	PMID:12704735	UniProtKB:P01263	10090	MGI		P
+UniProtKB	Q99MH5	Nme5	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21746835	MGI:MGI:5429195	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q99MH5	Nme5	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:19303412		10090	MGI	occurs_in(EMAPA:18686),occurs_in(CL:0000018)	P
+UniProtKB	Q99MH5	Nme5	involved_in	GO:0007286	spermatid development	ECO:0000314	IDA	PMID:12788088		10090	UniProt		P
+UniProtKB	Q99MS8	Tpgs1	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:12242242	MGI:MGI:2388468	10090	MGI		P
+UniProtKB	Q99MV1	Tdrd1	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:17038506		10090	UniProt		P
+UniProtKB	Q99MV7	Rnf17	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:16093322	MGI:MGI:3526166	10090	MGI		P
+UniProtKB	Q99N64	Gmcl2	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q9CQ70	H2ab1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000314	IDA	PMID:28366643		10090	UniProt		P
+UniProtKB	Q9CQJ4	Rnf2	involved_in	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:23486062		10090	CACAO		P
+UniProtKB	Q9CQP8	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1914327|PANTHER:PTN002223760	10090	GO_Central		P
+UniProtKB	Q9CQP8	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:31056283		10090	UniProt		P
+UniProtKB	Q9CQP8	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:28226241		10090	UniProt		P
+UniProtKB	Q9CQP8	Catsperz	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR039019	10090	InterPro		P
+UniProtKB	Q9CTN5	Six6os1	involved_in	GO:0048477	oogenesis	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1923051|PANTHER:PTN002860233	10090	GO_Central		P
+UniProtKB	Q9CTN5	Six6os1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:27796301		10090	UniProt		P
+UniProtKB	Q9CWF6	Bbs2	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:15539463	MGI:MGI:3521669	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q9CXC9	Etv5	acts_upstream_of_or_within	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000266	ISO	GO_REF:0000096	RGD:1309590	10090	MGI		P
+UniProtKB	Q9CXC9	Etv5	involved_in	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:D4AC56|ensembl:ENSRNOP00000002445	10090	Ensembl		P
+UniProtKB	Q9D0P5	Pygo1	involved_in	GO:0007289	spermatid nucleus differentiation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1919385|PANTHER:PTN000574100	10090	GO_Central		P
+UniProtKB	Q9D0P5	Pygo1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1916161	10090	MGI		P
+UniProtKB	Q9D0P5	Pygo1	acts_upstream_of_or_within	GO:0007289	spermatid nucleus differentiation	ECO:0000316	IGI	PMID:23637336	MGI:MGI:1916161	10090	MGI		P
+UniProtKB	Q9D2E1	Tssk3	involved_in	GO:0048240	sperm capacitation	ECO:0000303	NAS	PMID:11597141		10090	UniProt		P
+UniProtKB	Q9D2F7	Nup210l	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:20034429	MGI:MGI:3045544	10090	MGI		P
+UniProtKB	Q9D3R9	Taf7l	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17242199	MGI:MGI:3710399	10090	MGI		P
+UniProtKB	Q9D410	Dmrtc1c1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q9D411	Tssk4	involved_in	GO:0007286	spermatid development	ECO:0000314	IDA	PMID:17927909		10090	UniProt		P
+UniProtKB	Q9D424	Cabyr	involved_in	GO:0048240	sperm capacitation	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR038848	10090	InterPro		P
+UniProtKB	Q9D424	Cabyr	involved_in	GO:0048240	sperm capacitation	ECO:0000303	NAS	PMID:20731842		10090	BHF-UCL		P
+UniProtKB	Q9D489	Sohlh2	involved_in	GO:0009994	oocyte differentiation	ECO:0000314	IDA	PMID:28504655		10090	UniProt		P
+UniProtKB	Q9D489	Sohlh2	involved_in	GO:0048477	oogenesis	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR032669	10090	InterPro		P
+UniProtKB	Q9D489	Sohlh2	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q9D489	Sohlh2	acts_upstream_of_or_within	GO:0009994	oocyte differentiation	ECO:0000315	IMP	PMID:18753606	MGI:MGI:3839324	10090	MGI		P
+UniProtKB	Q9D4I2	Mei1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000316	IGI	PMID:15928951	MGI:MGI:105393	10090	MGI		P
+UniProtKB	Q9D4I2	Mei1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:15928951	MGI:MGI:2176973	10090	MGI		P
+UniProtKB	Q9D4I2	Mei1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17696610	MGI:MGI:2176973	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	Q9D4M9	Galntl5	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1915159|PANTHER:PTN000187214|UniProtKB:Q7Z4T8	10090	GO_Central		P
+UniProtKB	Q9D4M9	Galntl5	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:24398516		10090	UniProt		P
+UniProtKB	Q9D4M9	Galntl5	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q7Z4T8	10090	MGI		P
+UniProtKB	Q9D4M9	Galntl5	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q7Z4T8|ensembl:ENSP00000479207	10090	Ensembl		P
+UniProtKB	Q9D515	Slxl1	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9D515	Slxl1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:20739462	MGI:MGI:99543	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q9D5T7	Hormad1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:21079677		10090	UniProt		P
+UniProtKB	Q9D5T7	Hormad1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:21478856		10090	UniProt		P
+UniProtKB	Q9D5T7	Hormad1	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q9D5V2	Klhl10	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15136734	MGI:MGI:3040869	10090	MGI	occurs_in(CL:0000015)	P
+UniProtKB	Q9D6C3	3830403N18Rik	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9D8B7	Jam3	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15372036	MGI:MGI:3055281	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	Q9D8T7	Slirp	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:23976951		10090	MGI		P
+UniProtKB	Q9D9I4	Tbc1d20	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:24239381	MGI:MGI:1856684	10090	MGI		P
+UniProtKB	Q9D9K8	Iqcf1	involved_in	GO:0060474	positive regulation of flagellated sperm motility involved in capacitation	ECO:0000315	IMP	PMID:25380116		10090	UniProt		P
+UniProtKB	Q9D9R7	Dmrtc1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q9D9V2	Eqtn	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000304	TAS	PMID:18689890		10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	Q9DA32	Sun5	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:28945193		10090	UniProt		P
+UniProtKB	Q9DA48	Spaca1	involved_in	GO:0001675	acrosome assembly	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1914902|PANTHER:PTN000784152	10090	GO_Central		P
+UniProtKB	Q9DA48	Spaca1	acts_upstream_of_or_within	GO:0001675	acrosome assembly	ECO:0000315	IMP	PMID:22949614	MGI:MGI:5439282	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q9DAC5	1700013H16Rik	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9DAK2	Pacrg	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:15148410	MGI:MGI:97837	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q9DAM2	Efcab9	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1916556|PANTHER:PTN001495899	10090	GO_Central		P
+UniProtKB	Q9DAM2	Efcab9	involved_in	GO:0048240	sperm capacitation	ECO:0000314	IDA	PMID:31056283		10090	UniProt		P
+UniProtKB	Q9DAN1	Pdilt	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:22357757	MGI:MGI:5316367	10090	MGI		P
+UniProtKB	Q9DAN9	Cfap97d1	involved_in	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:32785227		10090	UniProt		P
+UniProtKB	Q9DCU0	Paqr5	involved_in	GO:0048477	oogenesis	ECO:0000322	IEA	GO_REF:0000043	UniProtKB-KW:KW-0896	10090	UniProt		P
+UniProtKB	Q9EQ00	Ropn1l	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1923628|MGI:MGI:2182357|PANTHER:PTN001284699	10090	GO_Central		P
+UniProtKB	Q9EQ00	Ropn1l	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:23303679	MGI:MGI:4143866	10090	MGI		P
+UniProtKB	Q9EQR6	Fancg	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:11823446	MGI:MGI:2183473	10090	MGI		P
+UniProtKB	Q9ERR7	Selenof	acts_upstream_of_or_within	GO:0035092	sperm chromatin condensation	ECO:0000266	ISO	GO_REF:0000096	RGD:621291	10090	MGI		P
+UniProtKB	Q9ESC8	Aff4	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:16024815	MGI:MGI:3586991	10090	MGI	occurs_in(EMAPA:31476),occurs_in(CL:0000019)	P
+UniProtKB	Q9ESG2	Ropn1	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1923628|MGI:MGI:2182357|PANTHER:PTN001284699	10090	GO_Central		P
+UniProtKB	Q9ESG2	Ropn1	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:23303679	MGI:MGI:4144733	10090	MGI		P
+UniProtKB	Q9ESK4	Ing2	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21124965		10090	BHF-UCL		P
+UniProtKB	Q9ESK4	Ing2	involved_in	GO:0048133	male germ-line stem cell asymmetric division	ECO:0000315	IMP	PMID:21124965		10090	BHF-UCL		P
+UniProtKB	Q9JI59	Jam2	involved_in	GO:0007286	spermatid development	ECO:0000314	IDA	PMID:15372036		10090	UniProt		P
+UniProtKB	Q9JI70	Mkks	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15772095	MGI:MGI:3526444	10090	MGI		P
+UniProtKB	Q9JJQ4	Xlr4b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9JJQ7	Xlr4b	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9JJR2	Xlr5c	involved_in	GO:0007286	spermatid development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1922390|PANTHER:PTN001064565	10090	GO_Central		P
+UniProtKB	Q9JJY4	Ddx20	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:18258677	MGI:MGI:3795148	10090	MGI		P
+UniProtKB	Q9JJZ4	Ube2j1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:25320092		10090	MGI		P
+UniProtKB	Q9JK91	Mlh1	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:8674118	MGI:MGI:1858054	10090	MGI		P
+UniProtKB	Q9JKV1	Adrm1	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:21048919		10090	BHF-UCL		P
+UniProtKB	Q9JKV1	Adrm1	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:21048919		10090	BHF-UCL		P
+UniProtKB	Q9JL04	Fmn2	involved_in	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:12447394		10090	BHF-UCL		P
+UniProtKB	Q9JLB9	Nectin3	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR033319	10090	InterPro		P
+UniProtKB	Q9JLI7	Spag6	acts_upstream_of_or_within	GO:0007288	sperm axoneme assembly	ECO:0000315	IMP	PMID:12391165	MGI:MGI:2662475	10090	MGI	occurs_in(CL:0000019)	P
+UniProtKB	Q9JLN9	Mtor	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000314	IDA	PMID:12140361		10090	MGI		P
+UniProtKB	Q9JMB7	Piwil1	involved_in	GO:0035093	spermatogenesis, exchange of chromosomal proteins	ECO:0000315	IMP	PMID:28552346		10090	UniProt		P
+UniProtKB	Q9JMB7	Piwil1	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:28552346		10090	UniProt		P
+UniProtKB	Q9JMB7	Piwil1	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR031326	10090	InterPro		P
+UniProtKB	Q9JMB7	Piwil1	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:Q96J94	10090	MGI		P
+UniProtKB	Q9JMB7	Piwil1	involved_in	GO:0007286	spermatid development	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q96J94|ensembl:ENSP00000245255	10090	Ensembl		P
+UniProtKB	Q9JMB7	Piwil1	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:12062093		10090	UniProt		P
+UniProtKB	Q9QVP9	Ptk2b	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000266	ISO	GO_REF:0000096	RGD:628758	10090	MGI		P
+UniProtKB	Q9QVP9	Ptk2b	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P70600|ensembl:ENSRNOP00000031615	10090	Ensembl		P
+UniProtKB	Q9QXM0	Abhd2	involved_in	GO:0048240	sperm capacitation	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000846580|UniProtKB:P08910	10090	GO_Central		P
+UniProtKB	Q9QXM0	Abhd2	acts_upstream_of_or_within	GO:0048240	sperm capacitation	ECO:0000266	ISO	GO_REF:0000096	UniProtKB:P08910	10090	MGI		P
+UniProtKB	Q9QXM0	Abhd2	involved_in	GO:0048240	sperm capacitation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P08910|ensembl:ENSP00000268129	10090	Ensembl		P
+UniProtKB	Q9QXW4	Fscn3	involved_in	GO:0007286	spermatid development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR030143	10090	InterPro		P
+UniProtKB	Q9QXW4	Fscn3	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000304	TAS	PMID:11925108		10090	MGI		P
+UniProtKB	Q9QY05	Insl6	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:19520787	MGI:MGI:4431170	10090	MGI	occurs_in(CL:0000015)	P
+UniProtKB	Q9QY15	Ddx25	involved_in	GO:0007286	spermatid development	ECO:0000314	IDA	PMID:15096601		10090	UniProt		P
+UniProtKB	Q9QYS9	Qki	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000316	IGI	PMID:15148410	MGI:MGI:1916560	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q9QZ59	Dmrt1	involved_in	GO:0007281	germ cell development	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1354733|MGI:MGI:1918491|PANTHER:PTN002643247|ZFIN:ZDB-GENE-050511-1	10090	GO_Central		P
+UniProtKB	Q9QZ59	Dmrt1	acts_upstream_of_or_within	GO:0048599	oocyte development	ECO:0000315	IMP	PMID:21621532	MGI:MGI:2385912	10090	MGI	occurs_in(EMAPA:17965),results_in_development_of(CL:0000021)	P
+UniProtKB	Q9QZU0	Gcl	involved_in	GO:0007281	germ cell development	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR043380	10090	InterPro		P
+UniProtKB	Q9WTK2	Cdyl	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:28803779		10090	UniProt		P
+UniProtKB	Q9WTK7-2	Stk11	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:18774945		10090	UniProt		P
+UniProtKB	Q9WTK8	Spo11	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:22530760	MGI:MGI:2178805	10090	MGI		P
+UniProtKB	Q9WTK8	Spo11	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17696610	MGI:MGI:2178805	10090	MGI	occurs_in(CL:0000017)	P
+UniProtKB	Q9WUT3	Rps6ka2	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000314	IDA	PMID:15526037		10090	MGI		P
+UniProtKB	Q9WVC8	Slc26a3	involved_in	GO:0048240	sperm capacitation	ECO:0000315	IMP	PMID:21976599		10090	UniProt		P
+UniProtKB	Q9WVH4	Foxo3	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000315	IMP	PMID:12855809	MGI:MGI:2668328	10090	MGI		P
+UniProtKB	Q9Z0F4	Cib1	involved_in	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:16982698		10090	UniProt		P
+UniProtKB	Q9Z0X4	Pde3a	involved_in	GO:0001556	oocyte maturation	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1860764|PANTHER:PTN002602666|RGD:61942	10090	GO_Central		P
+UniProtKB	Q9Z0X4	Pde3a	acts_upstream_of_or_within	GO:0001556	oocyte maturation	ECO:0000314	IDA	PMID:11420239		10090	MGI	results_in_maturation_of(CL:0000023)	P
+UniProtKB	Q9Z0X4	Pde3a	involved_in	GO:0001556	oocyte maturation	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q62865|ensembl:ENSRNOP00000032282	10090	Ensembl		P
+UniProtKB	Q9Z148	Ehmt2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17599069	MGI:MGI:3718790	10090	MGI	occurs_in(EMAPA:31476)	P
+UniProtKB	Q9Z148	Ehmt2	acts_upstream_of_or_within	GO:0007281	germ cell development	ECO:0000315	IMP	PMID:17599069	MGI:MGI:3718790	10090	MGI	occurs_in(EMAPA:31476),results_in_development_of(CL:0000023)|occurs_in(EMAPA:17962),results_in_development_of(CL:0000023)	P
+UniProtKB	Q9Z1B3	Plcb1	involved_in	GO:0001556	oocyte maturation	ECO:0000303	NAS	PMID:17725492		10090	BHF-UCL		P
+UniProtKB	Q9Z1P4	Lgr5	acts_upstream_of_or_within	GO:0009994	oocyte differentiation	ECO:0000315	IMP	PMID:25158167		10090	MGI		P
+UniProtKB	Q9Z2C8	Ybx2	acts_upstream_of_or_within	GO:0048477	oogenesis	ECO:0000315	IMP	PMID:15824319	MGI:MGI:3576937	10090	MGI		P
+UniProtKB	Q9Z2C8	Ybx2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:17035640	MGI:MGI:3576937	10090	MGI	occurs_in(CL:0000018)	P
+UniProtKB	Q9Z2C8	Ybx2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15824319	MGI:MGI:3576937	10090	MGI	occurs_in(EMAPA:17972),occurs_in(CL:0000018)	P
+UniProtKB	V9GX56	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	V9GXK8	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	V9GXL0	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P
+UniProtKB	V9GXP9	Pank2	acts_upstream_of_or_within	GO:0007286	spermatid development	ECO:0000315	IMP	PMID:15525657	MGI:MGI:3514020	10090	MGI	occurs_in(EMAPA:17972)	P

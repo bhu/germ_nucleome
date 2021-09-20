@@ -1,0 +1,1041 @@
+.
+├── 3dmods
+│   ├── 1_1.pdb
+│   ├── 1_1.xyz
+│   ├── 1_10.pdb
+│   ├── 1_10.xyz
+│   ├── 1_11.pdb
+│   ├── 1_11.xyz
+│   ├── 1_12.pdb
+│   ├── 1_12.xyz
+│   ├── 1_12a.pdb
+│   ├── 1_13.pdb
+│   ├── 1_13.xyz
+│   ├── 1_14.pdb
+│   ├── 1_14.xyz
+│   ├── 1_15.pdb
+│   ├── 1_15.xyz
+│   ├── 1_16.pdb
+│   ├── 1_16.xyz
+│   ├── 1_17.pdb
+│   ├── 1_17.xyz
+│   ├── 1_18.pdb
+│   ├── 1_18.xyz
+│   ├── 1_19.pdb
+│   ├── 1_19.xyz
+│   ├── 1_2.pdb
+│   ├── 1_2.xyz
+│   ├── 1_20.pdb
+│   ├── 1_20.xyz
+│   ├── 1_3.pdb
+│   ├── 1_3.xyz
+│   ├── 1_4.pdb
+│   ├── 1_4.xyz
+│   ├── 1_5.pdb
+│   ├── 1_5.xyz
+│   ├── 1_6.pdb
+│   ├── 1_6.xyz
+│   ├── 1_7.pdb
+│   ├── 1_7.xyz
+│   ├── 1_8.pdb
+│   ├── 1_8.xyz
+│   ├── 1_9.pdb
+│   ├── 1_9.xyz
+│   ├── 2_1.pdb
+│   ├── 2_1.xyz
+│   ├── 2_10.pdb
+│   ├── 2_10.xyz
+│   ├── 2_11.pdb
+│   ├── 2_11.xyz
+│   ├── 2_12.pdb
+│   ├── 2_12.xyz
+│   ├── 2_13.pdb
+│   ├── 2_13.xyz
+│   ├── 2_14.pdb
+│   ├── 2_14.xyz
+│   ├── 2_15.pdb
+│   ├── 2_15.xyz
+│   ├── 2_16.pdb
+│   ├── 2_16.xyz
+│   ├── 2_17.pdb
+│   ├── 2_17.xyz
+│   ├── 2_18.pdb
+│   ├── 2_18.xyz
+│   ├── 2_19.pdb
+│   ├── 2_19.xyz
+│   ├── 2_2.pdb
+│   ├── 2_2.xyz
+│   ├── 2_20.pdb
+│   ├── 2_20.xyz
+│   ├── 2_3.pdb
+│   ├── 2_3.xyz
+│   ├── 2_4.pdb
+│   ├── 2_4.xyz
+│   ├── 2_5.pdb
+│   ├── 2_5.xyz
+│   ├── 2_6.pdb
+│   ├── 2_6.xyz
+│   ├── 2_7.pdb
+│   ├── 2_7.xyz
+│   ├── 2_8.pdb
+│   ├── 2_8.xyz
+│   ├── 2_9.pdb
+│   ├── 2_9.xyz
+│   ├── 3_1.pdb
+│   ├── 3_1.xyz
+│   ├── 3_10.pdb
+│   ├── 3_10.xyz
+│   ├── 3_11.pdb
+│   ├── 3_11.xyz
+│   ├── 3_12.pdb
+│   ├── 3_12.xyz
+│   ├── 3_13.pdb
+│   ├── 3_13.xyz
+│   ├── 3_14.pdb
+│   ├── 3_14.xyz
+│   ├── 3_15.pdb
+│   ├── 3_15.xyz
+│   ├── 3_16.pdb
+│   ├── 3_16.xyz
+│   ├── 3_17.pdb
+│   ├── 3_17.xyz
+│   ├── 3_18.pdb
+│   ├── 3_18.xyz
+│   ├── 3_19.pdb
+│   ├── 3_19.xyz
+│   ├── 3_2.pdb
+│   ├── 3_2.xyz
+│   ├── 3_20.pdb
+│   ├── 3_20.xyz
+│   ├── 3_3.pdb
+│   ├── 3_3.xyz
+│   ├── 3_4.pdb
+│   ├── 3_4.xyz
+│   ├── 3_5.pdb
+│   ├── 3_5.xyz
+│   ├── 3_6.pdb
+│   ├── 3_6.xyz
+│   ├── 3_7.pdb
+│   ├── 3_7.xyz
+│   ├── 3_8.pdb
+│   ├── 3_8.xyz
+│   ├── 3_9.pdb
+│   ├── 3_9.xyz
+│   ├── 4_1.pdb
+│   ├── 4_1.xyz
+│   ├── 4_10.pdb
+│   ├── 4_10.xyz
+│   ├── 4_11.pdb
+│   ├── 4_11.xyz
+│   ├── 4_12.pdb
+│   ├── 4_12.xyz
+│   ├── 4_13.pdb
+│   ├── 4_13.xyz
+│   ├── 4_14.pdb
+│   ├── 4_14.xyz
+│   ├── 4_15.pdb
+│   ├── 4_15.xyz
+│   ├── 4_16.pdb
+│   ├── 4_16.xyz
+│   ├── 4_17.pdb
+│   ├── 4_17.xyz
+│   ├── 4_18.pdb
+│   ├── 4_18.xyz
+│   ├── 4_19.pdb
+│   ├── 4_19.xyz
+│   ├── 4_2.pdb
+│   ├── 4_2.xyz
+│   ├── 4_20.pdb
+│   ├── 4_20.xyz
+│   ├── 4_3.pdb
+│   ├── 4_3.xyz
+│   ├── 4_4.pdb
+│   ├── 4_4.xyz
+│   ├── 4_5.pdb
+│   ├── 4_5.xyz
+│   ├── 4_6.pdb
+│   ├── 4_6.xyz
+│   ├── 4_7.pdb
+│   ├── 4_7.xyz
+│   ├── 4_8.pdb
+│   ├── 4_8.xyz
+│   ├── 4_9.pdb
+│   ├── 4_9.xyz
+│   ├── 5_1.pdb
+│   ├── 5_1.xyz
+│   ├── 5_10.pdb
+│   ├── 5_10.xyz
+│   ├── 5_11.pdb
+│   ├── 5_11.xyz
+│   ├── 5_12.pdb
+│   ├── 5_12.xyz
+│   ├── 5_13.pdb
+│   ├── 5_13.xyz
+│   ├── 5_14.pdb
+│   ├── 5_14.xyz
+│   ├── 5_15.pdb
+│   ├── 5_15.xyz
+│   ├── 5_16.pdb
+│   ├── 5_16.xyz
+│   ├── 5_17.pdb
+│   ├── 5_17.xyz
+│   ├── 5_18.pdb
+│   ├── 5_18.xyz
+│   ├── 5_19.pdb
+│   ├── 5_19.xyz
+│   ├── 5_2.pdb
+│   ├── 5_2.xyz
+│   ├── 5_20.pdb
+│   ├── 5_20.xyz
+│   ├── 5_3.pdb
+│   ├── 5_3.xyz
+│   ├── 5_4.pdb
+│   ├── 5_4.xyz
+│   ├── 5_5.pdb
+│   ├── 5_5.xyz
+│   ├── 5_6.pdb
+│   ├── 5_6.xyz
+│   ├── 5_7.pdb
+│   ├── 5_7.xyz
+│   ├── 5_8.pdb
+│   ├── 5_8.xyz
+│   ├── 5_9.pdb
+│   ├── 5_9.xyz
+│   ├── 6_1.pdb
+│   ├── 6_1.xyz
+│   ├── 6_10.pdb
+│   ├── 6_10.xyz
+│   ├── 6_11.pdb
+│   ├── 6_11.xyz
+│   ├── 6_12.pdb
+│   ├── 6_12.xyz
+│   ├── 6_13.pdb
+│   ├── 6_13.xyz
+│   ├── 6_14.pdb
+│   ├── 6_14.xyz
+│   ├── 6_15.pdb
+│   ├── 6_15.xyz
+│   ├── 6_16.pdb
+│   ├── 6_16.xyz
+│   ├── 6_17.pdb
+│   ├── 6_17.xyz
+│   ├── 6_18.pdb
+│   ├── 6_18.xyz
+│   ├── 6_19.pdb
+│   ├── 6_19.xyz
+│   ├── 6_2.pdb
+│   ├── 6_2.xyz
+│   ├── 6_20.pdb
+│   ├── 6_20.xyz
+│   ├── 6_3.pdb
+│   ├── 6_3.xyz
+│   ├── 6_4.pdb
+│   ├── 6_4.xyz
+│   ├── 6_5.pdb
+│   ├── 6_5.xyz
+│   ├── 6_6.pdb
+│   ├── 6_6.xyz
+│   ├── 6_7.pdb
+│   ├── 6_7.xyz
+│   ├── 6_8.pdb
+│   ├── 6_8.xyz
+│   ├── 6_9.pdb
+│   ├── 6_9.xyz
+│   ├── B_1.xyz
+│   ├── B_10.xyz
+│   ├── B_11.xyz
+│   ├── B_12.xyz
+│   ├── B_13.xyz
+│   ├── B_14.xyz
+│   ├── B_15.xyz
+│   ├── B_16.xyz
+│   ├── B_17.xyz
+│   ├── B_18.xyz
+│   ├── B_19.xyz
+│   ├── B_2.xyz
+│   ├── B_20.xyz
+│   ├── B_3.xyz
+│   ├── B_4.xyz
+│   ├── B_5.xyz
+│   ├── B_6.xyz
+│   ├── B_7.xyz
+│   ├── B_8.xyz
+│   ├── B_9.xyz
+│   ├── Ba_1.xyz
+│   ├── Ba_10.xyz
+│   ├── Ba_11.xyz
+│   ├── Ba_12.xyz
+│   ├── Ba_13.xyz
+│   ├── Ba_14.xyz
+│   ├── Ba_15.xyz
+│   ├── Ba_16.xyz
+│   ├── Ba_17.xyz
+│   ├── Ba_18.xyz
+│   ├── Ba_19.xyz
+│   ├── Ba_2.xyz
+│   ├── Ba_20.xyz
+│   ├── Ba_3.xyz
+│   ├── Ba_4.xyz
+│   ├── Ba_5.xyz
+│   ├── Ba_6.xyz
+│   ├── Ba_7.xyz
+│   ├── Ba_8.xyz
+│   ├── Ba_9.xyz
+│   ├── CM_1.xyz
+│   ├── CM_10.xyz
+│   ├── CM_11.xyz
+│   ├── CM_12.xyz
+│   ├── CM_13.xyz
+│   ├── CM_14.xyz
+│   ├── CM_15.xyz
+│   ├── CM_16.xyz
+│   ├── CM_17.xyz
+│   ├── CM_18.xyz
+│   ├── CM_19.xyz
+│   ├── CM_20.xyz
+│   ├── CM_21.xyz
+│   ├── CM_22.xyz
+│   ├── CM_23.xyz
+│   ├── CM_3.xyz
+│   ├── CM_4.xyz
+│   ├── CM_6.xyz
+│   ├── CM_7.xyz
+│   ├── CM_8.xyz
+│   ├── CM_9.xyz
+│   ├── CN_1.xyz
+│   ├── CN_10.xyz
+│   ├── CN_11.xyz
+│   ├── CN_12.xyz
+│   ├── CN_13.xyz
+│   ├── CN_14.xyz
+│   ├── CN_15.xyz
+│   ├── CN_16.xyz
+│   ├── CN_17.xyz
+│   ├── CN_18.xyz
+│   ├── CN_19.xyz
+│   ├── CN_2.xyz
+│   ├── CN_20.xyz
+│   ├── CN_3.xyz
+│   ├── CN_4.xyz
+│   ├── CN_5.xyz
+│   ├── CN_6.xyz
+│   ├── CN_7.xyz
+│   ├── CN_8.xyz
+│   ├── CN_9.xyz
+│   ├── CPC_1.xyz
+│   ├── CPC_10.xyz
+│   ├── CPC_11.xyz
+│   ├── CPC_12.xyz
+│   ├── CPC_13.xyz
+│   ├── CPC_14.xyz
+│   ├── CPC_15.xyz
+│   ├── CPC_16.xyz
+│   ├── CPC_17.xyz
+│   ├── CPC_18.xyz
+│   ├── CPC_19.xyz
+│   ├── CPC_20.xyz
+│   ├── CPC_21.xyz
+│   ├── CPC_22.xyz
+│   ├── CPC_23.xyz
+│   ├── CPC_3.xyz
+│   ├── CPC_4.xyz
+│   ├── CPC_6.xyz
+│   ├── CPC_7.xyz
+│   ├── CPC_8.xyz
+│   ├── CPC_9.xyz
+│   ├── D2_1.xyz
+│   ├── D2_10.xyz
+│   ├── D2_11.xyz
+│   ├── D2_12.xyz
+│   ├── D2_13.xyz
+│   ├── D2_14.xyz
+│   ├── D2_15.xyz
+│   ├── D2_16.xyz
+│   ├── D2_17.xyz
+│   ├── D2_18.xyz
+│   ├── D2_19.xyz
+│   ├── D2_2.xyz
+│   ├── D2_20.xyz
+│   ├── D2_3.xyz
+│   ├── D2_4.xyz
+│   ├── D2_5.xyz
+│   ├── D2_6.xyz
+│   ├── D2_7.xyz
+│   ├── D2_8.xyz
+│   ├── D2_9.xyz
+│   ├── D4_1.xyz
+│   ├── D4_10.xyz
+│   ├── D4_11.xyz
+│   ├── D4_12.xyz
+│   ├── D4_13.xyz
+│   ├── D4_14.xyz
+│   ├── D4_15.xyz
+│   ├── D4_16.xyz
+│   ├── D4_17.xyz
+│   ├── D4_18.xyz
+│   ├── D4_19.xyz
+│   ├── D4_2.xyz
+│   ├── D4_20.xyz
+│   ├── D4_3.xyz
+│   ├── D4_4.xyz
+│   ├── D4_5.xyz
+│   ├── D4_6.xyz
+│   ├── D4_7.xyz
+│   ├── D4_8.xyz
+│   ├── D4_9.xyz
+│   ├── D6_1.xyz
+│   ├── D6_10.xyz
+│   ├── D6_11.xyz
+│   ├── D6_12.xyz
+│   ├── D6_13.xyz
+│   ├── D6_14.xyz
+│   ├── D6_15.xyz
+│   ├── D6_16.xyz
+│   ├── D6_17.xyz
+│   ├── D6_18.xyz
+│   ├── D6_19.xyz
+│   ├── D6_2.xyz
+│   ├── D6_20.xyz
+│   ├── D6_3.xyz
+│   ├── D6_4.xyz
+│   ├── D6_5.xyz
+│   ├── D6_6.xyz
+│   ├── D6_7.xyz
+│   ├── D6_8.xyz
+│   ├── D6_9.xyz
+│   ├── D8_1.xyz
+│   ├── D8_10.xyz
+│   ├── D8_11.xyz
+│   ├── D8_12.xyz
+│   ├── D8_13.xyz
+│   ├── D8_14.xyz
+│   ├── D8_15.xyz
+│   ├── D8_16.xyz
+│   ├── D8_17.xyz
+│   ├── D8_18.xyz
+│   ├── D8_19.xyz
+│   ├── D8_2.xyz
+│   ├── D8_20.xyz
+│   ├── D8_3.xyz
+│   ├── D8_4.xyz
+│   ├── D8_5.xyz
+│   ├── D8_6.xyz
+│   ├── D8_7.xyz
+│   ├── D8_8.xyz
+│   ├── D8_9.xyz
+│   ├── ESC_1.xyz
+│   ├── ESC_10.xyz
+│   ├── ESC_11.xyz
+│   ├── ESC_12.xyz
+│   ├── ESC_13.xyz
+│   ├── ESC_14.xyz
+│   ├── ESC_15.xyz
+│   ├── ESC_16.xyz
+│   ├── ESC_17.xyz
+│   ├── ESC_18.xyz
+│   ├── ESC_19.xyz
+│   ├── ESC_20.xyz
+│   ├── ESC_21.xyz
+│   ├── ESC_22.xyz
+│   ├── ESC_23.xyz
+│   ├── ESC_3.xyz
+│   ├── ESC_4.xyz
+│   ├── ESC_6.xyz
+│   ├── ESC_7.xyz
+│   ├── ESC_8.xyz
+│   ├── ESC_9.xyz
+│   ├── ES_1.xyz
+│   ├── ES_10.xyz
+│   ├── ES_11.xyz
+│   ├── ES_12.xyz
+│   ├── ES_13.xyz
+│   ├── ES_14.xyz
+│   ├── ES_15.xyz
+│   ├── ES_16.xyz
+│   ├── ES_17.xyz
+│   ├── ES_18.xyz
+│   ├── ES_19.xyz
+│   ├── ES_2.xyz
+│   ├── ES_20.xyz
+│   ├── ES_3.xyz
+│   ├── ES_4.xyz
+│   ├── ES_5.xyz
+│   ├── ES_6.xyz
+│   ├── ES_7.xyz
+│   ├── ES_8.xyz
+│   ├── ES_9.xyz
+│   ├── MD_1.xyz
+│   ├── MD_10.xyz
+│   ├── MD_11.xyz
+│   ├── MD_12.xyz
+│   ├── MD_13.xyz
+│   ├── MD_14.xyz
+│   ├── MD_15.xyz
+│   ├── MD_16.xyz
+│   ├── MD_17.xyz
+│   ├── MD_18.xyz
+│   ├── MD_19.xyz
+│   ├── MD_20.xyz
+│   ├── MD_21.xyz
+│   ├── MD_22.xyz
+│   ├── MD_23.xyz
+│   ├── MD_3.xyz
+│   ├── MD_4.xyz
+│   ├── MD_6.xyz
+│   ├── MD_7.xyz
+│   ├── MD_8.xyz
+│   ├── MD_9.xyz
+│   ├── NPC_1.xyz
+│   ├── NPC_10.xyz
+│   ├── NPC_11.xyz
+│   ├── NPC_12.xyz
+│   ├── NPC_13.xyz
+│   ├── NPC_14.xyz
+│   ├── NPC_15.xyz
+│   ├── NPC_16.xyz
+│   ├── NPC_17.xyz
+│   ├── NPC_18.xyz
+│   ├── NPC_19.xyz
+│   ├── NPC_2.xyz
+│   ├── NPC_20.xyz
+│   ├── NPC_3.xyz
+│   ├── NPC_4.xyz
+│   ├── NPC_5.xyz
+│   ├── NPC_6.xyz
+│   ├── NPC_7.xyz
+│   ├── NPC_8.xyz
+│   ├── NPC_9.xyz
+│   ├── PCM_1.xyz
+│   ├── PCM_10.xyz
+│   ├── PCM_11.xyz
+│   ├── PCM_12.xyz
+│   ├── PCM_13.xyz
+│   ├── PCM_14.xyz
+│   ├── PCM_15.xyz
+│   ├── PCM_16.xyz
+│   ├── PCM_17.xyz
+│   ├── PCM_18.xyz
+│   ├── PCM_19.xyz
+│   ├── PCM_20.xyz
+│   ├── PCM_21.xyz
+│   ├── PCM_22.xyz
+│   ├── PCM_23.xyz
+│   ├── PCM_3.xyz
+│   ├── PCM_4.xyz
+│   ├── PCM_6.xyz
+│   ├── PCM_7.xyz
+│   ├── PCM_8.xyz
+│   ├── PCM_9.xyz
+│   ├── PSC_1.xyz
+│   ├── PSC_10.xyz
+│   ├── PSC_11.xyz
+│   ├── PSC_12.xyz
+│   ├── PSC_13.xyz
+│   ├── PSC_14.xyz
+│   ├── PSC_15.xyz
+│   ├── PSC_16.xyz
+│   ├── PSC_17.xyz
+│   ├── PSC_18.xyz
+│   ├── PSC_19.xyz
+│   ├── PSC_2.xyz
+│   ├── PSC_20.xyz
+│   ├── PSC_3.xyz
+│   ├── PSC_4.xyz
+│   ├── PSC_5.xyz
+│   ├── PSC_6.xyz
+│   ├── PSC_7.xyz
+│   ├── PSC_8.xyz
+│   ├── PSC_9.xyz
+│   ├── VCM_1.xyz
+│   ├── VCM_10.xyz
+│   ├── VCM_11.xyz
+│   ├── VCM_12.xyz
+│   ├── VCM_13.xyz
+│   ├── VCM_14.xyz
+│   ├── VCM_15.xyz
+│   ├── VCM_16.xyz
+│   ├── VCM_17.xyz
+│   ├── VCM_18.xyz
+│   ├── VCM_19.xyz
+│   ├── VCM_20.xyz
+│   ├── VCM_21.xyz
+│   ├── VCM_22.xyz
+│   ├── VCM_23.xyz
+│   ├── VCM_3.xyz
+│   ├── VCM_4.xyz
+│   ├── VCM_6.xyz
+│   ├── VCM_7.xyz
+│   ├── VCM_8.xyz
+│   └── VCM_9.xyz
+├── PMD
+│   ├── GSC.bed
+│   ├── SSC.bed
+│   └── auc.rda
+├── abc
+│   ├── ESC.csv.gz
+│   ├── ESC_1.csv.gz
+│   ├── ESC_2.csv.gz
+│   ├── EpiLC.csv.gz
+│   ├── EpiLC_1.csv.gz
+│   ├── EpiLC_2.csv.gz
+│   ├── GSC.csv.gz
+│   ├── GSCLC.csv.gz
+│   ├── GSCLC_1.csv.gz
+│   ├── GSCLC_2.csv.gz
+│   ├── GSC_1.csv.gz
+│   ├── GSC_2.csv.gz
+│   ├── d2PGCLC.csv.gz
+│   ├── d2PGCLC_1.csv.gz
+│   ├── d2PGCLC_2.csv.gz
+│   ├── d4c7PGCLC.csv.gz
+│   ├── d4c7PGCLC_1.csv.gz
+│   ├── d4c7PGCLC_2.csv.gz
+│   └── diffint.d4c7vGSC.rda
+├── aggregate
+│   ├── GSC.PMD.rda
+│   ├── TSS.K27me3.rda
+│   ├── TSS.K9.rda
+│   └── d4c7.GSC.CTCF.rda
+├── calder.rda
+├── chrY
+│   ├── EpiLC_allCG_list.txt.gz
+│   ├── EpiLC_trimmed_bismark_bt2.CX_report_all_CG.bedGraph
+│   ├── GSC_allCG_list.txt.gz
+│   └── GSC_trimmed_bismark_bt2.CX_report_all_CG.bedGraph
+├── cliques
+│   ├── clique.ab.bootstrap.rda
+│   └── sig.ints.rda
+├── clust
+│   ├── open.rda
+│   ├── pileup.rda
+│   └── promoter.rda
+├── compscore
+│   ├── 100kb.rda
+│   ├── 25kb.rep.rda
+│   └── 25kb.tads.rda
+├── contactdecay.rda
+├── csaw
+│   ├── K27me3.rda
+│   └── K9me2.rda
+├── diffbind
+│   ├── CTCF.GSCvGSCLC.rda
+│   └── CTCF.d4c7vGSC.rda
+├── hicrep.rda
+├── hicsr
+│   ├── ESC.10kb.fanc
+│   ├── EpiLC.10kb.fanc
+│   ├── GSC.10kb.fanc
+│   ├── GSC.GSCLC.10kb.fanc
+│   ├── GSCLC.10kb.fanc
+│   ├── GSCLC.GSC.10kb.fanc
+│   ├── d2PGCLC.10kb.fanc
+│   └── d4c7PGCLC.10kb.fanc
+├── histone_ratios.xlsx
+├── image
+│   ├── DAPI_variance_all.rda
+│   ├── FISH.res.rda
+│   ├── Major_satellite_count.csv
+│   └── dense.dat.rda
+├── mcool
+│   ├── ESC.mcool
+│   ├── EpiLC.mcool
+│   ├── GSC.mcool
+│   ├── GSCLC.mcool
+│   ├── d2PGCLC.mcool
+│   └── d4c7PGCLC.mcool
+├── mcore.rda
+├── netcage
+│   ├── ESC_1.minus.bw
+│   ├── ESC_1.plus.bw
+│   ├── ESC_2.minus.bw
+│   ├── ESC_2.plus.bw
+│   ├── EpiLC_1.minus.bw
+│   ├── EpiLC_1.plus.bw
+│   ├── EpiLC_2.minus.bw
+│   ├── EpiLC_2.plus.bw
+│   ├── GSCLC_1.minus.bw
+│   ├── GSCLC_1.plus.bw
+│   ├── GSCLC_2.minus.bw
+│   ├── GSCLC_2.plus.bw
+│   ├── GSC_1.minus.bw
+│   ├── GSC_1.plus.bw
+│   ├── GSC_2.minus.bw
+│   ├── GSC_2.plus.bw
+│   ├── cagefightr.rda
+│   ├── d4c7PGCLC_1.minus.bw
+│   ├── d4c7PGCLC_1.plus.bw
+│   ├── d4c7PGCLC_2.minus.bw
+│   ├── d4c7PGCLC_2.plus.bw
+│   └── permutation.rda
+├── peaks
+│   ├── ATAC
+│   │   ├── ESC.bed
+│   │   ├── EpiLC.bed
+│   │   ├── GSC.bed
+│   │   ├── GSCLC.bed
+│   │   ├── d2PGCLC.bed
+│   │   ├── d4c7PGCLC.bed
+│   │   ├── fetal_comparison.tsv
+│   │   ├── fpkm.rda
+│   │   └── public.fpkm.rda
+│   ├── CTCF
+│   │   ├── ESC_CTCF_1.narrowPeak
+│   │   ├── ESC_CTCF_2.narrowPeak
+│   │   ├── EpiLC_CTCF_1.narrowPeak
+│   │   ├── EpiLC_CTCF_2.narrowPeak
+│   │   ├── GSCLC_CTCF_2.narrowPeak
+│   │   ├── GSCLC_CTCF_3.narrowPeak
+│   │   ├── GSC_CTCF_1.narrowPeak
+│   │   ├── GSC_CTCF_2.narrowPeak
+│   │   ├── counts.rda
+│   │   ├── d2PGCLC_CTCF_1.narrowPeak
+│   │   ├── d2PGCLC_CTCF_2.narrowPeak
+│   │   ├── d4c7PGCLC_CTCF_1.narrowPeak
+│   │   ├── d4c7PGCLC_CTCF_2.narrowPeak
+│   │   └── d4c7vGSC.d4c7_up.bed
+│   ├── K27me3
+│   │   ├── ESC_K27me3.bed
+│   │   ├── EpiLC_K27me3.bed
+│   │   ├── GSCLC_K27me3.bed
+│   │   ├── GSC_K27me3.bed
+│   │   ├── d2PGCLC_K27me3.bed
+│   │   └── d4c7PGCLC_K27me3.bed
+│   ├── K9me2
+│   │   ├── ESC_K9me2.bed
+│   │   ├── EpiLC_K9me2.bed
+│   │   ├── GSCLC_K9me2.bed
+│   │   ├── GSC_K9me2.bed
+│   │   ├── d2PGCLC_K9me2.bed
+│   │   └── d4c7PGCLC_K9me2.bed
+│   ├── K9me3
+│   │   ├── ChromTime.bed.gz
+│   │   ├── ESC.bed
+│   │   ├── EpiLC.bed
+│   │   ├── GSC.bed
+│   │   ├── GSCLC.bed
+│   │   ├── d2PGCLC.bed
+│   │   ├── d4c7PGCLC.bed
+│   │   └── pileup.rda
+│   └── LADs
+│       ├── Astrocyte.bed
+│       ├── C2C12_differentiated.bed
+│       ├── C2C12_undifferentiated.bed
+│       ├── CM_Poleshko.bed
+│       ├── ESC.bed
+│       ├── ESC_BDF121.bed
+│       ├── ESC_Poleshko.bed
+│       ├── EpiLC_BDF121.bed
+│       ├── GSCLC_AAG.bed
+│       ├── GSC_AAG.bed
+│       ├── NIH3T3.bed
+│       ├── NPC.bed
+│       ├── OPC_PF.bed
+│       ├── OPC_T3.bed
+│       ├── d2PGCLC_BDF121.bed
+│       └── d4c7PGCLC_BDF121.bed
+├── resources
+│   ├── Kurimoto_germline_genes.txt
+│   ├── Ns.100k.bed
+│   ├── QuickGO-annotations-GO_0007276.tsv
+│   ├── QuickGO-annotations-GO_0007281_germ.tsv
+│   ├── blacklist.bed
+│   ├── ccre
+│   │   └── ccre
+│   │       ├── ccre.RData
+│   │       ├── ccre_files.RData
+│   │       ├── regions
+│   │       │   ├── CTCF-only_CTCF-bound.bed
+│   │       │   ├── DNase-H3K4me3.bed
+│   │       │   ├── DNase-H3K4me3_CTCF-bound.bed
+│   │       │   ├── PLS.bed
+│   │       │   ├── PLS_CTCF-bound.bed
+│   │       │   ├── dELS.bed
+│   │       │   ├── dELS_CTCF-bound.bed
+│   │       │   ├── pELS.bed
+│   │       │   └── pELS_CTCF-bound.bed
+│   │       └── sizes.txt
+│   ├── ensembl
+│   │   └── ensembl
+│   │       ├── ensembl.RData
+│   │       ├── ensembl_files.RData
+│   │       ├── regions
+│   │       │   ├── CDS.bed
+│   │       │   ├── CGI.bed
+│   │       │   ├── CTCF_Binding_Site.bed
+│   │       │   ├── C_gene_segment.bed
+│   │       │   ├── D_gene_segment.bed
+│   │       │   ├── Enhancer.bed
+│   │       │   ├── J_gene_segment.bed
+│   │       │   ├── Open_chromatin.bed
+│   │       │   ├── Promoter.bed
+│   │       │   ├── Promoter_Flanking_Region.bed
+│   │       │   ├── TF_binding_site.bed
+│   │       │   ├── V_gene_segment.bed
+│   │       │   ├── exon.bed
+│   │       │   ├── five_prime_UTR.bed
+│   │       │   ├── gene.bed
+│   │       │   ├── gene_segment.bed
+│   │       │   ├── intergenic.bed
+│   │       │   ├── intron.bed
+│   │       │   ├── lnc_RNA.bed
+│   │       │   ├── mRNA.bed
+│   │       │   ├── miRNA.bed
+│   │       │   ├── ncRNA.bed
+│   │       │   ├── ncRNA_gene.bed
+│   │       │   ├── pseudogene.bed
+│   │       │   ├── pseudogenic_transcript.bed
+│   │       │   ├── rRNA.bed
+│   │       │   ├── scRNA.bed
+│   │       │   ├── snRNA.bed
+│   │       │   ├── snoRNA.bed
+│   │       │   ├── tRNA.bed
+│   │       │   ├── three_prime_UTR.bed
+│   │       │   └── unconfirmed_transcript.bed
+│   │       └── sizes.txt
+│   ├── gencode.vM25.annotation.gff3.gz
+│   ├── gencode.vM25.basic.protein_coding.annotation.gff3.gz
+│   ├── gencode.vM25.basic.protein_coding.annotation.gff3.gz.tbi
+│   ├── mm10.chrom.sizes
+│   ├── reps
+│   │   └── reps
+│   │       ├── regions
+│   │       │   ├── Alu.bed
+│   │       │   ├── B2.bed
+│   │       │   ├── B4.bed
+│   │       │   ├── CR1.bed
+│   │       │   ├── DNA.bed
+│   │       │   ├── DNA?.bed
+│   │       │   ├── Deu.bed
+│   │       │   ├── Dong-R4.bed
+│   │       │   ├── ERV1.bed
+│   │       │   ├── ERV1?.bed
+│   │       │   ├── ERVK.bed
+│   │       │   ├── ERVK?.bed
+│   │       │   ├── ERVL-MaLR.bed
+│   │       │   ├── ERVL.bed
+│   │       │   ├── ERVL?.bed
+│   │       │   ├── Gypsy.bed
+│   │       │   ├── Gypsy?.bed
+│   │       │   ├── Helitron.bed
+│   │       │   ├── Helitron?.bed
+│   │       │   ├── ID.bed
+│   │       │   ├── L1.bed
+│   │       │   ├── L1?.bed
+│   │       │   ├── L2.bed
+│   │       │   ├── LTR.bed
+│   │       │   ├── LTR?.bed
+│   │       │   ├── Low_complexity.bed
+│   │       │   ├── MIR.bed
+│   │       │   ├── MULE-MuDR.bed
+│   │       │   ├── MuDR.bed
+│   │       │   ├── Other.bed
+│   │       │   ├── Penelope?.bed
+│   │       │   ├── PiggyBac.bed
+│   │       │   ├── PiggyBac?.bed
+│   │       │   ├── RNA.bed
+│   │       │   ├── RTE-BovB.bed
+│   │       │   ├── RTE-X.bed
+│   │       │   ├── SINE?.bed
+│   │       │   ├── Satellite.bed
+│   │       │   ├── Simple_repeat.bed
+│   │       │   ├── TcMar-Mariner.bed
+│   │       │   ├── TcMar-Pogo.bed
+│   │       │   ├── TcMar-Tc2.bed
+│   │       │   ├── TcMar-Tigger.bed
+│   │       │   ├── TcMar.bed
+│   │       │   ├── TcMar?.bed
+│   │       │   ├── Unknown.bed
+│   │       │   ├── Y-chromosome.bed
+│   │       │   ├── centr.bed
+│   │       │   ├── hAT-Blackjack.bed
+│   │       │   ├── hAT-Charlie.bed
+│   │       │   ├── hAT-Tip100.bed
+│   │       │   ├── hAT-Tip100?.bed
+│   │       │   ├── hAT.bed
+│   │       │   ├── hAT?.bed
+│   │       │   ├── rRNA.bed
+│   │       │   ├── scRNA.bed
+│   │       │   ├── snRNA.bed
+│   │       │   ├── srpRNA.bed
+│   │       │   └── tRNA.bed
+│   │       ├── rep_files.RData
+│   │       ├── reps.RData
+│   │       ├── reps_files.RData
+│   │       └── sizes.txt
+│   └── setdb1_KO_up.txt
+├── rna
+│   ├── ESC_1
+│   │   └── quant.sf
+│   ├── ESC_2
+│   │   └── quant.sf
+│   ├── EpiLC_1
+│   │   └── quant.sf
+│   ├── EpiLC_2
+│   │   └── quant.sf
+│   ├── GSCLC_1
+│   │   └── quant.sf
+│   ├── GSCLC_2
+│   │   └── quant.sf
+│   ├── GSC_1
+│   │   └── quant.sf
+│   ├── GSC_2
+│   │   └── quant.sf
+│   ├── d2PGCLC_1
+│   │   └── quant.sf
+│   ├── d2PGCLC_2
+│   │   └── quant.sf
+│   ├── d4c7PGCLC_1
+│   │   └── quant.sf
+│   └── d4c7PGCLC_2
+│       └── quant.sf
+├── saddle
+│   ├── ESC.cis.digitized.tsv
+│   ├── ESC.cis.saddledump.npz
+│   ├── ESC.trans.digitized.tsv
+│   ├── ESC.trans.saddledump.npz
+│   ├── EpiLC.cis.digitized.tsv
+│   ├── EpiLC.cis.saddledump.npz
+│   ├── EpiLC.trans.digitized.tsv
+│   ├── EpiLC.trans.saddledump.npz
+│   ├── GSC.cis.digitized.tsv
+│   ├── GSC.cis.saddledump.npz
+│   ├── GSC.trans.digitized.tsv
+│   ├── GSC.trans.saddledump.npz
+│   ├── GSCLC.cis.digitized.tsv
+│   ├── GSCLC.cis.saddledump.npz
+│   ├── GSCLC.trans.digitized.tsv
+│   ├── GSCLC.trans.saddledump.npz
+│   ├── d2PGCLC.cis.digitized.tsv
+│   ├── d2PGCLC.cis.saddledump.npz
+│   ├── d2PGCLC.trans.digitized.tsv
+│   ├── d2PGCLC.trans.saddledump.npz
+│   ├── d4c7PGCLC.cis.digitized.tsv
+│   ├── d4c7PGCLC.cis.saddledump.npz
+│   ├── d4c7PGCLC.trans.digitized.tsv
+│   └── d4c7PGCLC.trans.saddledump.npz
+├── tads
+│   ├── 10.methods.rda
+│   ├── consensus.tad.pileup.rda
+│   ├── insulscore.rda
+│   └── overlap.permutation.rda
+├── tracks
+│   ├── Ddx4
+│   │   ├── CTCF.log2.bw
+│   │   ├── CTCF.subtract.bw
+│   │   ├── ESC.CTSS.normalized.minus.bw
+│   │   ├── ESC.CTSS.normalized.plus.bw
+│   │   ├── ESC_CTCF.bw
+│   │   ├── ESC_K27ac.bw
+│   │   ├── ESC_K36me3.bw
+│   │   ├── ESC_Rad21.bw
+│   │   ├── EpiLC.CTSS.normalized.minus.bw
+│   │   ├── EpiLC.CTSS.normalized.plus.bw
+│   │   ├── EpiLC_CTCF.bw
+│   │   ├── EpiLC_K27ac.bw
+│   │   ├── EpiLC_K36me3.bw
+│   │   ├── EpiLC_Rad21.bw
+│   │   ├── GSC.CTSS.normalized.minus.bw
+│   │   ├── GSC.CTSS.normalized.plus.bw
+│   │   ├── GSCLC.CTSS.normalized.minus.bw
+│   │   ├── GSCLC.CTSS.normalized.plus.bw
+│   │   ├── GSCLC_CTCF.bw
+│   │   ├── GSCLC_K27ac.bw
+│   │   ├── GSCLC_K36me3.bw
+│   │   ├── GSCLC_Rad21.bw
+│   │   ├── GSC_CTCF.bw
+│   │   ├── GSC_K27ac.bw
+│   │   ├── GSC_K36me3.bw
+│   │   ├── GSC_Rad21.bw
+│   │   ├── K27ac.log2.bw
+│   │   ├── K27ac.subtract.bw
+│   │   ├── K36me3.log2.bw
+│   │   ├── K36me3.subtract.bw
+│   │   ├── Rad21.log2.bw
+│   │   ├── Rad21.subtract.bw
+│   │   ├── d2PGCLC_CTCF.bw
+│   │   ├── d2PGCLC_K27ac.bw
+│   │   ├── d2PGCLC_K36me3.bw
+│   │   ├── d2PGCLC_Rad21.bw
+│   │   ├── d4c7PGCLC.CTSS.normalized.minus.bw
+│   │   ├── d4c7PGCLC.CTSS.normalized.plus.bw
+│   │   ├── d4c7PGCLC_CTCF.bw
+│   │   ├── d4c7PGCLC_K27ac.bw
+│   │   ├── d4c7PGCLC_K36me3.bw
+│   │   └── d4c7PGCLC_Rad21.bw
+│   ├── Dmrt
+│   │   ├── GSCLC_K27me3.bw
+│   │   ├── GSC_K27me3.bw
+│   │   └── d4c7PGCLC_K27me3.bw
+│   ├── K36me2
+│   │   ├── ESC_K36me2.bw
+│   │   ├── EpiLC_K36me2.bw
+│   │   ├── GSCLC_K36me2.bw
+│   │   ├── GSC_K36me2.bw
+│   │   ├── d2PGCLC_K36me2.bw
+│   │   └── d4c7PGCLC_K36me2.bw
+│   ├── K9me2
+│   │   ├── GSCLC_K9me2.bw
+│   │   ├── GSC_K9me2.bw
+│   │   └── d4c7PGCLC_K9me2.bw
+│   ├── K9me2.rda
+│   ├── K9me3
+│   │   ├── ESC_K9me3.bw
+│   │   ├── EpiLC_K9me3.bw
+│   │   ├── GSCLC_K9me3.bw
+│   │   ├── GSC_K9me3.bw
+│   │   ├── d2PGCLC_K9me3.bw
+│   │   └── d4c7PGCLC_K9me3.bw
+│   ├── c19
+│   │   ├── ESC_ATAC.bw
+│   │   ├── ESC_K27ac.bw
+│   │   ├── ESC_K4me1.bw
+│   │   ├── ESC_K4me3.bw
+│   │   ├── ESC_K9me3.bw
+│   │   └── ESC_YY1.bw
+│   ├── chrY
+│   │   ├── ESC_K9me3.inpnorm.western.bw
+│   │   ├── ESC_Laminb1.inpnorm.western.bw
+│   │   ├── EpiLC_K9me3.inpnorm.western.bw
+│   │   ├── EpiLC_Laminb1.inpnorm.western.bw
+│   │   ├── GSCLC_K9me3.inpnorm.western.bw
+│   │   ├── GSCLC_Laminb1.inpnorm.western.bw
+│   │   ├── GSC_K9me3.inpnorm.western.bw
+│   │   ├── GSC_Laminb1.inpnorm.western.bw
+│   │   ├── d2PGCLC_K9me3.inpnorm.western.bw
+│   │   ├── d2PGCLC_Laminb1.inpnorm.western.bw
+│   │   ├── d4c7PGCLC_K9me3.inpnorm.western.bw
+│   │   └── d4c7PGCLC_Laminb1.inpnorm.western.bw
+│   ├── coverage.perchr.rda
+│   ├── f2
+│   │   ├── ATAC
+│   │   │   ├── ESC.bw
+│   │   │   ├── EpiLC.bw
+│   │   │   ├── GSC.bw
+│   │   │   ├── GSCLC.bw
+│   │   │   ├── d2PGCLC.bw
+│   │   │   └── d4c7PGCLC.bw
+│   │   └── K4me1
+│   │       ├── ESC.bw
+│   │       ├── EpiLC.bw
+│   │       ├── GSC.bw
+│   │       ├── GSCLC.bw
+│   │       ├── d2PGCLC.bw
+│   │       └── d4c7PGCLC.bw
+│   ├── inpnorm.50kb.rda
+│   ├── mCG.10kb.rda
+│   ├── sf2
+│   │   ├── ESC_ATAC.bw
+│   │   └── ESC_K27ac.bw
+│   └── sf3
+│       ├── ESC_CTCF.bw
+│       ├── EpiLC_CTCF.bw
+│       ├── GSCLC_CTCF.bw
+│       ├── GSC_CTCF.bw
+│       ├── d2PGCLC_CTCF.bw
+│       └── d4c7PGCLC_CTCF.bw
+├── tss.1kb.MSnorm.rda
+└── western
+    ├── replicate.tsv
+    └── summary.csv
+
+60 directories, 979 files
