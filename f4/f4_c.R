@@ -6,7 +6,7 @@ library(pals)
 load('../data/tracks/inpnorm.50kb.rda')
 
 p <- d50 %>% 
-  filter(samp %in% c('ESC','GSC')) %>%
+  filter(samp %in% c('EpiLC','GSC')) %>%
   filter(chr == 'chr3') %>%
   split(., .$samp) %>%
   lapply(function(x) {
@@ -58,8 +58,8 @@ p <- d50 %>%
         strip.text = element_text(color = 'black', size = 13, face = 'bold'))
 
 g <- ggplot_gtable(ggplot_build(p))
-strip <- which(grepl('strip-r', g$layout$name))[c(1,3,4,6)]
-fills <- tableau20(9)[c(1,9,1,9)]
+strip <- which(grepl('strip-r', g$layout$name))[3:6]
+fills <- tableau20()[c(3,9,3,9)]
 k <- 1
 for (i in strip) {
   #j <- which(grepl('rect', g$grobs[[i]]$grobs[[1]]$childrenOrder))
@@ -69,4 +69,5 @@ for (i in strip) {
   k <- k+1
 }
 
-ggsave('f4_c.pdf', g, height = 4.6, width = 5.4)
+ggsave('f4_c.pdf', g, height = 4.6, width = 7)
+

@@ -1,76 +1,71 @@
 library(tidyverse)
 library(pals)
-library(rtracklayer)
-library(DMwR)
-library(pals)
-library(caret)
-library(pROC)
-library(scales)
 
-load('../data/tracks/inpnorm.50kb.rda')
+samps <- c("d4c7PGCLC","GSC",  'GSCLC')
 
-samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
-clrs <- setNames(tableau20(9)[seq(1,9,2)], samps)
+clrs <- setNames(c('#d62728', '#9467bd', '#499894'), samps)
 
-pmd <- d50 %>% mutate(start = start + 1) %>% 
-  distinct(chr, start, end) %>%
-  makeGRangesFromDataFrame() %>% 
-  overlapsAny(import.bed('../data/PMD/GSC.bed'))
+load("../data/compscore/100kb.rda")
 
-# o <- d50 %>%
-#   split(., .$samp) %>%
-#   lapply(function(x) {
-#     tmp <- x %>%
-#       dplyr::select(-c(chr, start, end, samp, PC1,ATAC)) %>%
-#       mutate(targ = factor(ifelse(pmd, 'PMD', 'nonPMD')))
-#     set.seed(42)
-#     idx <- createDataPartition(tmp$targ, p = .7, list = F)
-#     d.train <- tmp[idx,]
-#     d.test <- tmp[-idx,]
-#     mod <- train(targ ~ ., data = d.train, method = 'gbm',
-#                  trControl = trainControl(method = 'repeatedcv',
-#                                           number = 10, repeats = 10,
-#                                           verboseIter = T, sampling = 'smote'))
-#     list(mod = mod, dat = tmp, d.train = d.train, d.test = d.test, idx = idx)
-#   })
-# 
-# perf <- lapply(o, function(x) {
-#   roc(x$d.test$targ, predict(x$mod, x$d.test, type = 'prob')[,'PMD']) %>%
-#     ci.auc() %>%
-#     as.numeric() %>%
-#     {tibble(lower = .[1], auc = .[2], upper = .[3])}
-# })
+dat.score <- mats$mm10$Nagano[,samps] %>% 
+  na.omit()  %>% 
+  pivot_longer(everything(), names_to = 'x', values_to = 'y') %>%
+  mutate(x = factor(x, rev(samps)))
 
-load('../data/PMD/auc.rda')
+dat.ratio <- dat.score %>%
+  group_by(x) %>%
+  summarise(y = 100 * sum(y > 0) / n(), .groups = 'drop')
+m <- 0.2
+b <- -10
 
-perf %>%
-  bind_rows(.id = 'samp') %>%
-  mutate(samp = factor(samp, samps)) %>%
-  na.omit() %>%
-  ggplot(aes(x = samp, y = auc, ymin = lower, ymax = upper, color= samp)) +
-  geom_point() +
-  geom_linerange() +
-  facet_grid(.~'Predicting GSC PMDs') +
-  ylab('Model AUROC') +
-  scale_color_manual(values = clrs) +
-  scale_y_continuous(breaks = pretty_breaks(3)) +
-  scale_x_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
-  theme(axis.text.x = element_text(angle = 30, hjust= 1),
-        legend.position = 'none',
-        legend.key = element_blank(),
-        legend.title = element_blank(),
-        legend.background = element_rect(fill = "#ffffff66", color = NA),
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        panel.grid = element_blank(),
+sclr <- 'peru'
+p1 <- ggplot(dat.score, aes(x = x, y = y)) +
+  geom_hline(yintercept = 0, color = 'grey70') +
+  geom_violin(aes(fill = x), alpha = .5, color = NA) +
+  #geom_line(aes(y = m * y + b, group = 1), data = dat.ratio, color = sclr) +
+  geom_point(aes(y = m * y + b, fill = x), data = dat.ratio, pch = 21, 
+             color = sclr, size = 4, stroke = 2) +
+  #coord_cartesian(ylim = c(-2, 2)) +
+  scale_y_continuous('Compartment score',
+                     sec.axis = sec_axis(~ (. - b) / m, '% of bins in compartment A')) +
+  scale_fill_manual(values = clrs) +
+  coord_flip(ylim = c(-2,2)) +
+  scale_x_discrete(labels = function(x) sub('PGC', '\nmPGC', x)) +
+  theme(legend.position = "none",
         plot.background = element_blank(),
         panel.background = element_blank(),
-        axis.line.x = element_line(color = 'black'),
+        strip.background = element_rect(fill = 'black'),
+        strip.text = element_text(color = 'white'),
+        axis.title.y = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.line.x.bottom = element_line(color = 'black'),
+        axis.line.x.top = element_line(color = sclr),
+        axis.ticks.x.top = element_line(color = sclr),
         axis.text = element_text(color = 'black', size = 11),
-        axis.title.x = element_blank(),
-        strip.clip = 'off',
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.ticks.y = element_blank()) +
-  ggsave('f6_e.pdf', height = 2, width = 2.5)
+        axis.text.x.top = element_text(color = sclr),
+        axis.title.x.top = element_text(color = sclr, vjust = 1.5),
+        panel.grid = element_blank()) -> p
 
 
+ggsave('f6_e.pdf', p, height = 3, width = 3.5)
+
+p <- mats$mm10$Nagano[,samps] %>% 
+  na.omit() %>%
+  ggplot(aes(x = (GSC + GSCLC)/2, y = GSCLC-GSC)) +
+  geom_density_2d_filled(aes(color = ..level..), bins = 30, show.legend = F) +
+  coord_cartesian(ylim = c(-.7,.7), xlim = c(-1.1,1.1)) +
+  scale_fill_viridis_d(option = 'A') +
+  scale_color_viridis_d(option = 'A') +
+  labs(y = 'GSCLC - GSC', x = 'Average of GSCLC & GSC') +
+  facet_wrap(~'Compartment differences') +
+  theme(legend.position = "none",
+        plot.background = element_blank(),
+        panel.background = element_blank(),
+        strip.background = element_rect(fill = NA),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        axis.text = element_text(color = 'black', size = 11),
+        panel.grid = element_blank()) 
+
+ggsave('f6_e_right.pdf', p, height = 2.9, width = 3.1)  

@@ -584,6 +584,7 @@
 │   ├── GSCLC_2.csv.gz
 │   ├── GSC_1.csv.gz
 │   ├── GSC_2.csv.gz
+│   ├── abc.02.hicdc.rda
 │   ├── d2PGCLC.csv.gz
 │   ├── d2PGCLC_1.csv.gz
 │   ├── d2PGCLC_2.csv.gz
@@ -604,7 +605,8 @@
 │   └── GSC_trimmed_bismark_bt2.CX_report_all_CG.bedGraph
 ├── cliques
 │   ├── clique.ab.bootstrap.rda
-│   └── sig.ints.rda
+│   ├── cliq.int.rda
+|   └── sig.ints.rda
 ├── clust
 │   ├── open.rda
 │   ├── pileup.rda
@@ -612,8 +614,11 @@
 ├── compscore
 │   ├── 100kb.rda
 │   ├── 25kb.rep.rda
-│   └── 25kb.tads.rda
-├── contactdecay.rda
+│   ├── 25kb.tads.rda 
+│   └── vivo.100kb.rda
+├── contactdecay
+│   ├── differentiation.rda
+│   └── germline.smooth.rda
 ├── csaw
 │   ├── K27me3.rda
 │   └── K9me2.rda

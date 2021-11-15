@@ -43,7 +43,7 @@ ggplot(pd, aes(x = Laminb1, y = rep, color = K9me3)) +
   scale_color_gradientn('H3K9me3', colors = c(brewer.brbg(21)[21:11],brewer.brbg(11)[5:1]),
                         breaks = c(-1,0)) +
   labs(x = 'Lamin b1 enrichment in GSCs', y = '# of L1/ERV1/ERVK per Mb') +
-  facet_wrap(~'Determinants of lamin B1 binding in GSCs') +
+  facet_wrap(~'Determinants of lamin B1\nbinding in GSCs') +
   coord_cartesian(clip = F, expand = F) +
   guides(color = guide_colorbar(title.vjust = 1, barwidth = 2, barheight = .5)) +
   theme(plot.background = element_blank(),
@@ -59,5 +59,5 @@ ggplot(pd, aes(x = Laminb1, y = rep, color = K9me3)) +
         legend.direction = 'horizontal',
         legend.background = element_rect(fill = '#ffffff66'),
         strip.text = element_text(color = 'black', size = 13, face= 'bold'),
-        axis.text = element_text(size = 11, family = 'Arial', color = 'black')) +
-  ggsave('f5_g.pdf', height = 3.4, width=4, device = cairo_pdf, bg = 'transparent')
+        axis.text = element_text(size = 11, family = 'Arial', color = 'black')) -> p
+ggsave('f5_g.pdf', height = 3.15, width=3.6, device = cairo_pdf, bg = 'transparent')

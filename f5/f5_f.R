@@ -47,8 +47,8 @@ ggplot(pd, aes(x = qValue, y = oddsRatio)) +
   geom_linerange(aes(ymin = cLo, ymax = cHi)) +
   geom_label_repel(aes(label = reg), data = ~subset(., qValue < .05),
                    nudge_x = .3) +
-  facet_grid(.~'H3K9me3-enriched repeats') +
-  scale_x_continuous('FDR', breaks = c(0, .5, 1)) +
+  facet_grid(.~'H3K9me3-enriched\nrepeat families') +
+  scale_x_continuous(expression("Fisher's exact test"~p[adj]), breaks = c(0, .5, 1)) +
   #scale_y_continuous(position = 'left') +
   ylab('Overlap odds ratio') +
   theme(plot.background = element_blank(),
@@ -60,5 +60,6 @@ ggplot(pd, aes(x = qValue, y = oddsRatio)) +
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
         strip.clip = 'off',
         panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.line.x = element_line(color = 'black')) +
-  ggsave(file = 'f5_f.pdf', height = 1.8, width = 2.75)
+        axis.line.x = element_line(color = 'black')) -> p
+
+ggsave(file = 'f5_f.pdf', height = 3.1, width = 2.3)

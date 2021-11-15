@@ -1,82 +1,60 @@
 library(tidyverse)
-library(matrixStats)
-library(ggrastr)
-library(ggnewscale)
-library(ggforce)
-library(pals)
-library(ggrepel)
 
-load("../data/peaks/ATAC/public.fpkm.rda")
+samps <- c('ESC', 'EpiLC','d2PGCLC', 'd4c7PGCLC', 'GSC')
+clrs <- setNames(tableau20(9)[seq(1,9,2)], samps)
 rnm <- function(x) {
-  sub('PGCLC', ' mPGCLC', sub('ESC', 'mESC', x))
-}
-samps <- c("ESC", "EpiLC", "d2PGCLC", "d4PGCLC", "d4c7PGCLC", "GSC", "MEF") %>% rnm()
-clrs <- setNames(tableau20(20)[c(1, 3, 5, 6, 7, 9, 17)], samps)
-clrs[rnm('d4PGCLC')] <- '#81642A'
-
-res <- atac.my.pub.pks %>% 
-  select(matches('BDF121|MEF_Gia|GSC_AAG')) %>%
-  slice_max(rowVars(as.matrix(.)), n = 1e4) %>%
-  mutate(idx = 1:n()) %>%
-  pivot_longer(-idx, names_to = 'samp', values_to = 'v') %>%
-  mutate(samp = sub('_[0-9]$', '', samp)) %>%
-  group_by(idx, samp) %>%
-  summarise(v = mean(v), .groups = 'drop') %>%
-  pivot_wider(names_from = 'samp', values_from = 'v') %>%
-  select(-idx) %>%
-  t() %>%
-  prcomp(scale. = T, center = T)
-
-comps <- summary(res)$importance[2,] * 100
-
-axes <- c(1, 2) %>%
-  setNames(paste0('PC', .))
-
-pd <- res$x %>%
-  data.frame() %>%
-  rownames_to_column("samp") %>% 
-  mutate(samp = sub('_.*', '', samp) %>%
-           rnm() %>%
-           factor(samps)) %>% 
-  arrange(samp) %>%
-  rename(!!"ax1" := names(axes)[1], !!"ax2" := names(axes)[2]) %>%
-  mutate(xend = lead(ax1), yend = lead(ax2))
-
-p <- ggplot(pd, aes(x = ax1, y = ax2, xend = xend, yend = yend))
-
-for (i in 1:5) {
-  if (i < 5) {
-    p <- p + geom_link(aes(color = stat(index)), data = pd[i,], 
-                        show.legend = F, alpha = 1) +
-      scale_color_gradient(low = clrs[i], high = clrs[i + 1]) +
-      new_scale_color()
-  } else {
-    p <- p + geom_link(aes(color = stat(index)), data = pd[i,], 
-                        show.legend = F, alpha = .5) +
-      scale_color_gradient(low = clrs[i], high = clrs[i + 1]) +
-      new_scale_color()
-  }
+  case_when(x == 'ESC' ~ 'mESC',
+            x == 'd2PGCLC' ~ 'd2 mPGCLC',
+            x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
+            T ~ x)
 }
 
-p +
-  geom_point(aes(color = samp), size = 2) +
-  scale_color_manual(values = clrs) +
-  labs(x = sprintf('%s (%.1f%%)', names(axes)[1], comps[axes[1]]),
-       y = sprintf('%s (%.1f%%)', names(axes)[2], comps[axes[2]])) +
-  facet_grid(.~'ATAC-seq PCA') +
-  theme(panel.grid = element_blank(),
+load('../data/tads/10.methods.rda')
+
+d %>%
+  count(samp, method) %>%
+  mutate(samp = factor(samp, samps)) %>%
+  na.omit() %>%
+  group_by(method) %>%
+  mutate(idx = as.character(length(samps) - rank(n) + 1)) %>%
+  ungroup() %>%
+  arrange(idx) %>%
+  mutate(rank = c('1' = 'Most boundaries',
+                  '2' = '2nd most',
+                  '3' = '3rd most')[idx] %>%
+           fct_inorder(),
+         samp = factor(samp, samps)) %>%
+  na.omit() %>%
+  group_by(samp) %>%
+  arrange(idx) %>%
+  mutate(y = 1:n()) %>%
+  ggplot(aes(x = samp, y = y)) +
+  #geom_label(aes(color = rank, label = idx), label.r = unit(.5, "lines"), 
+  #           fontface = 'bold', label.size = .6) +
+  geom_point(aes(color = rank), size = 3) +
+  scale_color_manual(values = c('#FAD649', '#C0C0C0', '#C49A6D')) +
+  scale_y_continuous('# of TAD callers', breaks = c(2,4,6,8,10)) +
+  facet_grid(.~'Insulation ranking') +
+  scale_x_discrete(labels = rnm) +
+  coord_cartesian(clip = 'off') +
+  theme(plot.background = element_blank(),
+        panel.background = element_blank(),
+        axis.line.x = element_line(color = 'black'),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color=  'grey70', linetype = 'dashed'),
+        axis.title.x = element_blank(),
         legend.title = element_blank(),
         legend.background = element_blank(),
         legend.key = element_blank(),
-        panel.background = element_blank(),
-        plot.background = element_blank(),
-        axis.ticks = element_line(color = "black"),
-        axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 11),
-        strip.background = element_rect(fill = NA),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.ticks.y = element_blank(),
         legend.text = element_text(color = 'black', size = 11),
+        strip.background = element_rect(fill = NA),
         strip.clip = 'off',
-        strip.text = element_text(color = 'black', size =13, face = 'bold'),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed')) +
-ggsave('f2_f.pdf', width = 3.5, height = 2.5)
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        #legend.position = c(1,1),
+        #legend.justification = c(1,1),
+        #legend.position = 'bottom',
+        strip.text = element_text(color = 'black', size = 13, face =  'bold')) -> p
+  ggsave('f2_f.pdf', p, height = 3.1, width = 5)
 

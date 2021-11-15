@@ -1,55 +1,115 @@
+library(data.table)
 library(tidyverse)
+library(ggdist)
+library(ggpubr)
+library(gghalves)
 library(pals)
+library(patchwork)
+library(gghalves)
 
-load('../data/tracks/inpnorm.50kb.rda')
-smps <- c('ESC','EpiLC','d2PGCLC','d4c7PGCLC','GSC')
-mrks <- c('ATAC','CTCF','Rad21','Stag1','Stag2',
-          'Ring1b','H2Aub','K27me3', 'K27ac', 'K4me1','K4me3',
-          'K36me2','K36me3','K9me2','K9me3', 'Laminb1', 'PC1')
+samps <- c('d4c7PGCLC',"GSC",  'GSCLC') 
+clrs <- dark<-  setNames(c("#D62728", '#9467bd', '#499894'), samps)
+light <- setNames(c("#FF9896", "#C5B0D5", "#98c5c2"), samps)
 
-d50 %>%
-  split(., .$samp) %>%
-  lapply(function(x) {
-    x[,-21:-18] %>%
-      cor(method = 'spearman') %>%
-      {.['K36me2',]} %>%
-      data.frame(dist = .) %>%
-      rownames_to_column('mark')
-  }) %>%
-  bind_rows(.id = 'samp') %>%
-  filter(mark %in% c('PC1', 'Laminb1')) %>%
-  mutate(samp = factor(samp, rev(smps)),
-         mark = factor(mark, rev(mrks))) %>%
-  na.omit() %>%
-  arrange(samp, mark) %>%
-  mutate(mark = sub('^K', 'H3K', mark) %>%
-           sub('PC1', 'Compartment score', .) %>%
-           fct_inorder()) %>%
-  ggplot(aes(x = mark, y = samp, fill = dist)) + 
-  geom_tile() +
-  geom_text(aes(label = round(dist, 2))) +
-  scale_fill_gradientn(expression('Spearman\'s' ~ rho), breaks = c(-1, 0, 1),
-                       colors = coolwarm(25), limits = c(-1, 1)) +
-  coord_cartesian(expand = F, clip = F) +
-  scale_y_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
-  scale_x_discrete(labels = function(x) sub('b1', ' B1', x)) +
-  facet_grid(.~'H3K36me2 corr.') +
-  theme(plot.background = element_blank(), 
-        panel.grid = element_blank(),
-        panel.background = element_blank(),
-        axis.text = element_text(color = 'black', size = 11),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title = element_blank(),
-        legend.background = element_blank(),
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        legend.position = c(1,0),
-        legend.direction = 'horizontal',
-        strip.clip = 'off',
-        legend.justification = c(1,2),
-        plot.margin = margin(5,5,30,5),
-        legend.key = element_blank()) +
-  guides(fill = guide_colorbar(barwidth = 4.7, barheight = 0.5, 
-                               frame.linewidth = 1, ticks = F, title.position = 'top')) +
-  ggsave(file = 'f6_c.pdf', height = 4.5, width = 2.7)
+thm <- theme(legend.position = "none",
+             plot.background = element_blank(),
+             panel.background = element_rect(fill = NA, color = 'black', size = 1),
+             strip.background = element_rect(fill = NA),
+             strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+             axis.title.x = element_blank(),
+             panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
+             #axis.line.x = element_line(color = 'black'),
+             axis.ticks.y = element_blank(),
+             strip.clip = 'off',
+             axis.text.x = element_text(angle = 30, hjust = 1),
+             axis.text = element_text(color = 'black', size = 11),
+             panel.grid = element_blank())
+
+load("../data/image/dense.dat.rda")
+
+dense.dat <- dense.dat %>% 
+  filter(between(area, 500, 3000)) %>% 
+  dplyr::filter(cell %in% samps) %>%
+  mutate(cell = factor(cell, samps),
+         dist = dist * 0.035,
+         area = area * (0.035^2)) 
+
+stat.dist <- compare_means(dist ~ cell, data = dense.dat, method = 'wilcox.test') %>%
+  mutate_at(c('group1','group2'), factor, samps) %>%
+  mutate(y.position = 6.5 + (1:n()) * .4)
+
+p1 <- ggplot(dense.dat, aes(x = cell, y = dist)) +
+  #geom_violin(aes(fill = cell), color = NA, alpha = .5) +
+  #geom_boxplot(aes(color = cell, fill = cell), outlier.color = NA, width = .15, notch = T) +
+  #stat_summary(geom = "crossbar", width = 0.07, fatten = 0, color = "white", 
+  #             fun.data = function(x) return(c(y = median(x), ymin = median(x), ymax = median(x)))) +
+  geom_half_point(aes(color = cell), range_scale = 0.4, size = .1, side = 'l',
+                  position = position_nudge(x = -.1)) +
+  stat_slab(aes(fill = cell), alpha = .7, scale = .9) +
+  stat_pointinterval(aes(color = cell)) +
+  stat_pvalue_manual(stat.dist, coord.flip = F, label = "p.signif",
+                     tip.length = .01) +
+  scale_fill_manual(values = light) +
+  scale_color_manual(values = dark) +
+  scale_y_continuous(expand = expansion(c(0, .1))) +
+  ylab(expression("Distance of DAPI dense regions\n   from nuclear periphery (\u03BCm)")) +
+  facet_grid(.~'Radial positioning') +
+  scale_x_discrete(labels = function(x) sub('PGC', ' mPGC', x)) +
+  thm +
+  theme(plot.margin = margin(l = 15))
+
+stat.area <- compare_means(area ~ cell, data = dense.dat, method = 'wilcox.test') %>%
+  mutate_at(c('group1','group2'), factor, samps) %>%
+  mutate(y.position = 3.6 + (1:n()) * .2)
+
+p2 <- dense.dat %>%
+  ggplot(aes(x = cell, y = area)) +
+  #geom_violin(aes(fill = cell), color = NA, alpha = .5) +
+  #geom_boxplot(aes(color = cell, fill = cell), outlier.color = NA, width = .15, notch = T) +
+  #stat_summary(geom = "crossbar", width = 0.07, fatten = 0, color = "white", 
+  #             fun.data = function(x) return(c(y = median(x), ymin = median(x), ymax = median(x)))) +
+  geom_half_point(aes(color = cell), range_scale = 0.4, size = .1, side = 'l',
+                  position = position_nudge(x = -.1)) +
+  stat_slab(aes(fill = cell), alpha = .7, scale = .9) +
+  stat_pointinterval(aes(color = cell)) +
+  stat_pvalue_manual(stat.area, coord.flip = F, label = "p.signif",
+                     tip.length = .01) +
+  scale_fill_manual(values = light) +
+  scale_color_manual(values = dark) +
+  scale_y_continuous(expand = expansion(c(0, .1))) +
+  ylab(expression("Area of DAPI dense regions (um"^2*")")) +
+  facet_grid(. ~ 'Size') +
+  scale_x_discrete(labels = function(x) sub('PGC', ' mPGC', x)) +
+  thm
+
+load("../data/image/DAPI_variance_all.rda")
+
+var.dat <- dapi.varinace_all %>%
+  filter(celltype %in% samps) %>%
+  mutate(celltype = factor(celltype, samps)) %>%
+  rename(cell = celltype) 
+
+stat.var <- compare_means(Var2 ~ cell, data = var.dat, method = 'wilcox.test') %>%
+  mutate_at(c('group1','group2'), factor, samps) %>%
+  mutate(y.position = .2 + (1:n()) * .035)
+
+p3 <- var.dat %>%
+  ggplot(aes(x = cell, y = Var2)) +
+  geom_half_point(aes(color = cell), range_scale = 0.4, size = .1, side = 'l',
+                  position = position_nudge(x = -.1)) +
+  stat_slab(aes(fill = cell), alpha = .7, scale = .9) +
+  stat_pointinterval(aes(color = cell)) +
+  stat_pvalue_manual(stat.var, coord.flip = F, label = "p.signif",
+                     tip.length = .01) +
+  scale_fill_manual(values = light) +
+  scale_color_manual(values = dark) +
+  scale_y_continuous(expand = expansion(c(0, .1))) +
+  ylab(expression("Variance of DAPI signal per slice")) +
+  facet_grid(. ~ 'Uniformity') +
+  scale_x_discrete(labels = function(x) sub('PGC', ' mPGC', x)) +
+  thm
+
+{ wrap_plots(p2, p1, p3, nrow = 1) & 
+    theme(plot.background = element_blank()) } %>%
+  ggsave('f6_c.pdf', ., width = 6.2, height = 3.58, device = cairo_pdf, bg = 'transparent')
 

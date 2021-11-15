@@ -24,7 +24,7 @@ clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
                    stepped3(12)[-4]), samps)
 
 load('../data/compscore/100kb.rda')
-dat.score <- c(mats$mm10, mats$hg38) %>%
+dat.ratio <- c(mats$mm10, mats$hg38) %>%
   lapply(function(m) {
     na.omit(m) %>%
       pivot_longer(everything(), names_to = 'x', values_to = 'y') %>% 
@@ -48,28 +48,21 @@ dat.score <- c(mats$mm10, mats$hg38) %>%
                    Stadhouders2018 = 'Reprogram',
                    Zhang2019 = 'Cardiac')[study] %>%
            factor(c('Germline', 'Neural', 'Reprogram', 'Cardiac'))) %>%
-  na.omit()
-
-dat.ratio <- dat.score %>%
+  na.omit() %>%
   group_by(x, study) %>%
-  summarise(y = 100 * sum(y > 0) / n()) %>%
-  ungroup()
+  summarise(A = 100 * sum(y > 0) / n(),
+            B = 100 * sum(y < 0) / n()) %>%
+  ungroup() 
 
-m <- 0.2
-b <- -10
 
-sclr <- 'peru'
-ggplot(dat.score, aes(x = x, y = y)) +
-  geom_hline(yintercept = 0, color = 'grey70') +
-  geom_violin(aes(fill = x), alpha = .7, color = NA) +
-  geom_line(aes(y = m * y + b, group = study), data = dat.ratio, color = sclr) +
-  geom_point(aes(y = m * y + b, fill = x), data = dat.ratio, pch = 21, 
-             color = sclr, size = 4, stroke = .7) +
-  facet_grid(.~study, scales = 'free_x', space = 'free_x') +
-  coord_cartesian(ylim = c(-2.5, 2.5)) +
-  scale_y_continuous('Compartment score',
-                     sec.axis = sec_axis(~ (. - b) / m, '% of bins in compartment A')) +
-  scale_fill_manual(values = clrs) +
+
+p <- ggplot(dat.ratio, aes(x = x, y = A, color = x)) +
+  geom_hline(yintercept = 50, color = 'grey60') +
+  geom_line(aes(group = study), color = 'grey50', size = 2, alpha = .5) +
+  geom_point(size = 4) +
+  facet_grid(.~study, scales = 'free_x', space = 'free_x')  +
+  scale_color_manual(values = clrs) +
+  scale_y_continuous('% of genome in compartment A') +
   theme(legend.position = "none",
         plot.background = element_blank(),
         panel.background = element_rect(fill = NA, color = 'black', size = 1),
@@ -79,8 +72,6 @@ ggplot(dat.score, aes(x = x, y = y)) +
         panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
         axis.ticks.y = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
-        axis.text.y.right = element_text(color = sclr),
-        axis.title.y.right = element_text(color = sclr, vjust = 1.5),
-        panel.grid = element_blank())  +
-  ggsave('f1_g.pdf', height = 6, width = 5, device = cairo_pdf, bg = 'transparent')
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        panel.grid = element_blank())
+ggsave('f1_g.pdf', p, width = 5.5, height = 4, device = cairo_pdf, bg = 'transparent')

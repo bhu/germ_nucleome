@@ -89,7 +89,7 @@ p2 <- ggplot(pd, aes(xmin = start, xmax = end)) +
   scale_y_continuous(breaks = distinct(pd, idx, family)$idx,
                      labels = distinct(pd, idx, family)$family) +
   scale_fill_manual(values = c('#ff4500', '#00ced1')) +
-  scale_x_continuous('Width',
+  scale_x_continuous(seqnames(reg),
                      breaks = xbrks, labels = xlabs) +
   coord_cartesian(xlim = xlims, expand = F) +
   theme(plot.background = element_blank(),

@@ -26,6 +26,7 @@ d50 %>%
            fct_inorder()) %>%
   ggplot(aes(x = samp, y = mark, fill = dist)) + 
   geom_tile() +
+  #geom_text(aes(label = round(dist, 2))) +
   scale_fill_gradientn(expression('Spearman\'s' ~ rho), breaks = c(-1, 0, 1),
                        colors = coolwarm(25), limits = c(-1, 1)) +
   coord_cartesian(expand = F) +
@@ -40,7 +41,11 @@ d50 %>%
         legend.background = element_blank(),
         strip.background = element_rect(fill = NA),
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        legend.position = 'bottom') +
-  guides(fill = guide_colorbar(barwidth = 3, barheight = 0.5, title.vjust = 1.2,
-                               frame.linewidth = 1, ticks = F)) +
-  ggsave(file = 'f4_a.pdf', height = 4.6, width = 2.6)
+        legend.justification = c(1,2.03),
+        plot.margin = margin(5,5,45,5),
+        legend.direction = 'horizontal',
+        legend.position = c(1,0)) +
+  guides(fill = guide_colorbar(barwidth = 5, barheight = 0.5, title.hjust = .5,
+                               title.position = 'top',
+                               frame.linewidth = 1, ticks = F)) -> p
+ggsave(file = 'f4_a.pdf', p, height = 4.55, width = 2.6)

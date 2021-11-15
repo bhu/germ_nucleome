@@ -16,7 +16,6 @@ rnm <- function(x) {
 types <- rnm(types)
 
 clrs <- setNames(tableau20(20)[c(1, 3, 5, 7, 9, 17)], types)
-mods <- c("K4me1", "K4me3", "K9me2", "K9me3", "K27me3", "K27ac", "K36me2", "K36me3")
 
 d <- c('old', 'new') %>%
   setNames(., .) %>%
@@ -104,7 +103,7 @@ heatmap.2(t(m), trace = "none", col = rev(brewer.puor(100)), Rowv = dend,
           margins = c(4, 7))
 dev.off()
 
-pdf('f2_b_hm2.pdf', bg = 'transparent', width = 4.3, height = 2.8)
+pdf('f2_b_hm.pdf', bg = 'transparent', width = 4.3, height = 2.95)
 heatmap.2(t(m), trace = "none", col = rev(brewer.puor(100)), Rowv = dend, 
           key = F, lwid = c(1,10), lhei = c(1,10),
           RowSideColors = clrs[sub('\\ [0-9]$*', '', colnames(m))],

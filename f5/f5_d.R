@@ -29,7 +29,8 @@ d50 %>%
                        breaks = c(-1,0,1)) +
   #guides(fill = guide_colorbar(barwidth = 4.7, barheight = .5, title.position = 'top',
   #                             frame.linewidth = 1, ticks = F)) +
-  guides(fill = guide_colorbar(barheight = 2, barwidth = .5, title.position = 'top', ticks = F)) +
+  guides(fill = guide_colorbar(barheight = .5, barwidth = 2, ticks = F,
+                               title.position = 'left', title.vjust = 1)) +
   coord_cartesian(expand = F) +
   facet_grid(.~'Lamin B1 correlation') +
   theme(plot.background = element_blank(),
@@ -39,12 +40,13 @@ d50 %>%
         legend.background = element_blank(),
         legend.key = element_blank(),
         legend.text = element_text(size = 11),
-        #legend.position = c(1,1),
-        #legend.direction = 'horizontal',
-        #legend.justification = c(1,-.3),
-        #plot.margin = margin(50,2,2,2),
+        legend.position = c(1,0),
+        legend.direction = 'horizontal',
+        legend.justification = c(1,3),
+        plot.margin = margin(5,5,30,5),
         strip.background = element_rect(fill = NA),
-        legend.title = element_text(angle = 270, vjust = 0),
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  ggsave('f5_d.pdf', width = 3.5, height = 2.5)
+        axis.text.x = element_text(angle = 45, hjust = 1)) -> p
+
+ggsave('f5_d.pdf', p, width = 3.5, height = 2.85)
+

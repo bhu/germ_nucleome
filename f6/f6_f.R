@@ -1,82 +1,92 @@
 library(tidyverse)
+library(readxl)
 library(pals)
-library(rtracklayer)
+library(patchwork)
+library(ggh4x)
 
-load('../data/tracks/inpnorm.50kb.rda')
-load('../data/tracks/mCG.10kb.rda')
-lad <- d50 %>% mutate(start = start + 1) %>% 
-  distinct(chr, start, end) %>%
-  makeGRangesFromDataFrame() %>% 
-  overlapsAny(import.bed('../data/PMD/GSC.bed'))
+samps <- c("d4c7PGCLC","GSC",  'GSCLC') 
 
-mcg <- o %>%
-  mutate(start = round(start / 5e4) * 5e4) %>%
-  group_by(chr, start) %>%
-  summarise(mCG = mean(GSC), .groups = 'drop') %>%
-  na.omit() 
+clrs <- setNames(c('#d62728', '#9467bd', '#499894'), samps)
 
-mrks <- names(d50)[-c(17:21)]
-
-samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
-rnm <- function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))
-clrs <- setNames(tableau20(9)[seq(1,9,2)], samps)
-
-res <- d50 %>%
-  split(., .$samp) %>%
-  lapply(function(x) {
-    d <- x %>%
-      mutate(lad = lad) %>%
-      filter(lad) %>%
-      merge(mcg)
-    mrks %>%
-      lapply(function(y) {
-        cor(d$mCG, d[[y]], method = 'spearman') %>%
-          {tibble(rho = ., mark = y)}
-      }) %>%
-      bind_rows()
-  }) %>%
-  bind_rows(.id = 'samp')
+ms <- read_excel('../data/histone_ratios.xlsx') %>%
+  {.[,colSums(is.na(.)) != nrow(.)]} %>% 
+  na.omit() %>% 
+  {.[,c(1, which(.[1,] == 'Area'))]} %>%
+  tail(-1) %>%
+  rename(p = 1) %>%
+  `names<-`(., sub('\\..*', '', names(.))) %>%
+  separate(p, c('pep', 'mod'), '\\ ') %>%
+  mutate(pep = sub('H33', 'H3', pep)) %>%
+  group_by(pep) %>%
+  mutate(across(-mod, function(x) as.numeric(x) / sum(as.numeric(x)))) %>%
+  ungroup() %>% 
+  filter(grepl('^H3', pep)) %>%
+  mutate(mod = strsplit(mod, '(?<=.)(?=K)', perl = T)) %>% 
+  unnest(mod) %>%
+  dplyr::select(-pep) %>%
+  group_by(mod) %>%
+  summarise(across(everything(), sum), .groups = 'drop') %>%
+  pivot_longer(-mod, names_to = 'samp', values_to = 'a') %>%
+  separate(samp, c('type', 'rep'), '_', F)
 
 
-
-mrks <- c('ATAC','CTCF','Rad21',
-  'Ring1b','H2Aub','K27me3', 'K27ac', 'K4me1','K4me3',
-  'K36me2','K36me3','K9me2','K9me3', 'Laminb1')
-
-
-res %>%
-  mutate(samp = factor(samp, samps),
-         mark = factor(mark, mrks)) %>%
-  na.omit() %>%
-  arrange(samp, mark) %>%
-  mutate(mark = sub('ATAC', 'ATAC-seq', mark) %>%
-           sub('b1', ' B1', .) %>%
-           sub('^K', 'H3K', .) %>%
-           fct_inorder()) %>%
-  ggplot(aes(x = samp, y = mark)) +
-  geom_tile(aes(fill = rho)) +
-  scale_fill_gradientn(expression('Spearman\'s'~rho),
-                       colors = coolwarm(25), limits = c(-.6,.6), breaks = c(-.5, 0, .5)) +
-  #guides(fill = guide_colorbar(barheight = .5, barwidth = 4, title.vjust = 1)) +
-  guides(fill = guide_colorbar(barwidth = .5, barheight = 3, title.position = 'bottom', title.vjust = 0)) +
-  coord_cartesian(expand = F) +
-  scale_x_discrete(labels = rnm) +
-  facet_grid(.~'Corr. vs GSC DNAme\n in GSC PMDs') +
+mods <- c("K4me3" , "K4me1"  , "K36me2", "K36me3",  "K9me2" , "K9me3" , "K27ac" ,"K27me3" )
+p1 <- ms %>%
+  filter(type %in% c('GSC', 'GSCLC') & mod %in% mods) %>%
+  group_by(mod, type) %>% 
+  summarise(std = sd(a),
+            se = std / n(),
+            mu = mean(a), 
+            .groups = 'drop') %>%
+  pivot_wider(names_from = 'type', values_from = c('mu', 'std', 'se')) %>%
+  mutate(fc = mu_GSCLC / mu_GSC,
+         se = sqrt((se_GSCLC/mu_GSCLC)^2 + (se_GSC/mu_GSC)^2)) %>% 
+  arrange(fc) %>%
+  ggplot(aes(x = fct_inorder(mod), y = fc)) +
+  geom_hline(yintercept = 1, color = 'grey70') +
+  geom_point() +
+  geom_linerange(aes(ymin = fc - se, ymax = fc + se)) +
+  scale_y_continuous(breaks = c(1,1.4)) +
+  labs(x = 'H3 modification', y = 'GSCLC / GSC') +
+  coord_flip() +
   theme(plot.background = element_blank(),
         panel.background = element_blank(),
+        panel.grid = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        axis.ticks.y = element_blank(),
+        axis.line.x = element_line(color = 'black'),
+        panel.grid.major.y = element_line(color = 'grey90'),
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed')) 
+
+p2 <- ms %>%
+  filter(type %in% samps & grepl('K27me3|K9me2|K9me3', mod)) %>%
+  mutate(type = factor(type, samps),
+         mod = paste0('H3', mod)) %>%
+  ggplot(aes(x = type, y = a * 100, color = type)) +
+  stat_summary(fun.data = mean_se, fun.args = list(mult = 1), size = .7, fatten = 1,
+               geom = 'pointrange', mapping = aes(color = type)) +
+  facet_grid2(.~mod, scales = 'free') +
+  scale_color_manual(values = clrs) +
+  facetted_pos_scales(x = list(
+    mod == 'H3K27me3' ~ scale_x_discrete(labels = function(x) sub('PGC', ' mPGC', x)),
+    T ~ scale_x_discrete(labels = function(x) '')
+  )) +
+  ylab('Abundance (%)') +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
         strip.background = element_rect(fill = NA),
-        axis.title = element_blank(),
-        #legend.direction = 'horizontal',
-        #legend.justification = c(1,0),
-        #legend.position =  c(1,1),
-        legend.position = 'right',
-        legend.justification = 'top',
-        legend.title = element_text(angle = 270),
-        legend.background = element_blank(),
-        legend.key = element_blank(),
+        strip.text = element_text(color = 'black',size = 13, face = 'bold'),
+        axis.title.x = element_blank(),
         strip.clip = 'off',
-        axis.text.x = element_text(angle = 30, hjust = 1)) +
-  ggsave(file = 'f6_f.pdf', height = 4.35, width = 3.2, device = cairo_pdf, bg = 'transparent')
-  
+        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        panel.grid = element_blank()) +
+  ylab('Abundance (%)') 
+
+{wrap_plots(p1 + theme(axis.title.x = element_text(margin = margin(t = -45))),
+           p2, nrow = 1, widths = c(1,2)) &
+  theme(plot.background = element_blank()) } %>%
+  ggsave('f6_f.pdf', ., height = 2.6, width = 7)
+

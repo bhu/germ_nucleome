@@ -1,52 +1,59 @@
 library(tidyverse)
-library(LOLA)
-library(rtracklayer)
+library(pals)
 library(ggrepel)
-load('../scripts/runLOLA2.rda')
-regionDB <- loadRegionDB('../data/resources/ensembl')
-signif.num <- function(x) {
-  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
-         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-         symbols = c("****", "***", "**", "*", "ns"))
+library(patchwork)
+
+load('../data/contactdecay/germline.smooth.rda')
+
+clrs <- setNames(c(tableau20()[seq(1,9,2)], brewer.set2(6)[-2]),
+                 c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC',
+                   'E11.5_PGC', 'E13.5_mPGC', 'E13.5_fPGC', 'ICM', 'ESC_serum'))
+rnm <- function(x) {
+  sub('_', ' ', x) %>%
+    sub('serum', '(serum)', .) %>%
+    sub('^ESC', 'mESC', .) %>%
+    sub('PGCLC', ' mPGCLC', .) %>%
+    sub('ESC$', 'ESC (2i)', .)
 }
-uSet <- read.table('../data/resources/mm10.chrom.sizes', header = F) %>% 
-  {Seqinfo(.$V1, .$V2, genome = 'mm10')} %>%
-  tileGenome(tilewidth = 1000) %>%
-  subsetByOverlaps(import.bed('../data/resources/blacklist.bed'), invert = T) %>%
-  GRangesList() %>%
-  unlist() %>%
-  {.[seqnames(.) != 'chrY']}
+
+d <- o %>%
+  pivot_longer(-sep, names_to = 'samp', values_to = 'v') %>%
+  filter(sep > 1000) %>%
+  filter(samp %in% names(clrs)) %>%
+  group_by(samp) %>%
+  arrange(sep) %>%
+  mutate(x = log10(sep),
+         y = log10(v),
+         x2 = (x + lead(x)) / 2,
+         dy = (lead(y) - y) / (lead(x) - x),
+         x3 = (x2 + lead(x2)) / 2,
+         ddy = (lead(dy) - dy) / (lead(x2) - x2)) %>%
+  filter(between(x2, 5, 7)) %>%
+  slice_min(ddy, n = 1) %>%
+  ungroup() 
 
 
-qSet <- readRDS('../data/csaw/K27me3.rda') %>%
-  .[.$direction == 'up' & .$FDR < .05] %>%
-  subsetByOverlaps(uSet, .)
-
-res1 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "two.sided")
-res2 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "greater")
-
-res1[, setdiff(colnames(res1), c('pValue', 'pValueLog', 'qValue')), with = F] %>%
-  merge(res2[,c('userSet', 'dbSet', 'pValue', 'qValue', 'pValueLog')]) %>%
-  mutate(reg = sub('.bed', '', filename),
-         sig = as.character(signif.num(qValue))) %>%
-  filter(support > 10) %>%
-  ggplot(aes(x = -log10(qValue), y = oddsRatio, ymin = cLo, ymax = cHi)) +
-  geom_linerange() +
-  geom_point() +
-  geom_label_repel(aes(label = reg), data = ~subset(., oddsRatio > 2.5),
-                   box.padding = 1, 
-                   color= 'firebrick', alpha = .8) +
-  facet_grid(.~'H3K27me3: GSCLC > GSC') +
-  labs(x = expression(-'log'[10]~p['adj']), y = 'Overlap odds ratio') +
-  theme(plot.background = element_blank(),
+d %>%
+  arrange(x3) %>%
+  mutate(samp = fct_inorder(samp)) %>%
+  ggplot(aes(x = samp, y = x3, color = samp)) +
+  geom_point(size = 5) +
+  scale_color_manual(values = clrs) +
+  scale_x_discrete(labels = rnm) +
+  coord_flip() +
+  facet_wrap(~'Point of fastest decline in contact decay rate') +
+  ylab('Genomic separation with most\nnegative acceleration of P(s)') +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
         panel.background = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.x = element_line(color= 'black'),
+        axis.text = element_text(size = 11, color = 'black'),
         panel.grid = element_blank(),
-        axis.text = element_text(color = 'black', size = 11),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        strip.background = element_rect(fill = NA),
+        strip.background = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed'),
+        panel.grid.major.y = element_line(color = 'grey70'),
         strip.clip = 'off',
-        axis.ticks = element_blank()) +
-  ggsave('sf6_d.pdf', height = 3.7, width = 2.713)
+        axis.title.y = element_blank()) -> p
+ggsave('sf6_d.pdf', p, height = 5.77, width = 5, bg = 'transparent')

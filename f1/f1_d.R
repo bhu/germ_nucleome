@@ -44,9 +44,9 @@ ggplot(d, aes(x = samp, y = y, color = samp, fill = samp)) +
         axis.ticks.y = element_blank(),
         axis.title.x = element_blank(),
         panel.grid = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.x = element_text(angle = 30, hjust = 1),
         plot.margin = margin(l=10),
         panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        panel.grid.major.x = element_line(color = 'grey80')) +
-  ggsave('f1_d.pdf', height = 4.2, width = 1.5)
+        panel.grid.major.x = element_line(color = 'grey80')) -> p
+ggsave('f1_d.pdf', p, height = 4.05, width = 1.5)
 

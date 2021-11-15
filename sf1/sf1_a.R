@@ -41,6 +41,7 @@ ggplot(d, aes(x = samp, y = y, color = samp, fill = samp)) +
         #axis.text.x = element_text(angle = 45, hjust = 1),
         plot.margin = margin(l=10),
         panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        panel.grid.major.x = element_line(color = 'grey80')) +
-  ggsave('sf1_a.pdf', height = 3.1, width = 2.8)
+        panel.grid.major.x = element_line(color = 'grey80')) -> p
+
+ggsave('sf1_a.pdf', p, height = 3.1, width = 2.8)
 

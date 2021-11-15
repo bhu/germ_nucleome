@@ -3,11 +3,13 @@ library(readxl)
 library(pals)
 library(MASS)
 library(patchwork)
+library(ggh4x)
 
 anchors <- c('ESC', 'EpiLC','d4c7PGCLC', 'GSC', 'GSCLC')
 types <- c('ESC', 'EpiLC', 'd2PGCLC','d4c7PGCLC', 'GSC', 'MEF') 
 clrs <- setNames(tableau20(20)[c(1, 3, 5, 7, 9, 17)], types)
-mods <- c("K4me1", "K4me3", "K9me2", "K9me3", "K27me3", "K36me2", "K36me3", "K9ac","K14ac", "K18ac", "K23ac", "K27ac")
+mods <- c("K4me1", "K9me2", "K27me3", "K36me2", "K9ac", "K18ac",
+          "K4me3", "K9me3",  "K27ac", "K36me3", "K14ac", "K23ac")
 rnm <- function(x) {
   case_when(x == 'ESC' ~ 'mESC',
             x == 'd2PGCLC' ~ 'd2 mPGCLC',
@@ -73,17 +75,28 @@ pd <- lapply(d, function(x) {
          mod = factor(mod, mods)) %>%
   na.omit() %>%
   arrange(mod, type) %>%
-  mutate(mod = paste0('H3', mod) %>% fct_inorder())
+  mutate(mod = fct_inorder(paste0('H3', mod)))
 
 p1 <- ggplot(pd, aes(x = type, y = a * 100)) +
   geom_hline(yintercept = c(-Inf,Inf), color = 'black', size = 1) +
   stat_summary(fun.data = mean_se, fun.args = list(mult = 1), 
                geom = 'pointrange', mapping = aes(color = type)) +
-  facet_grid(.~mod, scales = 'free_x') +
+  facet_wrap(~mod, scales = 'free', nrow = 2) +
+  facetted_pos_scales(
+    x = list(
+      mod == 'H3K4me3' ~ scale_x_discrete(labels = rnm),
+      T ~ scale_x_discrete(labels = rep("", length(types)))
+    ),
+    y = list(
+      mod %in% c('H3K4me3', 'H3K27ac', 'H3K9ac') ~ 
+        scale_y_continuous(expand = expansion(c(0,.05)),
+                           breaks = c(0, 20, 40, 60),
+                           labels = rep('', 4)),
+      T ~ scale_y_continuous(expand = expansion(c(0,.05)),
+                             breaks = c(0, 20, 40, 60))
+    )) +
   scale_color_manual(values = clrs) +
   coord_cartesian(ylim = c(0,60)) +
-  scale_y_continuous(expand = expansion(c(0,.05))) +
-  scale_x_discrete(labels = rnm) +
   ylab('Abundance (%)') +
   theme(legend.position = 'none',
         plot.background = element_blank(),
@@ -95,9 +108,11 @@ p1 <- ggplot(pd, aes(x = type, y = a * 100)) +
         axis.title.x = element_blank(),
         panel.grid = element_blank(),
         strip.clip = "off",
-        panel.spacing = unit(1.5, "lines"),
+        #panel.spacing = unit(1.5, "lines"),
         panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
         panel.grid.major.x = element_line(color = 'grey90')) 
+
+
 
 p2 <- pd %>%
   filter(mod == 'H3K4me3') %>%
@@ -160,9 +175,9 @@ p4 <- pd %>%
         panel.grid = element_blank())
 
 p1 + 
-  inset_element(p2, .057,.135,.153,1.06) + 
-  inset_element(p3, .9101, .135, 1.006, 1.06) +
-  inset_element(p4, .5689, .135, .665, 1.06) &
-  theme(plot.background = element_blank()) &
-  ggsave('f2_a.pdf', height = 3, width = 13.3)
+  inset_element(p2, -.0565,0.063,.137,.458) + 
+  inset_element(p3, .2935, 0.063, .487, .458) +
+  inset_element(p4, .6435, .627, .837, 1.022) &
+  theme(plot.background = element_blank()) -> p
+ggsave('f2_a.pdf', p, height = 5, width = 7)
 

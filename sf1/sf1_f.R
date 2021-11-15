@@ -1,111 +1,125 @@
 library(data.table)
 library(tidyverse)
-library(GenomicRanges)
-library(ggpubr)
+library(pals)
+library(plotly)
 
-load('../data/tads/insulscore.rda')
-
-signif.num <- function(x) {
-  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
-         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-         symbols = c("****", "***", "**", "*", "ns"))
+samps <- c('ESC (2i)','EpiLC','d2PGCLC','d4c7PGCLC','GSC',
+           'ESC (serum)', 'Neural progenitors', 'Cortical neurons',
+           'Day 6','Day 4','Day 2','B\u03B1')
+rnm <- function(x) {
+  sub('ESC', 'mESC', sub('PGCLC', ' mPGCLC', x))
 }
 
-# dat <- list(germ = c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC'),
-#             neural = c('ESC', 'NPC', 'CN'),
-#             stadhouders = c('D6', 'D4', 'D2', 'Ba'),
-#             cardio = c('CM', 'CPC', 'PCM', 'VCM')) %>%
-#   lapply(function(x) setNames(x, x)) %>%
-#   Map(function(ss, p) {
-#     grs <- tads[[p]][ss] %>%
-#       lapply(function(x) {
-#         x %>%
-#           filter(boundary_strength_100000 > .2 & !is_bad_bin) %>%
-#           mutate(start = start - 1e4 + 1,
-#                  end = start + 1e4) %>%
-#           makeGRangesFromDataFrame()
-#       })
-#     u <- Reduce(c, grs) %>% reduce()
-#     obs <- lapply(grs, function(x) overlapsAny(u, x)) %>%
-#       bind_cols() %>%
-#       rowSums() %>%
-#       tibble(num = .) %>%
-#       mutate(grp = case_when(
-#         num == 1 ~ '1',
-#         num == 2 ~ '2',
-#         num > 2 ~ '3+'
-#       )) %>%
-#       count(grp) %>%
-#       deframe()
-#     inp <- tads[[p]][ss] %>%
-#       bind_rows(.id = 'samp') %>%
-#       filter(boundary_strength_100000 > .2 & !is_bad_bin) %>%
-#       mutate(start = start - 1e4 + 1,
-#              end = start + 1e4)
-#     lapply(1:100000, function(x) {
-#       grs <- inp %>%
-#         mutate(samp = sample(samp)) %>%
-#         split(., .$samp) %>%
-#         lapply(makeGRangesFromDataFrame) %>%
-#         lapply(function(y) overlapsAny(u, y)) %>%
-#         bind_cols() %>%
-#         rowSums() %>%
-#         tibble(num = .) %>%
-#         mutate(grp = case_when(
-#           num == 1 ~ '1',
-#           num == 2 ~ '2',
-#           num > 2 ~ '3+'
-#         )) %>%
-#         count(grp)
-#     }) %>%
-#       bind_rows(.id = 'idx') %>%
-#       split(., .$grp) %>%
-#       Map(function(x, grp) {
-#         tibble(n = obs[grp], p = (sum(x$n > obs[grp])+1) / (nrow(x)+1))
-#       }, ., names(.)) %>%
-#       bind_rows(.id = 'grp') %>%
-#       mutate(perc = 100 * n / sum(n))
-#   }, ., names(.)) %>%
-#   bind_rows(.id = 'study') %>%
-#   mutate(study = c(germ = 'Germline',
-#                    neural = 'Neural',
-#                    stadhouders = 'Reprogramming',
-#                    cardio = 'Cardiac')[study] %>%
-#            fct_inorder(),
-#          p.signif = as.character(signif.num(p)),
-#          ypos = n + 250,
-#          group1 = grp,
-#          group2 = grp)
+samps <- rnm(samps)
 
-load('../data/tads/overlap.permutation.rda')
-m <- 1e2
-b <- 0
+clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
+                   stepped3(8)[-4]), samps)
 
-sclr <- 'firebrick3'
-dat <- dat %>%
-  mutate(study = as.character(study) %>%
-           sub('Germ', 'Germline', .) %>%
-           sub('ming', '', .) %>%
-           fct_inorder()) 
-ggplot(dat, aes(x = grp, y = n)) +
-  geom_col(aes(fill = grp), alpha = .7) +
-  geom_point(aes(y = m * perc + b), color = sclr) +
-  stat_pvalue_manual(dat, x = 'grp', y.position = 'ypos', label = 'p.signif') +
-  facet_grid(. ~ study) +
-  scale_fill_manual(values = blues9[c(4, 7, 9)]) +
-  scale_y_continuous('# of boundaries', expand = expansion(c(0, .05)), 
-                     sec.axis = sec_axis(~ (. - b) / m, '% of all boundaries')) +
-  xlab('# of samples boundary found in') +
-  theme(legend.position = "none",
-        plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.ticks.y = element_blank(),
-        axis.text = element_text(color = 'black', size = 11),
-        axis.text.y.right = element_text(color = sclr),
-        axis.title.y.right = element_text(color = sclr, vjust = 1.5),
-        panel.grid = element_blank()) +
-  ggsave('sf1_f.pdf', height = 2.8, width = 5.5)
+load('../data/compscore/100kb.rda')
+res <- c('Nagano', 'Stadhouders2018', 'Bonev2017') %>%
+  lapply(function(s) {
+    m <- mats$mm10[[s]]
+    names(m) <- paste(s, names(m))
+    m
+  }) %>%
+  bind_cols() %>%
+  na.omit() %>%
+  select(-contains('_')) %>%
+  mutate(idx = 1:n()) %>%
+  pivot_longer(-idx, names_to = 'x', values_to = 'y') %>%
+  separate(x, c('study', 'x'), '\\ ') %>%
+  mutate(x = case_when(x == 'Ba' ~ 'B\u03B1',
+                       x == 'CM' ~ 'Cardiac mesoderm',
+                       x == 'CPC' ~ 'Cardiac progenitors',
+                       x == 'PCM' ~ 'Primitive cardiomyocytes',
+                       x == 'VCM' ~ 'Ventricular cardiomyocytes',
+                       x == 'ESC' & study == 'Nagano' ~ 'ESC (2i)',
+                       x == 'ESC' & study == 'Bonev2017' ~ 'ESC (serum)',
+                       x == 'NPC' ~ 'Neural progenitors',
+                       x == 'CN' ~ 'Cortical neurons',
+                       T ~ x) %>%
+           sub('^D', 'Day ', .) %>%
+           rnm() %>%
+           factor(samps),
+         study = c(Nagano = 'Germline', Bonev2017 = 'Neural',
+                   Stadhouders2018 = 'Reprogramming')[study] %>%
+           factor(c('Germline', 'Neural', 'Reprogramming'))) %>%
+  na.omit() %>%
+  arrange(idx, study, x) %>%
+  select(-study) %>%
+  pivot_wider(names_from = 'x', values_from = 'y') %>%
+  select(-idx) %>%
+  as.matrix() %>%
+  t() %>%
+  prcomp(scale. = T, center = T)
 
+comps <- summary(res)$importance[2,] * 100
+
+axs <- paste0('PC', 1:3)
+
+pts <- res$x %>%
+  data.frame() %>%
+  rownames_to_column("samp") %>%
+  mutate(samp = fct_inorder(samp))
+
+lns <- lapply(1:(nrow(pts) - 1), function(i) {
+  pts[c(i, i + 1), axs] %>%
+    lapply(function(x) {seq(x[1], x[2], length.out = 100)}) %>%
+    bind_cols() %>%
+    `colnames<-`(c('x', 'y', 'z')) %>%
+    mutate(idx = 1:n())
+})
+
+mz <- min(pts[[axs[3]]]) - 1
+cns <- lapply(seq_along(pts), function(i) {
+  pts[i, axs] %>%
+    `colnames<-`(c('x', 'y', 'z')) %>%
+    {rbind(., mutate(., z = mz))} %>%
+    mutate(clr = clrs[pts$samp[i]])
+})
+
+scn <- lapply(axs, function(ax) {
+  list(title = sprintf('%s (%d%%)', ax, round(comps[ax])),
+       showticklabels = F, titlefont = list(size = 20))
+}) %>% setNames(c('xaxis', 'yaxis', 'zaxis')) %>%
+ c(list(#aspectratio= list(x= 1, y= 1, z= 0.8),
+         camera = list(eye = list(x = 1.728, y = 1.143, z = 0.660),
+                       center = list(x = .215, y = -.086, z = -.282),
+                       up = list(x = 0, y = 0, z = 1))))
+
+p <- plot_ly(source = 'src') %>%
+  add_markers(type = 'scatter3d', x = pts[[axs[1]]],
+              y = pts[[axs[2]]], z = pts[[axs[3]]],
+              color = pts$samp, colors = clrs,
+              marker = list(size = 14))
+
+brks <- c(5, 8)
+
+for (i in seq_along(lns)) {
+  if (i %in% brks) next
+  p <- p %>%
+    add_trace(mode = 'lines', type = 'scatter3d', data = lns[[i]],
+              x = ~x, y = ~y, z = ~z,
+              line = list(width = 10, color = lns[[i]]$idx,
+                          colorscale = list(c(0, clrs[i]),
+                                            c(1, clrs[i + 1]))),
+              showlegend = FALSE)
+}
+
+for (i in seq_along(cns)) {
+  p <- p %>%
+    add_trace(mode = 'lines', type = 'scatter3d', data = cns[[i]],
+              x = ~x, y = ~y, z = ~z,
+              line = list(color = cns[[i]]$clr, dash = 'dash', width = 6),
+              showlegend = FALSE)
+}
+
+p <- p %>%
+  layout(scene = scn,
+         paper_bgcolor='transparent',
+         plot_bgcolor='transparent',
+         showlegend=T,
+         height = 600,
+         font=list(family = "Arial", size = 20, color = 'black'))
+
+orca(p, 'sf1_f.pdf', width = 1400,height=600, scale=1)
