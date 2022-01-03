@@ -1,92 +1,63 @@
+library(data.table)
 library(tidyverse)
+library(ggtext)
+library(rasterly)
+library(cowplot)
+library(patchwork)
 library(pals)
-library(ggh4x)
+library(ggnewscale)
 
-odr <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
-clrs <- setNames(tableau20(12)[seq(1, 10, 2)], odr)
+
 cclrs <- kelly(22)[c(8,10,11,12,15,14,20)]
-rnm <- function(x) case_when(x == 'ESC' ~ 'mESC',
-                             x == 'd2PGCLC' ~ 'd2 mPGCLC',
-                             x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
-                             T ~ x)
+odr <- c('Expression', 'CTCF', 'Rad21',  'ATAC', 'K4me1', 'K4me3', 'K27ac',
+         'K27me3', 'Ring1b', 'H2Aub', 'K36me2', 'K36me3', 'K9me2', 'K9me3') %>%
+  sub('^K', 'H3K', .)
 
-load('../data/clust/pileup.rda')
+load('../data/clust/promoter.rda')
 
-pd <- lapply(cpup, function(y) {
-    y %>% 
-      mutate(y = 1:n()) %>% 
-      pivot_longer(-y, names_to = 'x', values_to = 'z') %>% 
-      mutate(x = as.integer(sub('^V', '', x))) 
-}) %>%
-  bind_rows(.id = 'f') %>%
-  separate(f, c('samp', 'cl')) %>%
-  filter(cl != '7') %>%
-  mutate(cl = as.integer(cl),
-         clu = c('Repressed', 'Polycomb', 'Active', 'Bivalent',
-                 'CTCF', 'Readthrough', 'Enhancer')[cl]) %>%
-  arrange(cl) %>%
-  mutate(clu = fct_inorder(clu),
-         samp = factor(rnm(samp), rnm(odr))) %>%
-  na.omit() 
-
-
-lab <- pd %>% 
-  filter(between(x, 20, 22) & between(y, 20, 22)) %>%
-  group_by(samp, clu) %>% 
-  summarize(z = round(mean(z), 2), .groups = 'drop')
-
-p <- ggplot(pd, aes(x = x, y = y, fill = z)) +
-  geom_raster() +
-  scale_fill_gradientn('O/E', colors = rev(brewer.rdylbu(25)), trans = 'log2',
-                       limits = c(1/1.6, 1.6), breaks = c(1/1.5, 1, 1.5),
-                       oob = scales::squish,
-                       labels = c('.67', '1.0', '1.5')) +
-  geom_label(aes(x = -Inf, y = -Inf, hjust = 0, vjust = 1, label = z),
-             data = lab, inherit.aes = F, alpha = .25, label.size = NA) +
-  scale_y_reverse(breaks = 21) +
-  coord_cartesian(expand = F) +
-  facet_grid(samp ~ clu, labeller = label_wrap_gen(width=8)) +
-  scale_x_continuous(breaks = 21) +
+pd <- d %>%
+  filter(cl != -1 & type != 'GSCLC') %>%
+  {.[.$gene %in% Reduce(intersect, split(.$gene, .$type)),]} %>%
+  select(clu = cl, Expression = SC3, CTCF, Rad21,  ATAC, K4me1, K4me3, K27ac,
+         K27me3, Ring1b, H2Aub, K36me2, K36me3, K9me2, K9me3) %>%
+  pivot_longer(-clu, names_to = 'mark', values_to = 'v') %>%
+  mutate(mark = case_when(grepl('^K', mark)~ paste0('H3', mark), T ~ mark) %>%
+           fct_inorder()) %>%
+  group_by(mark, clu) %>%
+  summarise(v = mean(v, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(clu = as.character(clu),
+         mark = factor(mark, odr),
+         y = as.numeric(mark)) 
+ggplot(pd, aes(x = clu, y = y)) +
+  geom_tile(aes(fill = v), data = ~subset(., mark=='Expression')) +
+  scale_fill_gradientn('log2(RPM)', colors = brewer.blues(25), breaks = c(6, 7),
+                       guide = guide_colorbar(barheight = .5, barwidth = 4, title.vjust = 1, order = 1)) +
+  new_scale_fill() +
+  geom_tile(aes(fill = v), data = ~subset(., mark !='Expression')) +
+  scale_fill_gradientn('Enrichment', colors = rev(brewer.brbg(25)), 
+                       limits = c(-3,3), breaks = c(-3,0,3), oob = scales::squish,
+                       guide = guide_colorbar(barheight = .5, barwidth = 4, title.vjust = 1, order = 2)) +
+  geom_hline(yintercept = 1.5) +
+  scale_x_discrete(labels = sprintf('<span style=\'color:%s\'>%s</span>', cclrs, 1:7)) +
+  scale_y_continuous(breaks = distinct(pd, y, mark)$y, labels = distinct(pd, y, mark)$mark) +
+  labs(x = 'Promoter cluster', y = 'Mark') +
+  coord_flip(expand = F) +
+  facet_grid(.~ 'Promoter clusters\' characteristics') +
   theme(plot.background = element_blank(),
         panel.background = element_blank(),
-        axis.title = element_blank(),
-        axis.text = element_blank(),
-        #axis.ticks = element_blank(),
-        panel.grid = element_blank(),
-        legend.background = element_blank(),
-        legend.key = element_blank(),
-        strip.background = element_rect(fill = NA),
-        strip.clip = 'off',
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        axis.ticks = element_blank(),
+        axis.text.x = element_text(color = 'black', angle = 30, hjust = 1),
+        legend.position = 'bottom',
         legend.text = element_text(size = 11),
-        plot.margin = margin(5,5,30,80),
-        legend.position = c(0,1),
-        legend.justification = c(1,.72)) +
-  guides(fill = guide_colorbar(barheight = 3.2, barwidth = .5,
-                               title.hjust = 1,
-                               label.position = 'left',
-                               title.vjust = 1.05))
-
-g <- ggplot_gtable(ggplot_build(p))
-strip <- which(grepl('strip-r', g$layout$name))
-fills <- clrs
-k <- 1
-for (i in strip) {
-  #j <- which(grepl('rect', g$grobs[[i]]$grobs[[1]]$childrenOrder))
-  #g$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
-  j <- which(grepl('title', g$grobs[[i]]$grobs[[1]]$childrenOrder))
-  g$grobs[[i]]$grobs[[1]]$children[[j]]$children[[1]]$gp$col <- fills[k]
-  k <- k+1
-}
-strip <- which(grepl('strip-t', g$layout$name))
-fills <- cclrs
-k <- 1
-for (i in strip) {
-  #j <- which(grepl('rect', g$grobs[[i]]$grobs[[1]]$childrenOrder))
-  #g$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
-  j <- which(grepl('title', g$grobs[[i]]$grobs[[1]]$childrenOrder))
-  g$grobs[[i]]$grobs[[1]]$children[[j]]$children[[1]]$gp$col <- fills[k]
-  k <- k+1
-}
-ggsave('f3_e.pdf', g, height = 6.2, width = 8.1, bg = 'transparent')
+        axis.text = element_text(size = 11),
+        #legend.justification = c(1,2.3),
+        legend.background = element_blank(),
+        legend.direction = 'horizontal',
+        strip.background = element_rect(fill = NA),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        axis.text.y = element_markdown(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(2,2,10,15)) -> p
+  ggsave('f3_e.pdf', p, height = 3, width = 4.25)
 

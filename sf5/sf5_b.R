@@ -1,82 +1,92 @@
 library(tidyverse)
-library(matrixStats)
-library(ggrastr)
-library(ggnewscale)
-library(ggforce)
 library(pals)
-library(ggrepel)
+library(mgcv)
+library(gratia)
+library(rtracklayer)
+library(ggh4x)
 
-load("../data/peaks/ATAC/public.fpkm.rda")
-rnm <- function(x) {
-  sub('PGCLC', ' mPGCLC', sub('ESC', 'mESC', x))
-}
-samps <- c("ESC", "EpiLC", "d2PGCLC", "d4PGCLC", "d4c7PGCLC", "GSC", "MEF") %>% rnm()
-clrs <- setNames(tableau20(20)[c(1, 3, 5, 6, 7, 9, 17)], samps)
-clrs[rnm('d4PGCLC')] <- '#81642A'
+bands <- getTable(ucscTableQuery("rheMac10", table = "cytoBandIdeo")) %>%
+  filter(gieStain == 'acen') %>%
+  group_by(chrom) %>% 
+  summarise(cstart = min(chromStart),
+            cend = max(chromEnd)) %>%
+  ungroup()
 
-res <- atac.my.pub.pks %>% 
-  select(matches('BDF121|MEF_Gia|GSC_AAG')) %>%
-  slice_max(rowVars(as.matrix(.)), n = 1e4) %>%
-  mutate(idx = 1:n()) %>%
-  pivot_longer(-idx, names_to = 'samp', values_to = 'v') %>%
-  mutate(samp = sub('_[0-9]$', '', samp)) %>%
-  group_by(idx, samp) %>%
-  summarise(v = mean(v), .groups = 'drop') %>%
-  pivot_wider(names_from = 'samp', values_from = 'v') %>%
-  select(-idx) %>%
-  t() %>%
-  prcomp(scale. = T, center = T)
 
-comps <- summary(res)$importance[2,] * 100
+load('../data/compscore/vivo.100kb.rda')
 
-axes <- c(1, 2) %>%
-  setNames(paste0('PC', .))
+pd <- e %>%
+  Map(function(x, nm) {
+    o <- x[[1]][,1:3] %>%
+      mutate(score = x[[grep('sp.*a', names(x), ignore.case = T)]]$E1 -
+               x[[grep('fib', names(x), ignore.case = T)]]$E1) %>%
+      na.omit()
+    
+    o <- if (nm == 'Vara2019') {
+      o %>%
+        group_by(chrom) %>%
+        arrange(start) %>%
+        mutate(x = (1:n())/n()) %>%
+        ungroup() %>%
+        select(chrom, x, y = score) %>%
+        gam(y ~ s(x, k = 10), data = ., method = 'REML') %>%
+        confint(parm = 's(x)', type = 'confidence',  level = .9999,
+                newdata = tibble(x = seq(0, 1, .001))) %>%
+        mutate(x = x$x)
+    } else {
+      o %>%
+        merge(bands) %>%
+        mutate(arm = case_when(end < cstart ~ 'p',
+                               start > cend ~ 'q')) %>%
+        na.omit() %>%
+        group_by(chrom, arm) %>%
+        arrange(start) %>%
+        mutate(x = (1:n())/n()/2,
+               x = case_when(arm == 'q' ~ x + .5, T ~ x)) %>%
+        ungroup() %>%
+        select(chrom, x, y = score) %>%
+        gam(y ~ s(x, k = 10), data = ., method = 'REML') %>%
+        confint(parm = 's(x)', type = 'confidence',  level = .9999,
+                newdata = tibble(x = seq(0, 1, .001))) %>%
+        mutate(x = x$x)
+    }
+    o
+  }, ., names(.)) %>%
+  bind_rows(.id = 'study') %>%
+  mutate(species = c(Wang2019 = 'Rhesus macaque', Vara2019 = 'House mouse')[study] %>%
+           factor(c('Rhesus macaque', 'House mouse'))) 
 
-pd <- res$x %>%
-  data.frame() %>%
-  rownames_to_column("samp") %>% 
-  mutate(samp = sub('_.*', '', samp) %>%
-           rnm() %>%
-           factor(samps)) %>% 
-  arrange(samp) %>%
-  rename(!!"ax1" := names(axes)[1], !!"ax2" := names(axes)[2]) %>%
-  mutate(xend = lead(ax1), yend = lead(ax2))
 
-p <- ggplot(pd, aes(x = ax1, y = ax2, xend = xend, yend = yend))
-
-for (i in 1:5) {
-  if (i < 5) {
-    p <- p + geom_link(aes(color = stat(index)), data = pd[i,], 
-                        show.legend = F, alpha = 1) +
-      scale_color_gradient(low = clrs[i], high = clrs[i + 1]) +
-      new_scale_color()
-  } else {
-    p <- p + geom_link(aes(color = stat(index)), data = pd[i,], 
-                        show.legend = F, alpha = .5) +
-      scale_color_gradient(low = clrs[i], high = clrs[i + 1]) +
-      new_scale_color()
-  }
-}
-
-p +
-  geom_point(aes(color = samp), size = 2) +
-  scale_color_manual(values = clrs) +
-  labs(x = sprintf('%s (%.1f%%)', names(axes)[1], comps[axes[1]]),
-       y = sprintf('%s (%.1f%%)', names(axes)[2], comps[axes[2]])) +
-  facet_grid(.~'ATAC-seq PCA') +
-  theme(panel.grid = element_blank(),
-        legend.title = element_blank(),
-        legend.background = element_blank(),
-        legend.key = element_blank(),
-        panel.background = element_blank(),
+p <- ggplot(pd, aes(x = x, y = est)) +
+  geom_hline(aes(yintercept = y), data = mutate(distinct(pd, species), y = 0)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = .2, color = NA,
+              fill = 'grey50') +
+  geom_line() + 
+  scale_y_continuous('Spermatogonia - fibroblast', breaks = scales::pretty_breaks(4)) +
+  facet_nested('\u0394Compartment score' + species ~ 'In vivo', scales = 'free', independent = 'x') +
+  facetted_pos_scales(x = list(
+    scale_x_continuous(breaks = c(0, .5, 1),
+                       labels = c('pter\n(Telomere)', 'Centromere',  'qter\n(Telomere)'),
+                       expand = expansion(0)),
+      scale_x_continuous(breaks = c(0, 1),
+                         labels = c('pter\n(Centromere)',  'qter\n(Telomere)'),
+                         expand = expansion(0))
+  )) +
+  theme(legend.position = 'none',
         plot.background = element_blank(),
-        axis.ticks = element_line(color = "black"),
-        axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 11),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.ticks.y = element_blank(),
         strip.background = element_rect(fill = NA),
-        legend.text = element_text(color = 'black', size = 11),
+        axis.title.x = element_blank(),
+        legend.key = element_blank(),
+        legend.background = element_blank(),
+        legend.title = element_blank(),
         strip.clip = 'off',
-        strip.text = element_text(color = 'black', size =13, face = 'bold'),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed')) -> p
-ggsave('sf5_b.pdf', p, width = 4.2, height = 3.82)
+        legend.text = element_text(size = 11),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'))
+
+ggsave('sf5_b.pdf', p, width = 4, height = 6.77, bg = 'transparent', device = cairo_pdf)
 

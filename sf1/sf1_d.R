@@ -1,76 +1,40 @@
-library(data.table)
 library(tidyverse)
 library(pals)
+library(ggnewscale)
+library(ggalluvial)
 
-samps <- c('ESC (2i)','EpiLC','d2PGCLC','d4c7PGCLC','GSC',
-           'ESC (serum)', 'Neural progenitors (NPC)', 'Cortical neurons (CN)',
-           sprintf('Day %d with OSKM', c(6,4,2)),'B cell with C/EBP\u03B1 (B\u03B1)',
-           'Cardiac mesoderm (CM)', 'Cardiac progenitors (CPC)',
-           'Primitive cardiomyocytes (PCM)', 'Ventricular cardiomyocytes (VCM)')
-rnm <- function(x) {
-  #x %>%
-  #  sub('C ', 'Cs ', .) %>%
-  #  sub('C$', 'Cs', .) %>%
-  #  sub("^(.*[A-Z])\\)", '\\1s)', .)
-  x <- sub('ESC', 'mESC', x)
-  x <- case_when(x == 'ESC' ~ 'mESC',
-                 x == 'd2PGCLC' ~ 'd2 mPGCLC',
-                 x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
-                 T ~ x)
-}
-samps <- rnm(samps)
+samps <- c("ESC", "EpiLC", "d2PGCLC", "d4c7PGCLC", "GSC") 
 
-clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
-                   stepped3(12)[-4]), samps)
-
+pal <- c("#ff0029", "#377eb8", "#66a61e", "#984ea3", "#00d2d5", "#ff7f00", "#af8d00", "#7f80cd", "#b3e900", "#c42e60", "#a65628", "#f781bf", "#8dd3c7", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#fccde5", "#bc80bd", "#ffed6f", "#c4eaff", "#cf8c00", "#1b9e77", "#d95f02", "#e7298a", "#e6ab02", "#a6761d", "#0097ff", "#00d067", "#f43600", "#4ba93b", "#5779bb", "#927acc", "#97ee3f", "#bf3947", "#9f5b00", "#f48758", "#8caed6", "#f2b94f", "#eff26e", "#e43872", "#d9b100", "#9d7a00", "#698cff", "#d9d9d9", "#00d27e", "#d06800", "#009f82", "#c49200", "#cbe8ff", "#fecddf", "#c27eb6", "#8cd2ce", "#c4b8d9", "#f883b0", "#a49100", "#f48800", "#27d0df", "#a04a9b")
 load('../data/compscore/100kb.rda')
-dat.score <- c(mats$mm10, mats$hg38) %>%
-  lapply(function(m) {
-    na.omit(m) %>%
-      pivot_longer(everything(), names_to = 'x', values_to = 'y') %>% 
-      dplyr::filter(!grepl('_', x)) 
-  }) %>%
-  rbindlist(idcol = 'study') %>%
-  mutate(x = case_when(x == 'Ba' ~ 'B cell with C/EBP\u03B1 (B\u03B1)',
-                       x == 'CM' ~ 'Cardiac mesoderm (CM)',
-                       x == 'CPC' ~ 'Cardiac progenitors (CPC)',
-                       x == 'PCM' ~ 'Primitive cardiomyocytes (PCM)',
-                       x == 'VCM' ~ 'Ventricular cardiomyocytes (VCM)',
-                       x == 'ESC' & study == 'Nagano' ~ 'ESC (2i)',
-                       x == 'ESC' & study == 'Bonev2017' ~ 'ESC (serum)',
-                       x == 'NPC' ~ 'Neural progenitors (NPC)',
-                       x == 'CN' ~ 'Cortical neurons (CN)',
-                       T ~ x) %>%
-           sub('^D([0-9])', 'Day \\1 with OSKM', .) %>%
-           rnm() %>%
-           factor(samps),
-         study = c(Nagano = 'Germline', Bonev2017 = 'Neurogenesis',
-                   Stadhouders2018 = 'B cell reprogramming',
-                   Zhang2019 = 'Cardiogenesis')[study] %>%
-           factor(c('Germline', 'Neurogenesis', 'B cell reprogramming', 'Cardiogenesis'))) %>%
-  na.omit()
+dat <- mats$mm10$Nagano[,samps] %>% 
+  na.omit() %>%
+  mutate_all(function(x) ifelse(x > 0, 'A', 'B')) %>%
+  count(across(all_of(samps))) %>%
+  ungroup() %>% 
+  unite('grp', all_of(samps), remove = F) %>%
+  mutate(n = 100 * n / sum(n)) %>%
+  to_lodes_form(axes = samps) %>%
+  mutate(x = as.character(x) %>% sub('PGCLC', ' mPGCLC', .) %>% sub('ESC','mESC', .) %>% fct_inorder())
 
-ggplot(dat.score, aes(x = x, y = y)) +
-  geom_hline(yintercept = 0, color = 'grey70') +
-  geom_violin(aes(fill = x), alpha = .5, color = NA) +
-  geom_boxplot(aes(fill = x, color = x), width = .15) +
-  stat_summary(geom = "crossbar", width = 0.1, fatten = 0, color = "white", 
-               fun.data = function(x) return(c(y = median(x), ymin = median(x), ymax = median(x)))) +
-  facet_grid(.~study, scales = 'free_x', space = 'free_x') +
-  coord_cartesian(ylim = c(-2.5, 2.5)) +
-  scale_y_continuous('Compartment score') +
-  scale_fill_manual(values = clrs) +
-  scale_color_manual(values = clrs) +
-  theme(legend.position = "none",
-        plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.title.x = element_blank(),
+ggplot(dat, aes(x = x, y = n, alluvium = alluvium, stratum = stratum)) +
+  geom_alluvium(aes(fill = grp), alpha = .8) +
+  scale_fill_manual(values = pal) +
+  new_scale_fill() +
+  geom_stratum(aes(fill = stratum), color ='black', alpha = .3) +
+  scale_fill_manual(values = c(A = 'white', B = 'black')) +
+  geom_text(stat = "stratum", aes(label = stratum)) +
+  ylab('% of bins') +
+  scale_y_continuous(expand = expansion(.01)) +
+  theme(plot.background = element_blank(),
+        legend.position = 'none',
+        panel.background = element_blank(),
+        strip.background = element_rect(fill = 'black'),
+        strip.text = element_text(color = 'white', size = 11),
         panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.ticks.y = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
-        strip.clip = 'off',
+        axis.ticks = element_blank(),
+        axis.title.x = element_blank(),
         axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid = element_blank())  -> p
-ggsave('sf1_d.pdf', p, width = 11.33, height = 4, device = cairo_pdf, bg = 'transparent')
+        panel.grid = element_blank()) -> p
+ggsave('sf1_d.pdf', p, height = 3.7, width = 4.5)

@@ -1,76 +1,60 @@
 library(tidyverse)
-library(pals)
-library(cowplot)
-library(patchwork)
-library(scales)
-library(ggrepel)
-load('../data/contactdecay/differentiation.rda')
 
-samps <- c('ESC (2i)','EpiLC','d2PGCLC','d4c7PGCLC','GSC',
-           'ESC (serum)', 'Neural progenitors', 'Cortical neurons',
-           'Day 6','Day 4','Day 2','B\u03B1',
-           'Cardiac mesoderm', 'Cardiac progenitors',
-           'Primitive cardiomyocytes', 'Ventricular cardiomyocytes')
-
+samps <- c('ESC', 'EpiLC','d2PGCLC', 'd4c7PGCLC', 'GSC')
+clrs <- setNames(tableau20(9)[seq(1,9,2)], samps)
 rnm <- function(x) {
-  sub('ESC', 'mESC', sub('PGCLC', ' mPGCLC', x))
+  case_when(x == 'ESC' ~ 'mESC',
+            x == 'd2PGCLC' ~ 'd2 mPGCLC',
+            x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
+            T ~ x)
 }
 
-samps <- rnm(samps)
+load('../data/tads/10.methods.rda')
 
-clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
-                   stepped3(16)[-4]), samps)
-
-dat <- o %>%
-  Map(function(x, k) {
-    d <- bind_rows(x, .id = 's')
-    if (k == 'der') select(d, sep = s_bp, y = slope, s)
-    else select(d, sep = s_bp, y = balanced.avg, s)
-  }, ., names(.)) %>%
-  bind_rows(.id = 'k') %>%
-  separate(s, c('study', 'x'), '/') %>%
-  mutate(x = case_when(x == 'Ba' ~ 'B\u03B1',
-                       x == 'CM' ~ 'Cardiac mesoderm',
-                       x == 'CPC' ~ 'Cardiac progenitors',
-                       x == 'PCM' ~ 'Primitive cardiomyocytes',
-                       x == 'VCM' ~ 'Ventricular cardiomyocytes',
-                       x == 'ESC' & study == 'Nagano' ~ 'ESC (2i)',
-                       x == 'ESC' & study == 'Bonev2017' ~ 'ESC (serum)',
-                       x == 'NPC' ~ 'Neural progenitors',
-                       x == 'CN' ~ 'Cortical neurons',
-                       T ~ x) %>%
-           sub('^D', 'Day ', .) %>%
-           rnm() %>%
-           factor(samps),
-         study = c(Nagano = 'Germline', Bonev2017 = 'Neural',
-                   Stadhouders2018 = 'Reprogram',
-                   Zhang2019 = 'Cardiac')[study] %>%
-           factor(c('Germline', 'Neural', 'Reprogram', 'Cardiac'))) %>%
-  na.omit()
-
-
-dat[dat$k == 'der',] %>%
-  ggplot(aes(x = sep, y = y, color = x)) +
-  geom_line(alpha = .8) +
-  geom_label_repel(aes(label = x), data = ~subset(., x == 'd4c7 mPGCLC' & between(sep, 5e5,5.5e5)),
-                   nudge_x = -.5, nudge_y = -.5) +
-  scale_color_manual(values = clrs) +
-  scale_x_log10(breaks = 10^(4:8),
-                labels = c('10kb', '100kb', '1mb', '10mb', '100mb')) +
-  facet_wrap(~'Rate of contact probability decay') +
-  labs(x = 'Genomic separation, s', y = 'Derivative of P(s)') +
-  coord_cartesian(xlim = c(1e4, 1e7),
-                  ylim = c(-2.7, .1)) +
-  theme(legend.position = 'none',
-        plot.background = element_blank(),
+d %>%
+  count(samp, method) %>%
+  mutate(samp = factor(samp, samps)) %>%
+  na.omit() %>%
+  group_by(method) %>%
+  mutate(idx = as.character(length(samps) - rank(n) + 1)) %>%
+  ungroup() %>%
+  arrange(idx) %>%
+  mutate(rank = c('1' = 'Most boundaries',
+                  '2' = '2nd most',
+                  '3' = '3rd most')[idx] %>%
+           fct_inorder(),
+         samp = factor(samp, samps)) %>%
+  na.omit() %>%
+  group_by(samp) %>%
+  arrange(idx) %>%
+  mutate(y = 1:n()) %>%
+  ggplot(aes(x = samp, y = y)) +
+  #geom_label(aes(color = rank, label = idx), label.r = unit(.5, "lines"), 
+  #           fontface = 'bold', label.size = .6) +
+  geom_point(aes(color = rank), size = 3) +
+  scale_color_manual(values = c('#FAD649', '#C0C0C0', '#C49A6D')) +
+  scale_y_continuous('# of TAD callers', breaks = c(2,4,6,8,10)) +
+  facet_grid(.~'Insulation ranking') +
+  scale_x_discrete(labels = rnm) +
+  coord_cartesian(clip = 'off') +
+  theme(plot.background = element_blank(),
         panel.background = element_blank(),
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.ticks.y = element_blank(),
         axis.line.x = element_line(color = 'black'),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color=  'grey70', linetype = 'dashed'),
+        axis.title.x = element_blank(),
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.key = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
-        axis.text.x = element_text(angle = 30, hjust = 1,),
-        panel.grid = element_blank()) -> p
+        axis.ticks.y = element_blank(),
+        legend.text = element_text(color = 'black', size = 11),
+        strip.background = element_rect(fill = NA),
+        strip.clip = 'off',
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        #legend.position = c(1,1),
+        #legend.justification = c(1,1),
+        #legend.position = 'bottom',
+        strip.text = element_text(color = 'black', size = 13, face =  'bold')) -> p
+  ggsave('f2_g.pdf', p, height = 3.1, width = 5)
 
-ggsave('f2_g.pdf', height = 2.93, width = 4)

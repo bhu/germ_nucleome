@@ -1,146 +1,236 @@
 library(data.table)
 library(tidyverse)
-library(geometry)
+library(CAGEfightR)
+library(pbapply)
+library(InteractionSet)
 library(pals)
-library(ggh4x)
 library(ggpubr)
+library(ggdist)
+library(TxDb.Mmusculus.UCSC.mm10.knownGene)
+txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
-load('../data/compscore/100kb.rda')
-samps <- c('ESC','EpiLC','d2PGCLC','d4c7PGCLC','GSC','GSCLC')
-sampss <- c('ESC (2i)','EpiLC','d2PGCLC','d4c7PGCLC','GSC',
-            'ESC (serum)', 'NPC','CN',
-            'Day 6','Day 4','Day 2','B\u03B1',
-            'CM','CPC','PCM','VCM')
+# register(MulticoreParam(workers=44))
+# ds <- list.files('../data/netcage', pattern = '.bw', full.names = T) %>%
+#   tibble(f = .) %>%
+#   mutate(b = basename(f)) %>%
+#   separate(b, c('Name', 'sign', NA), '\\.') %>%
+#   mutate(sign = c(plus = 'BigWigPlus', minus = 'BigWigMinus')[sign]) %>%
+#   pivot_wider(names_from = "sign", values_from = "f") %>%
+#   mutate(nm = Name) %>%
+#   column_to_rownames("nm") %>%
+#   DataFrame()
+# 
+# bws <- list(plus = ds$BigWigPlus,
+#             minus = ds$BigWigMinus) %>%
+#   lapply(function(x) {
+#     BigWigFileList(x) %>%
+#       `names<-`(ds$Name)
+#   })
+# gn <- fread('../data/resources/mm10.chrom.sizes') %>%
+#   {Seqinfo(seqnames = .$V1, seqlengths = .$V2, genome = "mm10")}
+# 
+# 
+# ctss <- quantifyCTSSs(plusStrand = bws$plus,
+#                       minusStrand = bws$minus,
+#                       design = ds,
+#                       genome = gn)
+# 
+# ctss <- calcTPM(ctss) %>%
+#   calcPooled(inputAssay = "TPM") %>%
+#   calcSupport(inputAssay = "counts",
+#               outputColumn = "support",
+#               unexpressed = 0)
+# sctss <- subset(ctss, support > 0)
+# sctss <- calcTPM(sctss)
+# 
+# tcs <- clusterUnidirectionally(sctss,
+#                                pooledCutoff = 0.1,
+#                                mergeDist = 20)
+# 
+# bcs <- clusterBidirectionally(ctss, balanceThreshold = 0.8) %>%
+#   calcBidirectionality(samples = ctss)
+# enhs <- subset(bcs, bidirectionality > 0)
+# 
+# tcs <- quantifyClusters(ctss,
+#                         clusters = tcs,
+#                         inputAssay="counts") %>%
+#   calcTPM(totalTags = "totalTags") %>%
+#   calcSupport(inputAssay = "TPM",
+#               outputColumn = "support",
+#               unexpressed = 1)
+# 
+# enhs <- quantifyClusters(ctss,
+#                          clusters = enhs,
+#                          inputAssay="counts") %>%
+#   calcTPM(totalTags = "totalTags") %>%
+#   calcSupport(inputAssay = "TPM",
+#               outputColumn = "support",
+#               unexpressed = 1)
+# 
+# tcs2 <- subset(tcs, support > 0)
+# enhs2 <- subset(enhs, support > 0)
+# 
+# tcs2 <- assignTxType(tcs2, txModels = txdb)
+# enhs2 <- assignTxType(enhs2, txModels = txdb)
+# 
+# enhs2 <- subset(enhs2, txType %in% c("intergenic", "intron"))
+# 
+# rowRanges(tcs2)$clusterType <- "TSS"
+# rowRanges(enhs2)$clusterType <- "enhancer"
+# 
+# colData(enhs2) <- colData(tcs2)
+# SE <- combineClusters(object1 = tcs2, 
+#                       object2 = enhs2,
+#                       removeIfOverlapping = "object1")
+# 
+# rowRanges(SE)$clusterType <- factor(rowRanges(SE)$clusterType,
+#                                     levels = c("TSS", "enhancer"))
+# 
+# SE <- calcTPM(SE, totalTags="totalTags")
+# 
+# TCBC_pairs <- findLinks(SE, 
+#                         inputAssay = "TPM",
+#                         maxDist = 1000000, 
+#                         directional = "clusterType",
+#                         method = "kendall")
+load('../data/netcage/cagefightr.rda')
+
+# lthres <- .5
+# ethres <- 1
+# 
+# ses <- rowRanges(SE) %>% split(., .$clusterType)
+# o <- colnames(SE) %>%
+#   setNames(., .) %>%
+#   lapply(function(s) {
+#     gr <- rowRanges(SE) %>% .[assay(SE, 'TPM')[,s] > ethres] %>% split(., .$clusterType)
+#     l <- TCBC_pairs[TCBC_pairs$estimate > lthres]
+#     grl <- sapply(gr, length)
+#     obs <- (overlapsAny(anchors(l)$first, gr$TSS) & 
+#               overlapsAny(anchors(l)$second, gr$enhancer)) |
+#       (overlapsAny(anchors(l)$second, gr$TSS) & 
+#          overlapsAny(anchors(l)$first, gr$enhancer))
+#     
+#     oo <- pblapply(1:100, function(ii) {
+#       l <- TCBC_pairs[TCBC_pairs$estimate > lthres] %>%
+#         sample(replace = T) 
+#       obs <- (overlapsAny(anchors(l)$first, gr$TSS) & 
+#                 overlapsAny(anchors(l)$second, gr$enhancer)) |
+#         (overlapsAny(anchors(l)$second, gr$TSS) & 
+#            overlapsAny(anchors(l)$first, gr$enhancer))
+#       sum(obs)
+#     })
+#     
+#     obs <- sum(obs)
+#     rand <- pblapply(1:100000, function(i) {
+#       gr <- list(TSS = sample(ses$TSS, grl['TSS']),
+#                  enhancer = sample(ses$enhancer, grl['enhancer']))
+#       k <- (overlapsAny(anchors(l)$first, gr$TSS) & 
+#               overlapsAny(anchors(l)$second, gr$enhancer)) |
+#         (overlapsAny(anchors(l)$second, gr$TSS) & 
+#            overlapsAny(anchors(l)$first, gr$enhancer))
+#       sum(k)
+#     })
+#     list(obs, rand)
+#   })
+
+load('../data/netcage/permutation.rda')
 rnm <- function(x) {
-  #x %>%
-  #  sub('C ', 'Cs ', .) %>%
-  #  sub('^(.*[CMN])$', '\\1s', .) 
-  x <- sub('ESC', 'mESC', x)
-  x <- case_when(x == 'ESC' ~ 'mESC',
-                 x == 'd2PGCLC' ~ 'd2 mPGCLC',
-                 x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
-                 T ~ x)
+  case_when(x == 'ESC' ~ 'mESC',
+            x == 'd2PGCLC' ~ 'd2 mPGCLC',
+            x == 'd4c7PGCLC' ~ 'd4c7 mPGCLC',
+            T ~ x)
 }
-sampss <- rnm(sampss)
-clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
-                   stepped3(12)[-4]), sampss)
-light <- paste0(clrs, 'aa')
-dd <- list.files('../data/3dmods', pattern = 'xyz', full.names = T) %>% 
-  setNames(., sub('.xyz', '', basename(.))) %>% 
-  tibble(f = .) %>%
-  mutate(s = sub('.xyz', '', basename(f))) %>%
-  separate(s, c('x', 'chr'), '_') %>% 
-  mutate(study = case_when(x %in% as.character(1:6) ~ 'Nagano',
-                           x %in% c('ES','CN','NPC') ~ 'Bonev2017',
-                           x %in% c(paste0('D', c(2,4,6,8)), 'PSC', 'B', 'Ba') ~ 'Stadhouders2018',
-                           T ~ 'Zhang2019'),
-         x = case_when(x %in% as.character(1:6) ~ samps[as.integer(x)],
-                       T ~ sub('^ES$', 'ESC', x)),
-         chr = case_when(study == 'Zhang2019' ~ sub('23', 'X', chr),
-                         T ~ sub('20', 'X', chr)),
-         gn = case_when(study == 'Zhang2019' ~ 'hg38',
-                        T ~ 'mm10')) %>%
-  split(.,.$study) %>%
-  lapply(function(x) {
-    split(x, x$x) %>%
-      lapply(function(y) {
-        split(y, y$chr) %>%
-          lapply(function(z) {
-            dat <- fread(z$f)
-            k <- mutate(bins[[z$gn]], s = mats[[z$gn]][[z$study]][[z$x]]) %>%
-              dplyr::filter(chrom == paste0('chr', z$chr)) %>%
-              na.omit() %>%
-              pull(start) %>%
-              {c(., as.integer(. + 5e4))}
-            m <- dat[dat$V1 %in% k, 2:4] %>% as.matrix()
-            d <- dist(m) %>% as.matrix()
-            d[upper.tri(d, diag = T)] <- NA
-            rg2.raw <- sum(d^2,na.rm = T)*2 / (2 * (nrow(d)^2))
-            rh_1.raw <- sum(1/d,na.rm = T)*2/nrow(d)^2
-            ratio.raw <- sqrt(rg2.raw)*rh_1.raw
-            l <- sapply(1:(nrow(m) - 1), function(i) {
-              sqrt(sum((m[i,] - m[i + 1,])^2))
-            }) %>% sum()
-            d <- d / l
-            rg2 <- sum(d^2,na.rm = T)*2 / (2 * (nrow(d)^2))
-            rh_1 <- sum(1/d,na.rm = T)*2/nrow(d)^2
-            ratio <- sqrt(rg2)*rh_1
-            tibble(v = convhulln(m / l, output.options = 'FA')$vol,
-                   v.raw = convhulln(m, output.options = 'FA')$vol,
-                   rg.raw = sqrt(rg2.raw),
-                   rh.raw = 1/rh_1.raw,
-                   rg = sqrt(rg2),
-                   rh = 1/rh_1,
-                   ratio = ratio,
-                   ratio.raw = ratio.raw)
-          }) %>%
-          bind_rows(.id = 'chr')
-      }) %>%
-      bind_rows(.id = 'x')
-  }) %>%
-  bind_rows(.id = 'study') 
+samps <- c('ESC', 'EpiLC', 'd4c7PGCLC','GSC') 
 
-ddd <- dd %>%
-  mutate(samp = case_when(x == 'Ba' ~ 'B\u03B1',
-                          x == 'ESC' & study == 'Nagano' ~ 'ESC (2i)',
-                          x == 'ESC' & study == 'Bonev2017' ~ 'ESC (serum)',
-                          T ~ sub('^D', 'Day ', x)) %>%
-           rnm() %>%
-           factor(sampss),
-         study = c(Nagano = 'Germline', Bonev2017 = 'Neurogenesis',
-                   Stadhouders2018 = 'B cell reprogramming',
-                   Zhang2019 = 'Cardiogenesis')[study] %>%
-           factor(c('Germline', 'Neurogenesis', 'B cell reprogramming', 'Cardiogenesis'))) %>%
-  arrange(samp, chr) %>%
-  na.omit()
+signif.num <- function(x) {
+  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
+         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
+         symbols = c("****", "***", "**", "*", "ns"))
+}
 
 
-anns <- split(ddd, ddd$study) %>%
-  lapply(function(d) {
-    compare_means(v ~ samp, paired = T, data = d, method = 'wilcox.test') %>%
-      mutate(x1 = as.numeric(factor(group1, sampss)),
-             x2 = as.numeric(factor(group2, sampss))) %>%
-      dplyr::filter(x2 - x1 == 1) %>%
-      mutate(idx = 1:n(),
-             y = case_when(d$study[1] == 'Germline' ~ 10^(-4.1 + idx * .1),
-                           d$study[1] == 'Neurogenesis' ~ 10^(-4.3 + idx * .1),
-                           d$study[1] == 'B cell reprogramming' ~ 10^(-3.7 - idx * .1),
-                           d$study[1] == 'Cardiogenesis' ~ 10^(-5.55 - idx * .1)))
-  }) %>%
-  bind_rows(.id = 'study') %>%
-  mutate(study = fct_inorder(study))
+clrs <- dark <- setNames(tableau20(11)[seq(1,10,2)[-3]], samps)
+light <- setNames(tableau20(11)[seq(2,10,2)[-3]], samps)
+pd <- lapply(o, function(x) {
+  unlist(x$rand) %>%
+    tibble(v = .) %>%
+    mutate(i = 1:n(),
+           obs = x$obs)
+}) %>% bind_rows(.id = 'samp') %>%
+  mutate(type = sub('_.*', '', samp) %>%
+           factor(rev(samps)),
+         rep = sub('.*_', '', samp)) %>%
+  na.omit() 
 
-ggplot(ddd, aes(x = samp, y = v)) +
-  geom_line(aes(group = chr), color = 'grey70') +
-  geom_boxplot(outlier.colour = NA, aes(color = samp, fill = samp)) +
-  stat_summary(geom = "crossbar", width = 0.7, fatten = 0, color = "white", 
-               fun.data = function(x) return(c(y = median(x), ymin = median(x), ymax = median(x)))) +
-  geom_segment(aes(x = group1, xend = group2, y = y, yend = y),
-               data = anns, inherit.aes = F) +
-  geom_text(aes(x = idx + .5, y = y, label = p.signif),
-            data = anns, inherit.aes = F, vjust = -.3) +
-  scale_color_manual(values = paste0(clrs, '99')) +
-  scale_fill_manual(values = paste0(clrs, 'cc')) +
-  #geom_signif(aes(xmin = x1, xmax = x2, annotations = p.signif), y = .000001,
-  #            manual = T, data = anns, inherit.aes = F, tip_length = 0, vjust = -0) +
-  #stat_pvalue_manual(anns, label = 'p.signif', tip.length = 0) +
-  labs(y = 'Volume of chromosome territories (a.u.)') +
-  scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
-               labels = scales::trans_format("log10", scales::math_format(10^.x)),
-               expand = expansion(c(.01,.01))) +
-  #coord_cartesian(ylim = c(5e-6, 1.5e-4)) +
-  facet_grid(.~study, scales = 'free', space = 'free') +
-  theme(plot.background = element_blank(),
-        panel.background = element_rect(color = 'black', size = 1, fill = NA),
+ggplot() +
+  stat_slab(aes(x = type, y = v, group = samp, fill = type),  side = 'left',
+               scale = .5, data = pd[pd$rep == '1',], position = position_nudge(x = -.1), alpha = .8) +
+  stat_slab(aes(x = type, y = v, group = samp, fill = type), side = 'right',
+               scale = .5, data = pd[pd$rep == '2',], position = position_nudge(x = +.1), alpha = .8) +
+  coord_flip(xlim = c(1,4.1)) +
+  scale_color_manual(values = dark) +
+  scale_fill_manual(values = light) +
+  geom_point(aes(x = type, y = obs, color = type, group = samp), shape = 18, size = 3,
+             data = distinct(pd, samp, type, obs), position = position_dodge(.4)) +
+  labs(y = '# of co-transcribed E-P pairs') +
+  facet_grid(.~'NET-CAGE co-expression') +
+  scale_x_discrete(labels= rnm) +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
         panel.grid = element_blank(),
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
         #axis.line.x = element_line(color = 'black'),
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed'),
         axis.ticks.y = element_blank(),
-        legend.position = 'none',
-        axis.text.x = element_text(angle = 15, hjust = 1),
-        axis.title.x = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
         strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = "bold")) -> p
-ggsave('sf3_b.pdf', p, height = 6, width = 13, device = cairo_pdf, bg = 'transparent')
+        strip.clip = 'off',
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        axis.title.y = element_blank()) -> p
+ggsave('sf3_b_l.pdf',p, height = 4.9, width = 4.6)
+
+
+pd2 <- lapply(o, function(x) {
+  tibble(obs = x$obs,
+         exp = mean(unlist(x$rand)),
+         std = sd(unlist(x$rand)),
+         p_hi = (sum(x$obs < unlist(x$rand)) + 1) / (length(x$rand)+1),
+         p_lo = (sum(x$obs > unlist(x$rand)) + 1) / (length(x$rand)+1),
+         n = length(x$rand))
+}) %>% bind_rows(.id = 'samp') %>%
+  mutate(type = factor(sub('_.*', '', samp), rev(samps))) %>%
+  na.omit() %>%
+  rowwise() %>%
+  mutate(p = min(2 * p_hi, 2 * p_lo),
+         z = (obs - exp) / std,
+         y.position = (obs / exp) * 1.05,
+         p.signif = as.character(signif.num(p))) %>%
+  ungroup() %>%
+  separate(samp, c('group1', 'group2'), '_', F)
+
+
+ggplot(pd2, aes(x = type, y = obs/exp, group = group2)) +
+  geom_hline(yintercept = 1, color = 'grey70') +
+  geom_point(aes(color = type), position = position_dodge(.7)) +
+  stat_pvalue_manual(pd2, label = 'p.signif', x = 'type',
+                     position = position_dodge(.7), coord.flip = T) +
+  scale_color_manual(values = clrs) +
+  labs(y = 'O/E # of co-expressed E-P pairs') +
+  facet_grid(.~'NET-CAGE associations') +
+  scale_y_log10(limits = c(.8, 1.8), breaks = c(.8,1,1.25, 1.5)) +
+  scale_x_discrete(labels = rnm) +
+  coord_flip() +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
+        panel.grid = element_blank(),
+        #axis.line.x = element_line(color = 'black'),
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.ticks.y = element_blank(),
+        axis.text = element_text(color = 'black', size = 11),
+        strip.background = element_rect(fill = NA),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        strip.clip = 'off',
+        axis.title.y = element_blank()) -> p
+ggsave('sf3_b_r.pdf',p, height = 4.9, width = 5)
 

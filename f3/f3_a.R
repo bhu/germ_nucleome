@@ -30,7 +30,8 @@ d %>%
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
         axis.text = element_blank(),
         axis.ticks = element_blank(),
+        strip.clip = 'off',
         legend.key = element_blank()) -> p
 
-ggsave('f3_a.pdf', p, height = 3, width = 5.5)
+ggsave('f3_a.pdf', p, height = 3, width = 3.5)
 

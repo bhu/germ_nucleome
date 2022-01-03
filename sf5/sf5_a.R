@@ -1,105 +1,83 @@
 library(tidyverse)
-library(mixtools)
-library(patchwork)
 library(pals)
+library(mgcv)
+library(gratia)
 
-dat <- readRDS('../data/peaks/ATAC/fetal_comparison.rds') %>%
-  select(-c(chr, start, end, GSCLC))
+load('../data/tracks/inpnorm.50kb.rda')
 
-samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC', 'd4PGCLC') 
-clrs <- setNames(c(tableau20(9)[seq(1,9,2)], '#81642A'), samps)
-clrs2 <- setdiff(names(dat), samps) %>% 
-  {setNames(rep_along(., 'black'), .)}
+samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
+rnm <- function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))
+samps <- rnm(samps)
+clrs <- setNames(tableau20(12)[seq(1, 10, 2)],  samps)
+clrs2 <- c(setNames(tableau20(12)[seq(1, 10, 2)], paste('p', samps)),
+           setNames(tableau20(12)[seq(2, 10, 2)], paste('t', samps)))
 
-fits <- dat %>%
-  lapply(function(x) {
-    normalmixEM2comp(x[x > 2], mu = c(4, 8), sigsqrd = c(.5, .5), lambda = .5)
-  })
+pd <- c('Laminb1', 'PC1') %>%
+  setNames(., .) %>%
+  lapply(function(m) {
+    d50 %>% 
+      select(chr, start, samp, all_of(m)) %>%
+      mutate(samp = rnm(samp)) %>%
+      pivot_wider(names_from = 'samp', values_from = all_of(m)) %>%
+      mutate(across(-c(chr, start), ~ GSC - .x)) %>%
+      group_by(chr) %>%
+      mutate(x = (1:n())/n()) %>%
+      ungroup() %>%
+      select(all_of(samps), x, chr) %>%
+      select(-GSC) %>%
+      pivot_longer(-c(x, chr), names_to = 'samp', values_to = 'y') %>%
+      split(., .$samp) %>%
+      lapply(function(d) {
+        m <- gam(y ~ s(x, k = 10), data = d, method = 'REML')
+        confint(m, parm = 's(x)', type = 'confidence',  level = .9999,
+                newdata = tibble(x = seq(0, 1, .001))) %>%
+          mutate(x = x$x)
+      }) %>%
+      bind_rows(.id = 'samp') %>%
+      mutate(samp = factor(samp, samps)) 
+  }) %>%
+  bind_rows(.id = 'mark')
 
-s <- 'ESC'
-h <- hist(dat[[s]], 100, plot = F)
-w <- median(diff(h$breaks))
-h <- tibble(x = h$mids, y = h$counts) %>%
-  mutate(grp = case_when(x > fits[[s]]$mu[2] ~ 'More open',
-                         x < fits[[s]]$mu[1] ~ 'Less open',
-                         T ~ 'Intermediate'))
-d <- lapply(1:2, function(i) {
-  tibble(x = h$x, 
-         y = fits[[s]]$lambda[i] * dnorm(h$x, mean = fits[[s]]$mu[i], sd = fits[[s]]$sigma[i]),
-         cmp = i)
-}) %>% 
-  bind_rows() %>%
-  mutate(cmp = c('Less open', 'More open')[cmp] %>% factor(c('More open', 'Less open')))
-
-m <- 2e4
-b <- 0
-
-eclrs <- c('More open' = 'firebrick3',
-           'Less open' = 'steelblue2',
-           'Intermediate' = 'grey50')
-p1 <-  ggplot(mapping = aes(x = x, y = y)) +
-  geom_col(aes(fill = grp), data = h, width = w, alpha = .6, show.legend = F) +
-  geom_line(aes(y = m * y + b, color = cmp), data = d, size = 2, alpha = .5) +
-  scale_color_manual(values = eclrs) +
-  scale_fill_manual(values = eclrs) +
-  scale_y_continuous(expand = expansion(c(0, .05)),
-                     sec.axis = sec_axis(~ (. - b)/m, name = 'Fitted density')) +
-  scale_x_continuous(expand = expansion(0)) +
-  labs(x = 'log2(FPKM + 1)', y = '# of sites') +
-  facet_grid(.~ 'Example fit for mESC') +
-  theme(legend.position = 0:1,
-        legend.justification = 0:1,
-        legend.title = element_blank(),
-        legend.key = element_blank(),
-        legend.background = element_rect(fill = '#ffffff99', color = NA),
-        panel.background = element_blank(),
+p <- pd %>% 
+  filter(samp == 'EpiLC') %>%
+  arrange(mark) %>%
+  mutate(ttl = sub('Laminb1', 'lamin B1', mark) %>%
+           sub('PC1', 'comp. score', .) %>%
+           sprintf('Chromosome-wide \u0394%s', .) %>%
+           fct_inorder()) %>%
+  group_by(mark) %>%
+  mutate(ym = max(abs(est))) %>%
+  ungroup() %>%
+  mutate(y = est * min(ym) / ym) %>%
+  ggplot(aes(x = x, y = est)) +
+  geom_hline(yintercept = 0, color = 'black') +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = .2, color = NA,
+              fill = 'grey50') +
+  geom_line(aes(color = y)) +
+  scale_color_gradientn(colors = clrs[c('EpiLC', 'GSC')], limits = c(-.05, .05),
+                        oob = scales::squish) +
+  facet_grid(ttl ~ 'In vitro', scale = 'free_y') +
+  scale_x_continuous(breaks = c(0, 1),
+                     labels = c('pter\n(Centromere)',  'qter\n(Telomere)'),
+                     expand = expansion(0)) +
+  scale_y_continuous('GSC - EpiLC', breaks = scales::pretty_breaks(3)) +
+  theme(legend.position = 'none',
         plot.background = element_blank(),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
         panel.grid = element_blank(),
-        axis.line.x = element_line(color = 'black'),
+        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
         axis.ticks.y = element_blank(),
         strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'), 
-        axis.text = element_text(color = 'black', size = 11),
-        legend.text = element_text(color = 'black', size = 11),
-        axis.title.y.right = element_text(vjust = 1.5),
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'))
-  
-p2 <- fits %>%
-  Map(function(x, samp) {
-    dat[[samp]] %>%
-      {tibble(low = sum(. < x$mu[1]),
-              high = sum(. > x$mu[2]))}
-  }, ., names(.)) %>%
-  bind_rows(.id = 'samp') %>%
-  mutate(r = high / low) %>%
-  arrange(r) %>%
-  mutate(clr = c(clrs, clrs2)[samp],
-         samp = case_when(samp == 'facialprominence' ~ 'craniofacial prominence',
-                          samp == 'neuraltube' ~ 'neural tube',
-                          T ~ samp) %>%
-           sub('ESC', 'mESC', .) %>%
-           sub('PGC', ' mPGC', .) %>%
-           fct_inorder()) %>%
-  ggplot(aes(x = samp, y = r)) +
-  geom_hline(yintercept = 1) +
-  geom_linerange(aes(ymin = r, ymax = 1, color = clr)) +
-  geom_point(aes(color = clr)) +
-  scale_color_identity() +
-  ylab('# of more open sites / less') +
-  facet_grid(.~ 'Comparison to mouse fetal samples') +
-  coord_flip() +
-  theme(plot.background = element_blank(),
-        panel.background = element_blank(),
-        axis.title.y = element_blank(),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'), 
-        axis.text = element_text(color = 'black', size = 11),
-        legend.text = element_text(color = 'black', size = 11),
-        panel.grid = element_blank(),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.ticks = element_blank(),
-        axis.line.x = element_line(color = 'black'),
-        strip.background = element_rect(fill = NA))
+        axis.title.x = element_blank(),
+        legend.key = element_blank(),
+        legend.background = element_blank(),
+        legend.title = element_blank(),
+        strip.clip = 'off',
+        legend.text = element_text(size = 11),
+        plot.margin = margin(5,35,5,5),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold')) 
 
-{ wrap_plots(p1, p2, widths = c(1,1.2)) &
-  theme(plot.background = element_blank()) } %>%
-  ggsave('sf5_a.pdf', ., height = 4, width = 9) 
+  
+ggsave('sf5_a.pdf', p, width = 4, height = 6.77, bg = 'transparent', device = cairo_pdf)
+

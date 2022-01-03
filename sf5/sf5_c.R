@@ -1,36 +1,65 @@
+library(data.table)
 library(tidyverse)
-library(matrixStats)
+library(rtracklayer)
+library(ggpubr)
+library(gghalves)
 library(pals)
-library(dendextend)
-library(ComplexHeatmap)
 
-load("../data/peaks/ATAC/public.fpkm.rda")
-samps <- c("ESC", "EpiLC", "d2PGCLC", "d4PGCLC", "d4c7PGCLC", "GSC", "MEF")
+pks <- list.files('../data/peaks/K9me3', pattern = 'bed$', full.names = T) %>% 
+  setNames(.,sub('.bed', '', basename(.))) %>%
+  .[c('ESC','EpiLC','d2PGCLC','d4c7PGCLC','GSC')] %>%
+  lapply(function(x) {
+    fread(x, col.names = c('chr','start','end')) %>%
+      mutate(start = start + 1, end = end + 1) %>% 
+      makeGRangesFromDataFrame()
+  }) 
 
-mat <- atac.my.pub.pks %>% 
-  select(matches('BDF121|MEF_Gia|GSC_AAG')) %>%
-  slice_max(rowVars(as.matrix(.)), n = 2e3) %>%
-  mutate(idx = 1:n()) %>%
-  pivot_longer(-idx, names_to = 'samp', values_to = 'v') %>%
-  mutate(samp = sub('_[0-9]$', '', samp)) %>%
-  group_by(idx, samp) %>%
-  summarise(v = mean(v), .groups = 'drop') %>%
-  pivot_wider(names_from = 'samp', values_from = 'v') %>%
-  select(-idx) %>%
-  {names(.) <- sub('_.*', '', names(.)) ; .} %>%
-  .[,samps] %>%
-  `colnames<-`(paste0(samps, 's')) %>%
-  t()
+rmsk <- fread("http://hgdownload.cse.ucsc.edu/goldenpath/mm10/database/rmsk.txt.gz",
+              col.names = c('bin', 'swScore', 'milliDiv', 'milliDel',
+                            'milliIns', 'chr', 'start', 'end', 'left',
+                            'strand',  'name', 'class', 'family', 
+                            'repStart', 'repEnd', 'repLeft', 'id'))
 
-dend <- dist(t(mat)) %>% 
-  hclust() %>%
-  as.dendrogram() %>%
-  color_branches(7, col = kelly(8)[-1])
+rr <- makeGRangesFromDataFrame(rmsk)
+i <- Reduce(intersect, pks)
+u <- Reduce(union, pks)
 
-pdf('sf5_c.pdf', width = 12, height = 2.65, bg = 'transparent')
-ht <- Heatmap(mat, show_column_names = F, cluster_rows = F, col = viridis(100),
-              use_raster = T, raster_quality = 20, cluster_columns = dend, column_split = 7,
-              heatmap_legend_param = list(title = 'log2(FPKM + 1)', direction = "horizontal",
-                                          title_position = "topcenter", title_gp = gpar(fontface = 'plain')))
-draw(ht, background = "transparent", padding = unit(c(2, 2, 2, 10), "mm"))
-dev.off()
+d <- rmsk %>%
+  mutate(kind = case_when(overlapsAny(rr, i) ~ 'Constitutive',
+                          overlapsAny(rr, u) ~ 'Dynamic',
+                          T ~ 'None'),
+         age = milliDiv / 4.5e-9 / 1e3) %>%
+  filter(!(class %in% c('Simple_repeat', 'Low_complexity')))
+
+anns <- compare_means(age ~ kind, d) %>%
+  mutate(y.position = 1e8 + (1:n() - 1) * 1e7)
+
+clrs <- okabe()[1:3]
+
+d %>%
+  ggplot(aes(x = kind, y = age, color = kind, fill = kind)) +
+  geom_boxplot(position = position_nudge(x = .2), width = .3) +
+  stat_summary(geom = "crossbar", width = 0.2, fatten = 0, color = "white",
+               position = position_nudge(x = .2),
+               fun.data = function(x) c(y = median(x), ymin = median(x), ymax = median(x))) +
+  geom_half_violin(color = NA , alpha = .75) +
+  stat_pvalue_manual(anns, label = 'p.signif', inherit.aes = F) +
+  scale_y_continuous(breaks = c(0, 5e7, 1e8),
+                     limits = c(0, 1.3e8),
+                     expand = expansion(0),
+                     labels = c('0', '50', '100')) +
+  labs(x = 'H3K9me3 enrichment across cell types', y = 'Estimated age (Million years)') +
+  scale_color_manual(values = clrs) +
+  scale_fill_manual(values = clrs) +
+  facet_wrap(~'Age of H3K9me3-marked transposons') +
+  theme(legend.position = 'none',
+        panel.background = element_blank(),
+        plot.background = element_blank(),
+        panel.grid = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.line.x = element_line(color = 'black'),
+        strip.background = element_blank(),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
+        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed')) -> p
+ggsave('sf5_c.pdf', p, height = 6.6, width = 5)

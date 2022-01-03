@@ -1,52 +1,70 @@
 library(tidyverse)
-library(ppcor)
+library(tximport)
+library(rtracklayer)
 library(pals)
+library(ggh4x)
+library(ggtext)
 
-samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
+samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC') 
+rnm <- function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))
+samps <- rnm(samps)
+clrs <- setNames(pals::tableau20(9)[seq(1, 9, 2)], samps)
 
-load('../data/tracks/inpnorm.50kb.rda')
-d50 %>%
-  dplyr::select(-c(chr, start, end, PC1)) %>%
-  split(., .$samp) %>%
-  lapply(function(x) {
-    x %>%
-      dplyr::select(-samp) %>%
-      {tibble(mark = names(.),
-              partial = pcor(., method = 'pearson')$estimate[which(names(.) == 'Laminb1'),],
-              full = cor(., method = 'pearson')['Laminb1',])}
-  }) %>%
-  bind_rows(.id = 'samp') %>%
-  mutate(samp = factor(samp, samps)) %>%
+g <- import.gff3('../data/resources/gencode.vM25.annotation.gff3.gz')
+e2g <- g[g$type == 'gene'] %>%
+  {setNames(.$gene_name, .$gene_id)}
+tx2gene <- g[g$type == 'transcript'] %>%
+  as_tibble() %>%
+  dplyr::select(transcript_id, gene_id) %>%
+  distinct() 
+
+fs <- list.files('../data/rna', full.names = T) %>%
+  {setNames(file.path(., 'quant.sf'), basename(.))}
+mdat <- data.frame(s = names(fs)) %>%
+  separate(s, c('type', 'rep'), '_', remove = F) %>%
+  column_to_rownames('s')
+salmon <- tximport(fs, type = "salmon", tx2gene = tx2gene)
+
+scls <- lapply(1:5, function(x) {
+  scale_x_continuous(breaks = 1:5, labels = case_when(x == 1 ~samps, T ~ rep('', 5)))
+})
+
+salmon$abundance %>% 
+  as.data.frame() %>%
+  rownames_to_column('name') %>%
+  mutate(name = e2g[name]) %>%
+  filter(name %in% c('Suv39h1', 'Suv39h2', 'Setdb1', 'Ehmt1', 'Ehmt2')) %>%
+  pivot_longer(-name, names_to = 'samp', values_to = 'tpm') %>%
+  mutate(type = sub('_.*', '', samp) %>%
+           rnm() %>%
+           factor(samps),
+         name = sub('Ehmt1', 'GLP', name) %>%
+           sub('Ehmt2', 'G9a', .) %>%
+           factor(., c('Suv39h1', 'Suv39h2', 'Setdb1','GLP', 'G9a')),
+         x = as.numeric(type)) %>%
   na.omit() %>%
-  filter(mark %in% c('K9me3', 'K9me2')) %>%
-  mutate(mark = paste0('H3', mark)) %>%
-  ggplot(aes(x = samp, y = mark, fill = full)) +
-  geom_tile() +
-  geom_text(aes(label = round(full, 2))) +
-  scale_x_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
-  scale_fill_gradientn(expression('Spearman\'s'~rho),
-                       colors = coolwarm(25), limits = c(-1,1),
-                       breaks = c(-1,0,1)) +
-  #guides(fill = guide_colorbar(barwidth = 4.7, barheight = .5, title.position = 'top',
-  #                             frame.linewidth = 1, ticks = F)) +
-  guides(fill = guide_colorbar(barheight = .5, barwidth = 2, ticks = F,
-                               title.position = 'left', title.vjust = 1)) +
-  coord_cartesian(expand = F) +
-  facet_grid(.~'Lamin B1 correlation') +
+  ggplot(aes(x = x, y = log10(tpm), color = type)) +
+  stat_summary(fun = "mean", geom = "line", aes(group = 1), color = 'grey70', alpha = .5) +
+  geom_point() +
+  facet_grid(.~name, scales = 'free_x') +
+  ylab('RPM') +
+  scale_color_manual(values = clrs) +
+  facetted_pos_scales(x = scls) +
+  scale_y_continuous(breaks = log10(c(10,30,100)),
+                     labels = c(10,30,100)) +
+  scale_x_continuous(labels = samps) +
   theme(plot.background = element_blank(),
         panel.background = element_blank(),
+        legend.position = 'none',
+        axis.title.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.x = element_line(color = 'black'),
+        axis.text.x = element_text(angle = 45, hjust = 1),
         axis.text = element_text(color = 'black', size = 11),
-        axis.title = element_blank(),
-        legend.background = element_blank(),
-        legend.key = element_blank(),
-        legend.text = element_text(size = 11),
-        legend.position = c(1,0),
-        legend.direction = 'horizontal',
-        legend.justification = c(1,3),
-        plot.margin = margin(5,5,30,5),
+        #axis.text.x = element_markdown(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
         strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text.x = element_text(angle = 45, hjust = 1)) -> p
-
-ggsave('f5_d.pdf', p, width = 3.5, height = 2.85)
-
+        strip.text = element_text(color = 'black', size = 13, face = 'bold')) -> p
+ggsave('f5_d.pdf', p, height = 2.55, width = 5.5)
+ 

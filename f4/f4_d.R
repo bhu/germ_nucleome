@@ -31,27 +31,30 @@ list.files('../data/peaks/LADs', full.names = T)  %>%
                           samp == 'C2C12_differentiated' ~ 'Myotube',
                           samp == 'C2C12_undifferentiated' ~ 'Myoblast',
                           T ~ sub('_.*', '', samp)) %>%
-           factor(c(samps, 'NPC', 'Astrocyte', 'MEF', 'CM', 'OPC', 'OL', 'Myoblast', 'Myotube'))) %>%
+           factor(rev(c(samps, 'NPC', 'Astrocyte', 'MEF', 'CM', 'OPC', 'OL', 'Myoblast', 'Myotube')))) %>%
   na.omit() %>%
   arrange(study, samp) %>%
-  mutate(clr = case_when(study == 'This study' ~ clrs[as.character(samp)],
+  mutate(study = sub('\\ [0-9]*$', '', study) ,
+         study = case_when(study == 'This study' ~ study,
+                           study == 'Peric-Hupkes' ~ 'P-H',
+                           T ~ substr(study, 1, 1)) %>%
+           fct_inorder(),
+         clr = case_when(study == 'This study' ~ clrs[as.character(samp)],
                          T ~ 'grey30'))  %>%
-  ggplot(aes(x = samp, y = f, fill = clr)) +
+  ggplot(aes(y = samp, x = f, fill = clr)) +
   geom_col(alpha = .8) +
-  facet_grid(. ~study, space = 'free_x', scale = 'free_x') +
-  scale_y_continuous('% of genome in LADs', expand = expansion(c(0, .05)),
+  facet_grid(study ~., space = 'free_y', scale = 'free_y') +
+  scale_x_continuous('% of genome in LADs', expand = expansion(c(0, .05)),
                      breaks = c(0,25,50)) +
   scale_fill_identity() +
-  scale_x_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
+  scale_y_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
   theme(plot.background = element_blank(),
         panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        axis.line.x = element_line(color = 'black'),
+        axis.line.y = element_line(color = 'black'),
         panel.grid = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 30, hjust = 1),
+        axis.title.y = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
         strip.background = element_rect(fill = NA),
-        strip.clip = 'off',
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed')) -> p
-ggsave('f4_d.pdf', p, height = 2.6, width = 9.5)
+        panel.grid.major.x = element_line(color = 'grey70', linetype = 'dashed')) -> p
+  ggsave('f4_d.pdf', p, height = 4.6, width = 2.4)

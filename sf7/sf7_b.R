@@ -1,91 +1,75 @@
-library(data.table)
 library(tidyverse)
 library(pals)
-library(LOLA)
-library(GenomicRanges)
+library(patchwork)
+load('../data/contactdecay.rda')
 
-odr <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
-odrr <- c('repressed', 'CTCF', 'enhancer',  'bivalent', 'promoterCTCF', 'promoter')
-clrs <- setNames(tableau20(12)[seq(1, 10, 2)], odr)
-cclrs <- setNames(kelly(22)[2:7], odrr)
+samps <- c("GSC",  'GSCLC') 
+clrs <- setNames(c( '#9467bd', '#499894'), samps)
 
-load('../scripts/runLOLA2.rda')
-regionDB <- loadRegionDB('../data/resources/ensembl')
-signif.num <- function(x) {
-  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
-         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-         symbols = c("****", "***", "**", "*", "ns"))
-}
+dat <- o %>%
+  Map(function(x, k) {
+    d <- bind_rows(x, .id = 's')
+    if (k == 'der') select(d, sep = s_bp, y = slope, s)
+    else select(d, sep = s_bp, y = balanced.avg, s)
+  }, ., names(.)) %>%
+  bind_rows(.id = 'k') %>%
+  separate(s, c('study', 'x'), '/') %>%
+  filter(study %in% 'Nagano' & x %in% samps) %>%
+  mutate(x = factor(x, samps))
+
+fg <- range(dat[dat$k == 'log',]$y)
+bg <- range(dat[dat$k == 'der',]$y)
+b <- diff(fg)/diff(bg)
+a <- fg[1] - b * bg[1]
 
 
-load('../data/clust/open.rda')
-
-qSet <- d %>%
-  filter(cl != -1 & type %in% odr) %>% 
-  mutate(V1 = cl,
-         cl = case_when(V1 %in% c(1,10,11) ~ 'promoterCTCF',
-                        V1 %in% c(7,8,9,12) ~ 'bivalent',
-                        V1 %in% c(6,13) ~ 'promoter',
-                        V1 %in% c(4,5,14,17) ~ 'enhancer',
-                        V1 %in% c(15,16,18) ~ 'repressed',
-                        V1 %in% c(0,2,3) ~ 'CTCF',
-                        T ~ NA_character_) %>%
-           factor(odrr)) %>% 
-  na.omit() %>%
-  distinct(cl, crd) %>%
-  separate(crd, c('chr','start','end'), '[:-]') %>% split(., .$cl) %>% 
-  lapply(makeGRangesFromDataFrame) %>%
-  GRangesList()
-  
-uSet <- unlist(qSet) %>% unique()
-  
-res1 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "two.sided")
-res2 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "greater")
-
-pd <- res1[,setdiff(colnames(res1), c('pValue', 'pValueLog', 'qValue')),with=F] %>%
-  merge(res2[,c('userSet', 'dbSet', 'pValue', 'qValue', 'pValueLog')]) %>%
-  {.[.$filename %in% .$filename[.$support > 300 & .$qValue < .25],]} %>%
-  mutate(reg = sub('.bed', '', filename),
-         sig = as.character(signif.num(qValue))) %>%
-  dplyr::rename(oddsLower = cLo, oddsUpper = cHi) %>%
-  group_by(reg) %>%
-  mutate(msig = mean(-log10(qValue))) %>%
-  ungroup() %>%
-  arrange(msig) %>%
-  mutate(userSet = factor(userSet),
-         reg = fct_inorder(reg),
-         y = as.numeric(reg),
-         x = as.numeric(userSet),
-         z = log2(oddsRatio),
-         z = case_when(!is.finite(z) ~ -7.5, T ~ z)) 
-xl <- distinct(pd, userSet, x)
-yl <- distinct(pd, reg, y)
-ggplot(pd, aes(x = x, y = y, fill = z)) +
-  geom_tile() +
-  geom_text(aes(label = sig)) +
-  scale_fill_gradientn(expression(log[2]~'overlap OR'), limits = c(-8.2, 8.2), colors = rev(brewer.rdgy(25))) +
-  coord_cartesian(expand = F) +
-  scale_y_continuous('Annotation', breaks = yl$y, labels = yl$reg) +
-  scale_x_continuous('Open site cluster', breaks = xl$x, labels = xl$userSet) +
-  facet_grid(.~'Genomic localization\nof open site clusters') +
-  theme(plot.background = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_blank(),
-        panel.grid = element_blank(),
-        axis.text = element_text(color = 'black', size = 11),
-        axis.text.x = element_text(angle = 30, hjust = 1),
-        legend.background = element_blank(),
+p1 <- dat[dat$k == 'log',] %>%
+  ggplot(aes(x = sep, y = y)) +
+  geom_line(aes(color = x, linetype = x), alpha = .8) +
+  scale_color_manual(values = clrs) +
+  scale_y_log10() +
+  facet_grid(. ~ 'Contact probability decay') +
+  labs(x = 'Genomic separation, s', y = 'P(s)') +
+  coord_cartesian(xlim = c(1e4, 1e8),
+                  ylim = c(1e-7,1e-3)) +
+  scale_x_log10(breaks = 10^(4:8),
+                labels = c('10kb', '100kb', '1mb', '10mb', '100mb')) +
+  theme(legend.position = c(0.01,0.01),
+        legend.justification = c(0,0),
+        legend.background = element_rect(fill = '#ffffff66', color = NA),
+        legend.key = element_blank(),
+        legend.title = element_blank(),
+        plot.background = element_blank(),
+        legend.text = element_text(size = 11),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
         strip.background = element_rect(fill = NA),
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        strip.clip = 'off',
-        legend.title = element_text(angle = 90),
-        legend.key = element_blank(),
-        legend.position = c(0,1),
-        legend.text = element_text(size = 11),
-        legend.justification = c(2,0.6)) +
-  guides(fill = guide_colorbar(barheight = 5.5, barwidth = .5, title.position = 'left')) -> p
+        panel.grid.major = element_line(color = 'grey85', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid = element_blank()) 
 
-ggsave('sf7_b.pdf', p, height = 6.62, width = 5)
+p2 <- dat[dat$k == 'der',] %>%
+  ggplot(aes(x = sep, y = y)) +
+  geom_line(aes(color = x, linetype = x), alpha = .8) +
+  scale_color_manual(values = clrs) +
+  labs(x = 'Genomic separation, s', y = 'Derivative of P(s)') +
+  coord_cartesian(xlim = c(1e4, 1e8),
+                  ylim = c(-2.7, .1)) +
+  scale_x_log10(breaks = 10^(4:8),
+                labels = c('10kb', '100kb', '1mb', '10mb', '100mb')) +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
+        panel.background = element_rect(fill = NA, color = 'black', size = 1),
+        strip.background = element_rect(fill = 'black'),
+        strip.text = element_text(color = 'white'),
+        panel.grid.major = element_line(color = 'grey85', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
+        axis.ticks.y = element_blank(),
+        panel.grid = element_blank()) 
 
+{ wrap_plots(p1, p2, nrow = 2) &
+  theme(plot.background = element_blank()) } %>%
+  ggsave('sf7_b.pdf', ., height = 3.8, width = 3.3)

@@ -109,7 +109,7 @@ p3 <- var.dat %>%
   scale_x_discrete(labels = function(x) sub('PGC', ' mPGC', x)) +
   thm
 
-{ wrap_plots(p2, p1, p3, nrow = 1) & 
-    theme(plot.background = element_blank()) } %>%
+{wrap_plots(p2, p1, p3, nrow = 1) & 
+    theme(plot.background = element_blank())} %>%
   ggsave('f6_c.pdf', ., width = 6.2, height = 3.58, device = cairo_pdf, bg = 'transparent')
 

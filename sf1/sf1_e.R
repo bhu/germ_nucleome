@@ -1,40 +1,125 @@
+library(data.table)
 library(tidyverse)
 library(pals)
-library(ggnewscale)
-library(ggalluvial)
+library(plotly)
 
-samps <- c("ESC", "EpiLC", "d2PGCLC", "d4c7PGCLC", "GSC") 
+samps <- c('ESC (2i)','EpiLC','d2PGCLC','d4c7PGCLC','GSC',
+           'ESC (serum)', 'Neural progenitors', 'Cortical neurons',
+           'Day 6','Day 4','Day 2','B\u03B1')
+rnm <- function(x) {
+  sub('ESC', 'mESC', sub('PGCLC', ' mPGCLC', x))
+}
 
-pal <- c("#ff0029", "#377eb8", "#66a61e", "#984ea3", "#00d2d5", "#ff7f00", "#af8d00", "#7f80cd", "#b3e900", "#c42e60", "#a65628", "#f781bf", "#8dd3c7", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#fccde5", "#bc80bd", "#ffed6f", "#c4eaff", "#cf8c00", "#1b9e77", "#d95f02", "#e7298a", "#e6ab02", "#a6761d", "#0097ff", "#00d067", "#f43600", "#4ba93b", "#5779bb", "#927acc", "#97ee3f", "#bf3947", "#9f5b00", "#f48758", "#8caed6", "#f2b94f", "#eff26e", "#e43872", "#d9b100", "#9d7a00", "#698cff", "#d9d9d9", "#00d27e", "#d06800", "#009f82", "#c49200", "#cbe8ff", "#fecddf", "#c27eb6", "#8cd2ce", "#c4b8d9", "#f883b0", "#a49100", "#f48800", "#27d0df", "#a04a9b")
+samps <- rnm(samps)
+
+clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
+                   stepped3(8)[-4]), samps)
+
 load('../data/compscore/100kb.rda')
-dat <- mats$mm10$Nagano[,samps] %>% 
+res <- c('Nagano', 'Stadhouders2018', 'Bonev2017') %>%
+  lapply(function(s) {
+    m <- mats$mm10[[s]]
+    names(m) <- paste(s, names(m))
+    m
+  }) %>%
+  bind_cols() %>%
   na.omit() %>%
-  mutate_all(function(x) ifelse(x > 0, 'A', 'B')) %>%
-  count(across(all_of(samps))) %>%
-  ungroup() %>% 
-  unite('grp', all_of(samps), remove = F) %>%
-  mutate(n = 100 * n / sum(n)) %>%
-  to_lodes_form(axes = samps) %>%
-  mutate(x = as.character(x) %>% sub('PGCLC', ' mPGCLC', .) %>% sub('ESC','mESC', .) %>% fct_inorder())
+  select(-contains('_')) %>%
+  mutate(idx = 1:n()) %>%
+  pivot_longer(-idx, names_to = 'x', values_to = 'y') %>%
+  separate(x, c('study', 'x'), '\\ ') %>%
+  mutate(x = case_when(x == 'Ba' ~ 'B\u03B1',
+                       x == 'CM' ~ 'Cardiac mesoderm',
+                       x == 'CPC' ~ 'Cardiac progenitors',
+                       x == 'PCM' ~ 'Primitive cardiomyocytes',
+                       x == 'VCM' ~ 'Ventricular cardiomyocytes',
+                       x == 'ESC' & study == 'Nagano' ~ 'ESC (2i)',
+                       x == 'ESC' & study == 'Bonev2017' ~ 'ESC (serum)',
+                       x == 'NPC' ~ 'Neural progenitors',
+                       x == 'CN' ~ 'Cortical neurons',
+                       T ~ x) %>%
+           sub('^D', 'Day ', .) %>%
+           rnm() %>%
+           factor(samps),
+         study = c(Nagano = 'Germline', Bonev2017 = 'Neural',
+                   Stadhouders2018 = 'Reprogramming')[study] %>%
+           factor(c('Germline', 'Neural', 'Reprogramming'))) %>%
+  na.omit() %>%
+  arrange(idx, study, x) %>%
+  select(-study) %>%
+  pivot_wider(names_from = 'x', values_from = 'y') %>%
+  select(-idx) %>%
+  as.matrix() %>%
+  t() %>%
+  prcomp(scale. = T, center = T)
 
-ggplot(dat, aes(x = x, y = n, alluvium = alluvium, stratum = stratum)) +
-  geom_alluvium(aes(fill = grp), alpha = .8) +
-  scale_fill_manual(values = pal) +
-  new_scale_fill() +
-  geom_stratum(aes(fill = stratum), color ='black', alpha = .3) +
-  scale_fill_manual(values = c(A = 'white', B = 'black')) +
-  geom_text(stat = "stratum", aes(label = stratum)) +
-  ylab('% of bins') +
-  scale_y_continuous(expand = expansion(.01)) +
-  theme(plot.background = element_blank(),
-        legend.position = 'none',
-        panel.background = element_blank(),
-        strip.background = element_rect(fill = 'black'),
-        strip.text = element_text(color = 'white', size = 11),
-        panel.grid.major.y = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.text = element_text(color = 'black', size = 11),
-        axis.ticks = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid = element_blank()) -> p
-ggsave('sf1_e.pdf', p, height = 3.7, width = 4.5)
+comps <- summary(res)$importance[2,] * 100
+
+axs <- paste0('PC', 1:3)
+
+pts <- res$x %>%
+  data.frame() %>%
+  rownames_to_column("samp") %>%
+  mutate(samp = fct_inorder(samp))
+
+lns <- lapply(1:(nrow(pts) - 1), function(i) {
+  pts[c(i, i + 1), axs] %>%
+    lapply(function(x) {seq(x[1], x[2], length.out = 100)}) %>%
+    bind_cols() %>%
+    `colnames<-`(c('x', 'y', 'z')) %>%
+    mutate(idx = 1:n())
+})
+
+mz <- min(pts[[axs[3]]]) - 1
+cns <- lapply(seq_along(pts), function(i) {
+  pts[i, axs] %>%
+    `colnames<-`(c('x', 'y', 'z')) %>%
+    {rbind(., mutate(., z = mz))} %>%
+    mutate(clr = clrs[pts$samp[i]])
+})
+
+scn <- lapply(axs, function(ax) {
+  list(title = sprintf('%s (%d%%)', ax, round(comps[ax])),
+       showticklabels = F, titlefont = list(size = 20))
+}) %>% setNames(c('xaxis', 'yaxis', 'zaxis')) %>%
+ c(list(#aspectratio= list(x= 1, y= 1, z= 0.8),
+         camera = list(eye = list(x = 1.728, y = 1.143, z = 0.660),
+                       center = list(x = .215, y = -.086, z = -.282),
+                       up = list(x = 0, y = 0, z = 1))))
+
+p <- plot_ly(source = 'src') %>%
+  add_markers(type = 'scatter3d', x = pts[[axs[1]]],
+              y = pts[[axs[2]]], z = pts[[axs[3]]],
+              color = pts$samp, colors = clrs,
+              marker = list(size = 14))
+
+brks <- c(5, 8)
+
+for (i in seq_along(lns)) {
+  if (i %in% brks) next
+  p <- p %>%
+    add_trace(mode = 'lines', type = 'scatter3d', data = lns[[i]],
+              x = ~x, y = ~y, z = ~z,
+              line = list(width = 10, color = lns[[i]]$idx,
+                          colorscale = list(c(0, clrs[i]),
+                                            c(1, clrs[i + 1]))),
+              showlegend = FALSE)
+}
+
+for (i in seq_along(cns)) {
+  p <- p %>%
+    add_trace(mode = 'lines', type = 'scatter3d', data = cns[[i]],
+              x = ~x, y = ~y, z = ~z,
+              line = list(color = cns[[i]]$clr, dash = 'dash', width = 6),
+              showlegend = FALSE)
+}
+
+p <- p %>%
+  layout(scene = scn,
+         paper_bgcolor='transparent',
+         plot_bgcolor='transparent',
+         showlegend=T,
+         height = 600,
+         font=list(family = "Arial", size = 20, color = 'black'))
+
+orca(p, 'sf1_e.pdf', width = 1400,height=600, scale=1)

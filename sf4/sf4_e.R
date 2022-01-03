@@ -2,140 +2,80 @@ library(tidyverse)
 library(rtracklayer)
 library(pals)
 library(patchwork)
-library(readxl)
 
-load('../data/tracks/K9me2.rda')
+samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
+rnm <- function(x) sub('ESC', 'mESC', sub('PGC', '\nmPGC', x))
+samps <- rnm(samps)
+clrs <- setNames(tableau20(9)[seq(1,9,2)], samps)
 
-smps <- c('EpiLC', 'd4c7PGCLC')
-nms <- c('EpiLC', 'd4c7 mPGCLC')
-clrs <- setNames(tableau20(8)[c(3,7)], nms)
+reg <- GRanges('chr6', IRanges(124774268, 124852544))
 
-fac <- read_excel('../data/histone_ratios.xlsx') %>%
-  {.[,colSums(is.na(.)) != nrow(.)]} %>% 
-  na.omit() %>% 
-  {.[,c(1, which(.[1,] == 'Ratio'))]} %>%
-  tail(-1) %>%
-  dplyr::rename(mark = 1) %>%
-  filter(grepl('K9me2$', mark)) %>%
-  pivot_longer(-mark, names_to = 'samp') %>%
-  mutate(type = sub('_.*', '', samp),
-         value = as.numeric(value)) %>%
-  filter(type %in% smps)  %>%
-  group_by(type) %>% 
-  summarise(v = mean(value)) %>% 
-  mutate(v = v / min(v)) %>% 
-  deframe()
+bws <- list.files('../data/tracks/sf3', pattern = 'bw$', full.names = T) %>%
+  setNames(., sub('_.*', '', basename(.))) %>%
+  lapply(function(x) {
+    import.bw(x, selection = BigWigSelection(reg))
+  })
 
-k <- !overlapsAny(makeGRangesFromDataFrame(bins), import.bed('../data/resources/blacklist.bed'))
-pclr <- 'steelblue3'
-p2 <- ggplot(dat[k,], aes_string(x = smps[2], y = smps[1])) +
-  geom_abline(slope = 1) +
-  geom_point(alpha = .1, size = .1, color = pclr) +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(x = nms[2], y = nms[1]) +
-  coord_cartesian(xlim = c(10, 150), ylim = c(10, 150)) +
-  annotation_logticks() +
-  facet_grid(.~'Original') +
-  theme(plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        panel.grid = element_blank(),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        strip.clip = 'off',
-        strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text = element_text(color = 'black', size = 11))
+bins <- tile(reg, 500)[[1]]
+seqlevels(bins) <- seqlevels(bws[[1]])
+xs <- mid(bins)
 
-p4 <- dat[k,] %>% 
-  dplyr::rename(y := !!smps[1],
-                x := !!smps[2]) %>%
-  mutate(y = y * fac[smps[1]], 
-         x = x * fac[smps[2]]) %>% 
-  ggplot(aes(x = x, y = y)) +
-  geom_abline(slope = 1) +
-  geom_point(alpha = .1, size = .1, color = pclr) +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(x = nms[2], y = nms[1]) +
-  coord_cartesian(xlim = c(10, 200), ylim = c(10, 200)) +
-  annotation_logticks() +
-  facet_grid(. ~ 'Rescaled') +
-  theme(plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        panel.grid = element_blank(),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        strip.background = element_rect(fill = NA),
-        strip.clip = 'off',
-        axis.title.y = element_blank(),
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text = element_text(color = 'black', size = 11))
+scs <- lapply(bws, function(x) {
+  mcolAsRleList(x, 'score') %>%
+    binnedAverage(bins, ., 'score') %>%
+    score() %>%
+    tibble(score = .) %>%
+    mutate(idx = xs)
+}) %>%
+  bind_rows(.id = 'samp') %>%
+  mutate(samp = factor(rnm(samp), samps)) %>%
+  na.omit()
+
+kept <- lapply(bws, function(x) {
+  tibble(start = c(124846815,124840705,124808980),
+         end = c(124847990, 124841749, 124810233)) 
+}) %>% bind_rows(.id = 'samp') %>%
+  mutate(samp = factor(rnm(samp), samps)) %>% 
+  na.omit()
+
+lost <- lapply(bws, function(x) {
+  tibble(start = c(124850660,124827974,124779051),
+         end = c(124851964, 124834714, 124807027)) 
+}) %>% bind_rows(.id = 'samp') %>%
+  mutate(samp = factor(rnm(samp), samps)) %>% 
+  na.omit()
 
 
-
-
-p1 <- dat[k & bins$chr == 'chr6',] %>%
-  mutate(idx = 1e5 * (1:n() - .5 )) %>%
-  pivot_longer(-idx, names_to = 'samp', values_to = 'v') %>%
-  mutate(samp = setNames(nms, smps)[samp] %>%
-           factor(nms)) %>%
-  ggplot(aes(x = idx, y = v, color = samp, fill = samp)) +
-  geom_line() +
-  geom_area(alpha = .5) +
+p <- ggplot(scs, aes(x = idx, y = score)) +
+  geom_rect(aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf), fill = 'green',
+            alpha = .3, data = kept, inherit.aes = F) +
+  geom_rect(aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf), fill = 'red',
+            alpha = .15, data = lost, inherit.aes = F) +
+  geom_line(aes(color = samp)) +
+  geom_area(aes(fill = samp), alpha = .5) +
   scale_color_manual(values = clrs) +
   scale_fill_manual(values = clrs) +
-  scale_x_continuous(breaks = c(0, 5e7, 1e8, 1.5e8),
-                     labels = c('0b', '50mb', '100mb', '150mb'),
-                     expand = expansion(0)) +
-  facet_grid(samp ~ 'Original') +
-  scale_y_continuous(expand = expansion(c(0,.05)),
-                     breaks = c(25,50,75)) +
-  coord_cartesian(ylim = c(0,100)) +
-  labs(x = 'chr6', y = 'CPM') +
-  theme(plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
+  coord_cartesian(ylim = c(0,6)) +
+  facet_grid(samp ~ 'Effect on weaker CTCF sites') +
+  scale_y_continuous(expand = expansion(c(0, .05)), breaks = c(0, 2.5, 5)) +
+  scale_x_continuous(breaks = c(124780000, 124840000),
+                     labels = c('124.78mb', '124.84mb')) +
+  labs(x = as.character(seqnames(reg)), y = 'CPM') +
+  theme(legend.position = 'none',
+        plot.background = element_blank(),
+        panel.background = element_blank(),
         panel.grid = element_blank(),
-        legend.position = 'none',
-        strip.background.y = element_blank(),
-        strip.text.y = element_blank(),
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
+        axis.text = element_text(color = 'black', size = 11),
         strip.background = element_rect(fill = NA),
-        strip.clip = 'off',
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text = element_text(color = 'black', size = 11))
-
-p3 <- dat[k & bins$chr == 'chr6',] %>%
-  dplyr::rename(y := !!smps[1],
-                x := !!smps[2]) %>%
-  mutate(y = y * fac[smps[1]], 
-         x = x * fac[smps[2]],
-         idx = 1e5 * (1:n() - .5 )) %>%
-  pivot_longer(-idx, names_to = 'samp', values_to = 'v') %>%
-  mutate(samp = setNames(nms, c('y', 'x'))[samp] %>%
-           factor(nms)) %>%
-  ggplot(aes(x = idx, y = v, color = samp, fill = samp)) +
-  geom_line() +
-  geom_area(alpha = .5) +
-  scale_color_manual(values = clrs) +
-  scale_fill_manual(values = clrs) +
-  scale_x_continuous(breaks = c(0, 5e7, 1e8, 1.5e8),
-                     labels = c('0b', '50mb', '100mb', '150mb'),
-                     expand = expansion(0)) +
-  facet_grid(samp ~ 'Rescaled') +
-  scale_y_continuous(expand = expansion(c(0,.05)),
-                     breaks = c(50,100,150)) +
-  coord_cartesian(ylim = c(0,200)) +
-  labs(x = 'chr6', y = 'Normalized CPM') +
-  theme(plot.background = element_blank(),
-        panel.background = element_rect(fill = NA, color = 'black', size = 1),
-        panel.grid = element_blank(),
-        legend.position = 'none',
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        strip.background = element_rect(fill = NA),
+        axis.line.x = element_line(color = 'black'),
+        panel.grid.major = element_blank(),
+        panel.spacing = unit(.9, "lines"),
         strip.clip = 'off',
-        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        axis.text = element_text(color = 'black', size = 11))
+        axis.ticks.y = element_line(color = 'black'),
+        axis.line.y = element_line(color = 'black')) 
 
-g <- ggplot_gtable(ggplot_build(p3))
+g <- ggplot_gtable(ggplot_build(p))
 strip <- which(grepl('strip-r', g$layout$name))
 fills <- clrs
 k <- 1
@@ -147,11 +87,6 @@ for (i in strip) {
   k <- k+1
 }
 
-{wrap_plots(p1, wrap_ggplot_grob(g), nrow = 1) &
-    theme(plot.background = element_blank())} %>%
-  ggsave('sf4_e_left.pdf', ., height = 3.35, width = 5)
 
-{wrap_plots(p2, p4, nrow = 1) &
-    theme(plot.background = element_blank())} %>%
-  ggsave('sf4_e_right.pdf', ., height = 3.35, width = 5)
+ggsave('sf4_e.pdf', g, height = 6.2, width = 3.6)
 

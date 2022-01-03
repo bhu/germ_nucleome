@@ -1,105 +1,103 @@
 library(tidyverse)
-library(patchwork)
 library(pals)
-library(rtracklayer)
-library(ggpattern)
-library(scales)
-library(gggenes)
-library(scales)
-sess <- browserSession("UCSC")
-genome(sess) <- "mm10"
+library(GenomicRanges)
+library(broom)
+library(ggsignif)
+library(patchwork)
+library(boot)
 
-reg <- GRanges("chr4", IRanges(23090000, 23110000))
+load('../data/tracks/inpnorm.50kb.rda')
+load('../data/calder.rda')
 
-rmsk.tbl <- getTable(ucscTableQuery(sess, track = "rmsk", range = reg, table = "rmsk"))
+samps <- c("GSC",  'GSCLC') 
+clrs <- setNames(c( '#9467bd', '#499894'), samps)
+mrks <- c('PC1','ATAC','CTCF','Rad21',
+          'Ring1b','H2Aub','K27me3', 'K27ac', 'K4me1','K4me3',
+          'K36me2','K36me3','K9me2','K9me3', 'Laminb1')
 
-bws <- list.files('../data/tracks/c19', pattern = 'bw$', full.names = T) %>% 
-  setNames(., sub('ESC_(.*).bw', '\\1', basename(.))) %>% 
+signif.num <- function(x) {
+  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
+         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
+         symbols = c("****", "***", "**", "*", "ns"))
+}
+
+
+sc <- lapply(o$`50000`, makeGRangesFromDataFrame, keep.extra.columns = T)
+
+bins <- distinct(d50, chr, start, end) %>%
+  mutate(start = start + 1) %>%
+  makeGRangesFromDataFrame()
+
+lbs <- o$`50000` %>%
   lapply(function(x) {
-    import.bw(x, selection = BigWigSelection(reg))
-  })
-
-bins <- tile(reg, 500)[[1]]
-seqlevels(bins) <- seqlevels(bws[[1]])
-xs <- mid(bins)
-
-scs <- lapply(bws, function(x) {
-  mcolAsRleList(x, 'score') %>%
-    binnedAverage(bins, ., 'score') %>%
-    score() %>%
-    tibble(score = .) %>%
-    mutate(idx = xs)
-})
-
-clrs <- kelly(8)[-2:-1]
-ps <- seq_along(scs) %>%
-  lapply(function(i) {
-    p <- ggplot(scs[[i]], aes(x = idx, y = score)) + 
-      geom_line(color = clrs[i]) +
-      geom_area(fill = clrs[i], alpha = .5) +
-      annotate('text', x = -Inf, y = Inf, label = names(scs)[i],
-               hjust = -0.1, vjust = 1.5,) +
-      scale_y_continuous(expand = expansion(c(0, .05)), breaks = pretty_breaks(2)) +
-      scale_x_continuous(breaks = c(23090000, 23100000, 23110000)) +
-      labs(x = seqnames(reg), y = 'CPM') +
-      theme(legend.position = 'none',
-            plot.background = element_blank(),
-            panel.background = element_rect(fill = NA, color = 'black', size = 1),
-            panel.grid = element_blank(),
-            axis.text = element_text(color = 'black', size = 11),
-            strip.background = element_rect(fill = NA),
-            strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-            panel.grid.major = element_blank(),
-            strip.background.y = element_blank(),
-            axis.title.x = element_blank(),
-            axis.text.x = element_blank(),
-            plot.margin = margin(t = 0, b = 2, r = 10),
-            axis.title.y = element_blank(),
-            axis.ticks.y = element_line(color = 'black'))
-    if (i == 1) {
-      p <- p +
-        facet_grid(.~'Example cluster 19 site in mESC') +
-        theme(axis.title.y = element_text(color = 'black'))
-    }
-    p
-  }) 
+    makeGRangesFromDataFrame(x) %>%
+      findOverlaps(bins, .) %>%
+      as("List") %>%
+      extractList(x$lab, .) %>%
+      sapply(`[`, 1)
+  }) %>%
+  bind_cols()
 
 
-r <- rmsk.tbl %>% 
-  filter(repName == 'L1Md_T') %>%
-  dplyr::select(chr = genoName, start = genoStart, end = genoEnd, strand, name = repName, kind = repClass) %>%
-  mutate(type = 'exon', utr = 'not', forward = strand == '+', 
-         position = case_when(strand == '-' ~ end, T ~ start)) %>%
-  ggplot(aes(xmin = start, xmax = end, y = kind, forward = forward)) +
-  geom_gene_arrow(fill = 'black', color = NA) +
-  scale_x_continuous(as.character(seqnames(reg)), limits = range(xs), breaks =  c(23090000, 23100000, 23110000),
-                     labels = c('23.09', '23.1', '23.11mb')) +
-  geom_text(aes(x = position, y = kind, label = name), nudge_x = 1e3, hjust = 0) +
-  geom_feature(aes(x = position, y = kind, forward = forward)) +
-  xlab(unique(reg$chr)) +
-  coord_cartesian(clip = 'off') +
-  scale_y_discrete(expand = expansion(0)) +
-  theme(legend.position = 'none',
-        plot.background = element_blank(),
+p <- d50 %>%
+  split(., .$samp) %>%
+  lapply(function(x) {
+    x$sc <- x %>% 
+      mutate(start = start + 1) %>%
+      makeGRangesFromDataFrame() %>%
+      findOverlaps(sc[[x$samp[1]]]) %>%
+      as("List") %>%
+      extractList(sc[[x$samp[1]]]$lab, .) %>%
+      sapply(`[`, 1)
+    x
+  }) %>%
+  bind_rows() %>%
+  filter(samp %in% samps) %>%
+  na.omit() %>%
+  select(-chr, -start, -end) %>%
+  mutate_if(is.numeric, function(x) (x - mean(x)) / sd(x)) %>%
+  group_by(samp, sc) %>%
+  summarise(across(everything(), mean), .groups = 'drop') %>%
+  pivot_longer(-c(samp, sc), names_to = 'mark', values_to = 'mu') %>%
+  mutate(mark = factor(mark, mrks)) %>%
+  na.omit() %>%
+  arrange(mark) %>%
+  mutate(mark = sub('b1', ' B1', mark) %>%
+           sub('^K', 'H3K', .) %>%
+           fct_inorder()) %>%
+  ggplot(aes(x = sc, y = mark, fill = mu)) +
+  geom_tile() +
+  scale_fill_gradientn('Z-score', colors = turbo(25),
+                       c(-1,0,1)) +
+  facet_wrap(. ~ samp) +
+  coord_cartesian(expand = F) +
+  xlab('Subcompartment') +
+  guides(fill = guide_colorbar(title.position = 'top',
+                               barheight = .5,
+                               barwidth = 2.5)) +
+  theme(plot.background = element_blank(),
         panel.background = element_blank(),
         panel.grid = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
+        legend.background = element_blank(),
+        legend.key = element_blank(),
+        legend.position = c(0,0),
+        legend.justification = c(1.4,1),
+        legend.direction = 'horizontal',
         strip.background = element_rect(fill = NA),
-        strip.text = element_text(color = 'black', size = 11),
-        panel.grid.major = element_blank(),
-        strip.background.y = element_blank(),
-        strip.text.y = element_blank(),
-        plot.margin = margin(t = 0, b = 2, r = 10),
+        strip.text = element_text(color = 'black', size = 13, face = 'bold'),
         axis.title.y = element_blank(),
-        axis.line.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.line.x = element_line(color = 'black'),
-        axis.ticks.y = element_blank())
+        axis.text.x = element_text(angle = 45, hjust = 1)) 
+  
+g <- ggplot_gtable(ggplot_build(p))
+strip <- which(grepl('strip-t', g$layout$name))
+k <- 1
+for (i in strip) {
+  #j <- which(grepl('rect', g$grobs[[i]]$grobs[[1]]$childrenOrder))
+  #g$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- clrs[k]
+  j <- which(grepl('title', g$grobs[[i]]$grobs[[1]]$childrenOrder))
+  g$grobs[[i]]$grobs[[1]]$children[[j]]$children[[1]]$gp$col <- clrs[k]
+  k <- k+1
+}
+ggsave('sf7_c.pdf', g, height = 3.6, width = 3.9)
 
-
-
-{c(ps, list(r)) %>%
-  wrap_plots(ncol = 1, heights = c(1,1,1,1,1,1,.7)) &
-  theme(plot.background = element_blank()) } %>%
-  ggsave('sf7_c.pdf', ., height = 5, width = 4)
- 

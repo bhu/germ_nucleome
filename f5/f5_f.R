@@ -1,65 +1,52 @@
-library(data.table)
 library(tidyverse)
-library(rtracklayer)
-library(LOLA)
-library(ggrepel)
+library(ppcor)
+library(pals)
 
-load('../scripts/runLOLA2.rda')
-regionDB <- loadRegionDB('../data/resources/reps')
-signif.num <- function(x) {
-  symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
-         cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-         symbols = c("****", "***", "**", "*", "ns"))
-}
+samps <- c('ESC', 'EpiLC', 'd2PGCLC', 'd4c7PGCLC', 'GSC')
 
-uSet <- fread('../data/resources/mm10.chrom.sizes') %>% 
-  {Seqinfo(.$V1, .$V2, genome = 'mm10')} %>%
-  tileGenome(tilewidth = 1000) %>%
-  subsetByOverlaps(import.bed('../data/resources/blacklist.bed'), invert = T) %>%
-  GRangesList() %>%
-  unlist() %>%
-  {.[seqnames(.) != 'chrY']}
-
-qSet <- list.files('../data/peaks/K9me3', pattern = 'bed$', full.names = T) %>% 
-  setNames(.,sub('.bed', '', basename(.))) %>%
-  .[c('ESC','EpiLC','d2PGCLC','d4c7PGCLC','GSC')] %>%
+load('../data/tracks/inpnorm.50kb.rda')
+d50 %>%
+  dplyr::select(-c(chr, start, end, PC1)) %>%
+  split(., .$samp) %>%
   lapply(function(x) {
-    fread(x, col.names = c('chr','start','end')) %>%
-      mutate(start = start + 1, end = end + 1) %>% 
-      makeGRangesFromDataFrame()
-  }) %>% 
-  Reduce(intersect, .) %>%
-  subsetByOverlaps(uSet, .)
-
-res1 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "two.sided")
-res2 <- runLOLA2(qSet, uSet, regionDB, cores = 4,
-                 direction = "greater")
-pd <- res1[,setdiff(colnames(res1), c('pValue', 'pValueLog', 'qValue')),with=F] %>%
-  merge(res2[,c('userSet', 'dbSet', 'pValue', 'qValue', 'pValueLog')]) %>%
-  mutate(reg = sub('.bed', '', filename),
-         sig = as.character(signif.num(qValue))) %>%
-  filter(support > 1)
-
-ggplot(pd, aes(x = qValue, y = oddsRatio)) +
-  geom_hline(yintercept = 1, color = 'grey70') +
-  geom_point() +
-  geom_linerange(aes(ymin = cLo, ymax = cHi)) +
-  geom_label_repel(aes(label = reg), data = ~subset(., qValue < .05),
-                   nudge_x = .3) +
-  facet_grid(.~'H3K9me3-enriched\nrepeat families') +
-  scale_x_continuous(expression("Fisher's exact test"~p[adj]), breaks = c(0, .5, 1)) +
-  #scale_y_continuous(position = 'left') +
-  ylab('Overlap odds ratio') +
+    x %>%
+      dplyr::select(-samp) %>%
+      {tibble(mark = names(.),
+              partial = pcor(., method = 'pearson')$estimate[which(names(.) == 'Laminb1'),],
+              full = cor(., method = 'pearson')['Laminb1',])}
+  }) %>%
+  bind_rows(.id = 'samp') %>%
+  mutate(samp = factor(samp, samps)) %>%
+  na.omit() %>%
+  filter(mark %in% c('K9me3', 'K9me2')) %>%
+  mutate(mark = paste0('H3', mark)) %>%
+  ggplot(aes(x = samp, y = mark, fill = full)) +
+  geom_tile() +
+  geom_text(aes(label = round(full, 2))) +
+  scale_x_discrete(labels = function(x) sub('ESC', 'mESC', sub('PGC', ' mPGC', x))) +
+  scale_fill_gradientn(expression('Spearman\'s'~rho),
+                       colors = coolwarm(25), limits = c(-1,1),
+                       breaks = c(-1,0,1)) +
+  #guides(fill = guide_colorbar(barwidth = 4.7, barheight = .5, title.position = 'top',
+  #                             frame.linewidth = 1, ticks = F)) +
+  guides(fill = guide_colorbar(barheight = .5, barwidth = 2, ticks = F,
+                               title.position = 'left', title.vjust = 1)) +
+  coord_cartesian(expand = F) +
+  facet_grid(.~'Lamin B1 correlation') +
   theme(plot.background = element_blank(),
         panel.background = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
-        panel.grid = element_blank(),
-        axis.ticks.y = element_blank(),
+        axis.title = element_blank(),
+        legend.background = element_blank(),
+        legend.key = element_blank(),
+        legend.text = element_text(size = 11),
+        legend.position = c(1,0),
+        legend.direction = 'horizontal',
+        legend.justification = c(1,3),
+        plot.margin = margin(5,5,30,5),
         strip.background = element_rect(fill = NA),
         strip.text = element_text(color = 'black', size = 13, face = 'bold'),
-        strip.clip = 'off',
-        panel.grid.major = element_line(color = 'grey70', linetype = 'dashed'),
-        axis.line.x = element_line(color = 'black')) -> p
+        axis.text.x = element_text(angle = 45, hjust = 1)) -> p
 
-ggsave(file = 'f5_f.pdf', height = 3.1, width = 2.3)
+ggsave('f5_f.pdf', p, width = 3.5, height = 2.85)
+

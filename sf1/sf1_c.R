@@ -18,7 +18,7 @@ rnm <- function(x) {
 samps <- rnm(samps)
 
 clrs <- setNames(c(tableau20(12)[seq(1, 9, 2)],
-                   stepped3(16)[-4]), samps)
+                   stepped3(12)[-4]), samps)
 
 dat <- o %>%
   Map(function(x, k) {
@@ -102,7 +102,7 @@ p2 <- dat[dat$k == 'log',] %>%
 
 
 leg <- ggplot(dat, aes(x = sep, y = y, color = x)) +
-  geom_line() +
+  geom_line(size = 3) +
   scale_color_manual(values = clrs) +
   guides(color = guide_legend(ncol = 2)) +
   theme(plot.background = element_blank(),
@@ -110,7 +110,7 @@ leg <- ggplot(dat, aes(x = sep, y = y, color = x)) +
         legend.key = element_blank(),
         legend.title = element_blank(),
         legend.justification = 'top',
-        legend.text = element_text(size = 11)) 
+        legend.text = element_text(size = 11, family = 'Arial')) 
 
 ggsave('sf1_c_leg.pdf', get_legend(leg), height = 4.3, width = 4, device = cairo_pdf, bg = 'transparent')
 

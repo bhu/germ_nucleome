@@ -56,13 +56,28 @@ dat.ratio <- c(mats$mm10, mats$hg38) %>%
 
 
 
-p <- ggplot(dat.ratio, aes(x = x, y = A, color = x)) +
-  geom_hline(yintercept = 50, color = 'grey60') +
-  geom_line(aes(group = study), color = 'grey50', size = 2, alpha = .5) +
-  geom_point(size = 4) +
-  facet_grid(.~study, scales = 'free_x', space = 'free_x')  +
-  scale_color_manual(values = clrs) +
-  scale_y_continuous('% of genome in compartment A') +
+
+dat.ratio <- dat.score %>%
+  group_by(x, study) %>%
+  summarise(y = 100 * sum(y > 0) / n()) %>%
+  ungroup()
+
+m <- 0.2
+b <- -10
+
+sclr <- 'gray60'
+ggplot(dat.score, aes(x = x, y = y)) +
+  geom_hline(yintercept = 0, color = 'grey70') +
+  geom_violin(aes(fill = x), alpha = .7, color = NA) +
+  geom_line(aes(y = m * y + b, group = study), data = dat.ratio, 
+            size = 1.5, color = sclr, alpha = .7) +
+  geom_point(aes(y = m * y + b, fill = x), data = dat.ratio, pch = 21, 
+             color = alpha(sclr, .7), size = 4, stroke = 2) +
+  facet_grid(.~study, scales = 'free_x', space = 'free_x') +
+  coord_cartesian(ylim = c(-2.5, 1.5)) +
+  scale_y_continuous('Compartment score',
+                     sec.axis = sec_axis(~ (. - b) / m, '% of bins in compartment A')) +
+  scale_fill_manual(values = clrs) +
   theme(legend.position = "none",
         plot.background = element_blank(),
         panel.background = element_rect(fill = NA, color = 'black', size = 1),
@@ -73,5 +88,10 @@ p <- ggplot(dat.ratio, aes(x = x, y = A, color = x)) +
         axis.ticks.y = element_blank(),
         axis.text = element_text(color = 'black', size = 11),
         axis.text.x = element_text(angle = 30, hjust = 1),
-        panel.grid = element_blank())
-ggsave('f1_g.pdf', p, width = 5.5, height = 4, device = cairo_pdf, bg = 'transparent')
+        axis.title.y.right = element_text(color = sclr),
+        axis.text.y.right = element_text(color = sclr),
+        panel.grid = element_blank()) -> p
+
+
+
+ggsave('f1_g.pdf', p, width = 5.8, height = 4, device = cairo_pdf, bg = 'transparent')
